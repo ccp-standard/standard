@@ -932,6 +932,489 @@
     .arch-layer { grid-template-columns: 1fr; gap: 0.5rem; }
     footer { flex-direction: column; align-items: flex-start; }
   }
+
+  /* ── PAM ANALOGY ── */
+  .pam-comparison {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .pam-half {
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .pam-half.crypto { border-color: rgba(200,245,90,0.2); }
+
+  .pam-header {
+    padding: 0.75rem 1.25rem;
+    background: var(--bg-raised);
+    border-bottom: 1px solid var(--bg-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pam-header-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+
+  .pam-half.crypto .pam-header-title { color: var(--accent); }
+
+  .pam-header-badge {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid var(--bg-border);
+    color: var(--text-tertiary);
+  }
+
+  .pam-half.crypto .pam-header-badge {
+    border-color: var(--accent-dim);
+    color: var(--accent);
+  }
+
+  .pam-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--bg-border);
+  }
+
+  .pam-col {
+    background: var(--bg-surface);
+    padding: 1.25rem;
+  }
+
+  .pam-col-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .pam-col.before .pam-col-label { color: var(--red); opacity: 0.7; }
+  .pam-col.after .pam-col-label { color: var(--accent); }
+
+  .pam-flow-item {
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    text-align: center;
+    margin-bottom: 0.35rem;
+    font-family: var(--font-mono);
+  }
+
+  .pam-flow-app {
+    background: var(--bg-raised);
+    border: 1px solid var(--bg-border);
+    color: var(--text-secondary);
+  }
+
+  .pam-flow-problem {
+    background: rgba(255,95,95,0.08);
+    border: 1px solid rgba(255,95,95,0.2);
+    color: var(--text-secondary);
+  }
+
+  .pam-flow-solution {
+    background: var(--accent-bg);
+    border: 1px solid rgba(200,245,90,0.15);
+    color: var(--text-secondary);
+  }
+
+  .pam-flow-arrow {
+    text-align: center;
+    color: var(--text-tertiary);
+    font-size: 0.7rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .pam-points { list-style: none; margin-top: 0.75rem; }
+
+  .pam-points li {
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--text-tertiary);
+  }
+
+  .pam-points.warn li::before { content: '\26A0  '; color: var(--red); opacity: 0.6; }
+  .pam-points.ok li::before { content: '\2713  '; color: var(--accent); }
+
+  .pam-insight {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    border-left: 2px solid var(--accent);
+    background: var(--accent-bg);
+    border-radius: 0 6px 6px 0;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
+
+  /* ── EVOLUTION ── */
+  #evolution { border-top: 1px solid var(--bg-border); }
+
+  .evo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--bg-border);
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 3rem;
+  }
+
+  .evo-stage {
+    background: var(--bg-surface);
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .evo-stage.target { background: var(--bg-raised); }
+
+  .evo-num {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--text-tertiary);
+    margin-bottom: 0.35rem;
+  }
+
+  .evo-stage.target .evo-num { color: var(--accent); }
+
+  .evo-stage h3 { font-size: 0.82rem; margin-bottom: 0.35rem; font-weight: 500; }
+  .evo-stage.target h3 { color: var(--accent); }
+
+  .evo-era {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .evo-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 0.75rem;
+  }
+
+  .evo-layer {
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 9px;
+    font-family: var(--font-mono);
+    text-align: center;
+    letter-spacing: 0.03em;
+    background: var(--bg-raised);
+    border: 1px solid var(--bg-border);
+    color: var(--text-tertiary);
+  }
+
+  .evo-layer.accent {
+    background: var(--accent-bg);
+    border-color: rgba(200,245,90,0.2);
+    color: var(--accent);
+  }
+
+  .evo-insights {
+    list-style: none;
+    flex: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .evo-insights li {
+    font-size: 0.72rem;
+    color: var(--text-tertiary);
+    line-height: 1.55;
+  }
+
+  .evo-badge {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: auto;
+  }
+
+  .evo-badge.dominant { background: rgba(255,95,95,0.08); color: var(--red); }
+  .evo-badge.progress { background: rgba(74,158,255,0.08); color: var(--blue); }
+  .evo-badge.emerging { background: rgba(74,158,255,0.06); color: var(--blue); opacity: 0.8; }
+  .evo-badge.leading { background: rgba(200,245,90,0.06); color: var(--accent-dim); }
+  .evo-badge.target-arch { background: var(--accent-bg); color: var(--accent); }
+
+  /* ── CAPA TEMPLE ── */
+  .temple {
+    margin-top: 3rem;
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-surface);
+  }
+
+  .temple-roof {
+    background: var(--bg-raised);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-dim);
+    position: relative;
+  }
+
+  .temple-roof::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .temple-roof-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+
+  .temple-roof-sub {
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+  }
+
+  .temple-pillars {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--bg-border);
+  }
+
+  .temple-pillar {
+    background: var(--bg-surface);
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .temple-pillar:hover { background: var(--bg-raised); }
+
+  .temple-pillar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 8px;
+    background: var(--accent-dim);
+    opacity: 0.5;
+  }
+
+  .temple-pillar-num {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    display: block;
+    font-style: italic;
+  }
+
+  .temple-pillar h3 { font-size: 0.82rem; margin-bottom: 0.5rem; font-weight: 500; }
+
+  .temple-pillar p {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+  }
+
+  .temple-foundation {
+    background: var(--bg-raised);
+    padding: 1rem 2rem;
+    text-align: center;
+    border-top: 2px solid var(--accent-dim);
+    position: relative;
+  }
+
+  .temple-foundation::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .temple-foundation-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .temple-foundation-sub {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-top: 0.25rem;
+  }
+
+  /* ── MIGRATION PROGRAM ── */
+  #migration { border-top: 1px solid var(--bg-border); }
+
+  .migration-tracks {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--bg-border);
+    border: 1px solid var(--bg-border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .migration-track {
+    padding: 0.75rem 1rem;
+    background: var(--bg-surface);
+  }
+
+  .migration-track-name {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  .migration-track:nth-child(1) .migration-track-name { color: var(--accent); }
+  .migration-track:nth-child(2) .migration-track-name { color: var(--blue); }
+  .migration-track:nth-child(3) .migration-track-name { color: var(--text-tertiary); }
+
+  .migration-track p {
+    font-size: 0.72rem;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+  }
+
+  .migration-phases {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--bg-border);
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+  }
+
+  .migration-phase {
+    background: var(--bg-surface);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .migration-phase-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+
+  .migration-phase h3 { font-size: 0.9rem; margin-bottom: 0.35rem; font-weight: 500; }
+
+  .migration-timeline {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: var(--bg-raised);
+    display: inline-block;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+  }
+
+  .migration-activities {
+    list-style: none;
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+
+  .migration-activities li {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .migration-activities li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--text-tertiary);
+  }
+
+  .migration-deliverable {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: auto;
+    align-self: flex-start;
+    background: var(--accent-bg);
+    color: var(--accent);
+    border: 1px solid rgba(200,245,90,0.15);
+  }
+
+  /* ── NEW RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .evo-grid { grid-template-columns: repeat(3, 1fr); }
+    .migration-phases { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 680px) {
+    .pam-comparison { grid-template-columns: 1fr; }
+    .evo-grid { grid-template-columns: 1fr; }
+    .temple-pillars { grid-template-columns: repeat(3, 1fr); }
+    .migration-phases { grid-template-columns: 1fr; }
+    .migration-tracks { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -941,11 +1424,11 @@
   <a href="#" class="nav-logo">CCP // Standard</a>
   <ul class="nav-links">
     <li><a href="#problem">Problem</a></li>
-    <li><a href="#definition">Definition</a></li>
+    <li><a href="#evolution">Evolution</a></li>
     <li><a href="#capa">CAPA</a></li>
     <li><a href="#maturity">Maturity</a></li>
     <li><a href="#architecture">Architecture</a></li>
-    <li><a href="#implementations">Implementations</a></li>
+    <li><a href="#migration">Migration</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#" class="nav-cta">Read the standard →</a></li>
   </ul>
@@ -1033,6 +1516,171 @@
         <h3>Cryptography</h3>
         <div class="analogy-before">Embedded in every application</div>
         <div class="analogy-after">→ Cryptographic Control Plane</div>
+      </div>
+    </div>
+
+    <div class="pam-comparison">
+      <div class="pam-half">
+        <div class="pam-header">
+          <span class="pam-header-title">Identity & Credentials</span>
+          <span class="pam-header-badge">Solved</span>
+        </div>
+        <div class="pam-cols">
+          <div class="pam-col before">
+            <div class="pam-col-label">Before</div>
+            <div class="pam-flow-item pam-flow-app">Application</div>
+            <div class="pam-flow-arrow">↓ passwords inside</div>
+            <div class="pam-flow-item pam-flow-problem">Server / Script</div>
+            <div class="pam-flow-arrow">↓ credentials hardcoded</div>
+            <ul class="pam-points warn">
+              <li>Impossible to rotate</li>
+              <li>No central audit</li>
+              <li>Sprawl across systems</li>
+            </ul>
+          </div>
+          <div class="pam-col after">
+            <div class="pam-col-label">After</div>
+            <div class="pam-flow-item pam-flow-app">Application</div>
+            <div class="pam-flow-arrow">↓ calls identity service</div>
+            <div class="pam-flow-item pam-flow-solution">IAM / PAM Layer</div>
+            <div class="pam-flow-arrow">↓ policies · rotation · audit</div>
+            <div class="pam-flow-item pam-flow-app">Credentials Store</div>
+            <ul class="pam-points ok">
+              <li>Centralized control</li>
+              <li>Automatic rotation</li>
+              <li>Full audit trail</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pam-half crypto">
+        <div class="pam-header">
+          <span class="pam-header-title">Cryptography</span>
+          <span class="pam-header-badge">Unsolved — until now</span>
+        </div>
+        <div class="pam-cols">
+          <div class="pam-col before">
+            <div class="pam-col-label">Today</div>
+            <div class="pam-flow-item pam-flow-app">Application</div>
+            <div class="pam-flow-arrow">↓ AES-256, RSA hardcoded</div>
+            <div class="pam-flow-item pam-flow-problem">Crypto Library</div>
+            <div class="pam-flow-arrow">↓ OpenSSL, BouncyCastle</div>
+            <ul class="pam-points warn">
+              <li>Algorithm change = redeploy</li>
+              <li>No governance layer</li>
+              <li>PQC migration impossible</li>
+            </ul>
+          </div>
+          <div class="pam-col after">
+            <div class="pam-col-label">With CCP</div>
+            <div class="pam-flow-item pam-flow-app">Application</div>
+            <div class="pam-flow-arrow">↓ references Key ID only</div>
+            <div class="pam-flow-item pam-flow-solution">Crypto Control Plane</div>
+            <div class="pam-flow-arrow">↓ policy · agility · governance</div>
+            <div class="pam-flow-item pam-flow-app">KMS / HSM / Engines</div>
+            <ul class="pam-points ok">
+              <li>Algorithm = policy, not code</li>
+              <li>PQC without redeploy</li>
+              <li>Full cryptographic audit</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pam-insight">
+      Just as applications stopped owning credentials, they must stop owning cryptography.
+    </div>
+  </div>
+</section>
+
+<!-- EVOLUTION -->
+<section id="evolution">
+  <div class="container-wide">
+    <div class="section-eyebrow">Historical pattern</div>
+    <h2>The five-stage evolution of enterprise cryptography.</h2>
+    <p class="section-lead">Each stage overcomes the limitations of the previous one. The Cryptographic Control Plane is not a discontinuous leap — it is the architecturally inevitable next stage.</p>
+
+    <div class="evo-grid">
+      <div class="evo-stage">
+        <span class="evo-num">01</span>
+        <h3>Embedded Cryptography</h3>
+        <span class="evo-era">1990s — today</span>
+        <div class="evo-stack">
+          <div class="evo-layer">Application</div>
+          <div class="evo-layer">Crypto Library</div>
+          <div class="evo-layer">Local Key Storage</div>
+        </div>
+        <ul class="evo-insights">
+          <li>Algorithm change = redeploy</li>
+          <li>No governance, no inventory</li>
+          <li>Audit is impossible</li>
+        </ul>
+        <span class="evo-badge dominant">Dominant today</span>
+      </div>
+      <div class="evo-stage">
+        <span class="evo-num">02</span>
+        <h3>Centralized Key Management</h3>
+        <span class="evo-era">2010s — today</span>
+        <div class="evo-stack">
+          <div class="evo-layer">Application</div>
+          <div class="evo-layer">Crypto Library</div>
+          <div class="evo-layer accent">KMS / HSM</div>
+        </div>
+        <ul class="evo-insights">
+          <li>Keys managed centrally</li>
+          <li>Algorithms still hardcoded</li>
+          <li>No crypto agility</li>
+        </ul>
+        <span class="evo-badge progress">Partial progress</span>
+      </div>
+      <div class="evo-stage">
+        <span class="evo-num">03</span>
+        <h3>Posture & Discovery</h3>
+        <span class="evo-era">Emerging now</span>
+        <div class="evo-stack">
+          <div class="evo-layer">Application</div>
+          <div class="evo-layer">Crypto Libraries / KMS</div>
+          <div class="evo-layer accent">Discovery Tools</div>
+        </div>
+        <ul class="evo-insights">
+          <li>Can observe — cannot act</li>
+          <li>Snapshot, not control</li>
+          <li>Visibility without governance</li>
+        </ul>
+        <span class="evo-badge emerging">Emerging</span>
+      </div>
+      <div class="evo-stage">
+        <span class="evo-num">04</span>
+        <h3>Cryptographic Agility</h3>
+        <span class="evo-era">Leading edge</span>
+        <div class="evo-stack">
+          <div class="evo-layer">Application</div>
+          <div class="evo-layer accent">Abstraction Layer</div>
+          <div class="evo-layer">KMS / HSM / Engines</div>
+        </div>
+        <ul class="evo-insights">
+          <li>Modular — not yet governed</li>
+          <li>Agility without central policy</li>
+          <li>Transitions still coordinated</li>
+        </ul>
+        <span class="evo-badge leading">Leading edge</span>
+      </div>
+      <div class="evo-stage target">
+        <span class="evo-num">05</span>
+        <h3>Cryptographic Control Plane</h3>
+        <span class="evo-era">The next stage</span>
+        <div class="evo-stack">
+          <div class="evo-layer">Application</div>
+          <div class="evo-layer accent">Crypto Control Plane</div>
+          <div class="evo-layer">KMS / HSM / Engines</div>
+        </div>
+        <ul class="evo-insights">
+          <li>Crypto = policy, not code</li>
+          <li>Algorithm change = config</li>
+          <li>Full governance + PQC</li>
+        </ul>
+        <span class="evo-badge target-arch">Target architecture</span>
       </div>
     </div>
   </div>
@@ -1136,6 +1784,44 @@
         <span class="pillar-num">Pillar 05</span>
         <h3>Regulatory compliance</h3>
         <p>Cryptographic infrastructure can respond to evolving compliance requirements — NIST, ETSI, BSI, ISO/IEC, and regional frameworks — without requiring large-scale system redesign. Compliance becomes a policy configuration.</p>
+      </div>
+    </div>
+
+    <div class="temple">
+      <div class="temple-roof">
+        <div class="temple-roof-title">Cryptographic Posture</div>
+        <div class="temple-roof-sub">Secure · Sovereign · Agile · Quantum-Ready</div>
+      </div>
+      <div class="temple-pillars">
+        <div class="temple-pillar">
+          <span class="temple-pillar-num">I</span>
+          <h3>Crypto-Agility</h3>
+          <p>Quick adaptation to threats and algorithm evolution</p>
+        </div>
+        <div class="temple-pillar">
+          <span class="temple-pillar-num">II</span>
+          <h3>Sovereignty</h3>
+          <p>Control over keys and cryptographic operations</p>
+        </div>
+        <div class="temple-pillar">
+          <span class="temple-pillar-num">III</span>
+          <h3>Frictionless Modernization</h3>
+          <p>Add PQC to existing systems without redesign</p>
+        </div>
+        <div class="temple-pillar">
+          <span class="temple-pillar-num">IV</span>
+          <h3>Policy Governance</h3>
+          <p>Enforce crypto standards through policy, not code</p>
+        </div>
+        <div class="temple-pillar">
+          <span class="temple-pillar-num">V</span>
+          <h3>Regulatory Compliance</h3>
+          <p>Meet global cryptographic standards and mandates</p>
+        </div>
+      </div>
+      <div class="temple-foundation">
+        <div class="temple-foundation-title">CAPA — Crypto Agility Posture Architecture</div>
+        <div class="temple-foundation-sub">Architectural foundation for a resilient cryptographic posture</div>
       </div>
     </div>
   </div>
@@ -1335,6 +2021,93 @@
   </div>
 </section>
 
+<!-- MIGRATION PROGRAM -->
+<section id="migration">
+  <div class="container-wide">
+    <div class="section-eyebrow">Migration path</div>
+    <h2>Enterprise Cryptographic Modernization Program.</h2>
+    <p class="section-lead">Three tracks, one program. Greenfield stops new cryptographic debt from day one. Brownfield critical migrates the highest-risk applications immediately. Brownfield general resolves the remaining landscape over time. All three run in parallel.</p>
+
+    <div class="migration-tracks">
+      <div class="migration-track">
+        <div class="migration-track-name">Greenfield track</div>
+        <p>All new apps under Control Plane. PQC by default. Starts Phase 01.</p>
+      </div>
+      <div class="migration-track">
+        <div class="migration-track-name">Brownfield critical</div>
+        <p>Top 5-10 apps analyzed in Phase 01. Migration profiles ready. Onboarded in Phase 03.</p>
+      </div>
+      <div class="migration-track">
+        <div class="migration-track-name">Brownfield general</div>
+        <p>Full inventory from Phase 01. Phased migration from Phase 03. Prioritized by risk and data sensitivity.</p>
+      </div>
+    </div>
+
+    <div class="migration-phases">
+      <div class="migration-phase">
+        <div class="migration-phase-header">
+          <span class="migration-phase-num">Phase 01</span>
+          <h3>Cryptographic Discovery & Risk</h3>
+        </div>
+        <span class="migration-timeline">2 - 6 weeks</span>
+        <ul class="migration-activities">
+          <li>Full algorithm inventory across apps & infra</li>
+          <li>Identify & analyze top 5-10 critical apps</li>
+          <li>HNDL risk exposure mapping</li>
+          <li>Classify data by sensitivity & longevity</li>
+          <li>Establish greenfield policy</li>
+        </ul>
+        <span class="migration-deliverable">Greenfield policy active</span>
+      </div>
+      <div class="migration-phase">
+        <div class="migration-phase-header">
+          <span class="migration-phase-num">Phase 02</span>
+          <h3>Cryptographic Governance</h3>
+        </div>
+        <span class="migration-timeline">4 - 8 weeks</span>
+        <ul class="migration-activities">
+          <li>Define cryptographic policies</li>
+          <li>Establish allowed algorithm catalog</li>
+          <li>Key lifecycle model</li>
+          <li>Crypto-agility framework design</li>
+          <li>Migration plan: critical apps ready</li>
+        </ul>
+        <span class="migration-deliverable">CAPA Framework ready</span>
+      </div>
+      <div class="migration-phase">
+        <div class="migration-phase-header">
+          <span class="migration-phase-num">Phase 03</span>
+          <h3>Control Plane Deployment</h3>
+        </div>
+        <span class="migration-timeline">4 - 12 weeks</span>
+        <ul class="migration-activities">
+          <li>Deploy cryptographic control plane</li>
+          <li>Integrate with KMS/HSM & identity layer</li>
+          <li>Onboard critical apps - profiles ready</li>
+          <li>Initiate brownfield general onboarding</li>
+          <li>Establish monitoring & audit</li>
+        </ul>
+        <span class="migration-deliverable">Control Plane operational</span>
+      </div>
+      <div class="migration-phase">
+        <div class="migration-phase-header">
+          <span class="migration-phase-num">Phase 04</span>
+          <h3>Incremental PQC Migration</h3>
+        </div>
+        <span class="migration-timeline">12 - 36 months</span>
+        <ul class="migration-activities">
+          <li>Migrate remaining systems by risk priority</li>
+          <li>Introduce hybrid PQC algorithms</li>
+          <li>Progressive data re-encryption</li>
+          <li>PQC modernization complete</li>
+          <li>Regulatory alignment achieved</li>
+        </ul>
+        <span class="migration-deliverable">Full PQC compliance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- OPEN QUESTIONS -->
 <section id="open-questions">
   <div class="container">
@@ -1440,11 +2213,11 @@
     </div>
     <div class="footer-right">
       <a href="#problem">Problem</a> &nbsp;·&nbsp;
-      <a href="#definition">Definition</a> &nbsp;·&nbsp;
+      <a href="#evolution">Evolution</a> &nbsp;·&nbsp;
       <a href="#capa">CAPA</a> &nbsp;·&nbsp;
       <a href="#maturity">Maturity</a> &nbsp;·&nbsp;
       <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
-      <a href="#implementations">Implementations</a>
+      <a href="#migration">Migration</a>
     </div>
   </footer>
 </div>
