@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cryptographic Control Plane — Standard</title>
+<meta name="description" content="An architectural standard for continuous cryptographic evolution. The Cryptographic Control Plane separates cryptographic intent from cryptographic execution.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --bg-surface: #111114;
+    --bg-raised: #18181c;
+    --bg-border: #27272d;
+    --bg-border-light: #1e1e24;
+    --text-primary: #f0f0ee;
+    --text-secondary: #9898a0;
+    --text-tertiary: #5a5a63;
+    --accent: #c8f55a;
+    --accent-dim: #8ab33a;
+    --accent-bg: rgba(200,245,90,0.07);
+    --red: #ff5f5f;
+    --blue: #4a9eff;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,11,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--bg-border);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  .nav-cta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent) !important;
+    border: 1px solid var(--accent-dim);
+    padding: 6px 16px;
+    border-radius: 4px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent-bg) !important; }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .container-wide {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  section { padding: 7rem 0; }
+
+  /* ── HERO ── */
+  #hero {
+    padding: 10rem 0 7rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--bg-border-light) 1px, transparent 1px),
+      linear-gradient(90deg, var(--bg-border-light) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.4;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 100%);
+  }
+
+  .hero-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 580px;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: #0a0a0b;
+    background: var(--accent);
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: opacity 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-secondary);
+    border: 1px solid var(--bg-border);
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    color: var(--text-primary);
+    border-color: var(--text-tertiary);
+  }
+
+  .hero-meta {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--bg-border);
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .hero-stat-num {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  h3 {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-lead {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    line-height: 1.85;
+  }
+
+  /* ── PROBLEM SECTION ── */
+  #problem { border-top: 1px solid var(--bg-border); }
+
+  .problem-quote {
+    margin: 3rem 0;
+    padding: 2rem 2.5rem;
+    border-left: 2px solid var(--accent);
+    background: var(--accent-bg);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .problem-quote p {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--text-primary);
+  }
+
+  .analogy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--bg-border);
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 3rem;
+  }
+
+  .analogy-item {
+    background: var(--bg-surface);
+    padding: 1.75rem;
+    position: relative;
+  }
+
+  .analogy-era {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .analogy-item h3 { font-size: 0.9rem; margin-bottom: 0.35rem; }
+
+  .analogy-before {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .analogy-after {
+    font-size: 12px;
+    color: var(--accent-dim);
+  }
+
+  .analogy-item.highlight {
+    background: var(--bg-raised);
+  }
+
+  .analogy-item.highlight::before {
+    content: 'now';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--accent-dim);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+
+  /* ── DEFINITION ── */
+  #definition { border-top: 1px solid var(--bg-border); }
+
+  .definition-box {
+    margin: 3rem 0;
+    padding: 3rem;
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    background: var(--bg-surface);
+    position: relative;
+  }
+
+  .definition-box::before {
+    content: 'Definition';
+    position: absolute;
+    top: -1px;
+    left: 2rem;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--bg-surface);
+    padding: 0 0.75rem;
+    transform: translateY(-50%);
+    border: 1px solid var(--bg-border);
+    border-radius: 3px;
+  }
+
+  .definition-box p {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.65;
+    color: var(--text-primary);
+  }
+
+  .split-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--bg-border);
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+
+  .split-cell {
+    background: var(--bg-surface);
+    padding: 2rem;
+  }
+
+  .split-cell-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 0.75rem;
+  }
+
+  .split-cell p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .split-cell strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* ── CAPA PILLARS ── */
+  #capa { border-top: 1px solid var(--bg-border); }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--bg-border);
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 3rem;
+  }
+
+  .pillar {
+    background: var(--bg-surface);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+
+  .pillar:hover { background: var(--bg-raised); }
+
+  .pillar-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .pillar h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+
+  .pillar p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ── MATURITY MODEL ── */
+  #maturity { border-top: 1px solid var(--bg-border); }
+
+  .maturity-track {
+    margin-top: 3rem;
+    position: relative;
+  }
+
+  .maturity-line {
+    position: absolute;
+    left: 32px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--bg-border);
+  }
+
+  .maturity-item {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1px;
+    background: var(--bg-surface);
+    border: 1px solid var(--bg-border);
+    border-radius: 0;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .maturity-item:first-child { border-radius: 8px 8px 0 0; }
+  .maturity-item:last-child { border-radius: 0 0 8px 8px; }
+  .maturity-item + .maturity-item { border-top: none; }
+  .maturity-item:hover { background: var(--bg-raised); }
+
+  .maturity-level {
+    background: var(--bg-raised);
+    border-right: 1px solid var(--bg-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+    padding: 1.5rem 0;
+  }
+
+  .maturity-l-num {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+  }
+
+  .maturity-item.active .maturity-l-num { color: var(--accent); }
+
+  .maturity-l-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .maturity-item.active .maturity-l-tag { color: var(--accent-dim); }
+
+  .maturity-content {
+    padding: 1.5rem;
+  }
+
+  .maturity-content h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .maturity-content p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .maturity-pqc {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+  }
+
+  .maturity-item.active .maturity-pqc { color: var(--accent-dim); }
+
+  /* ── CAPABILITIES ── */
+  #capabilities { border-top: 1px solid var(--bg-border); }
+
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--bg-border);
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 3rem;
+  }
+
+  .capability-card {
+    background: var(--bg-surface);
+    padding: 2.5rem;
+    transition: background 0.2s;
+  }
+
+  .capability-card:hover { background: var(--bg-raised); }
+
+  .capability-before {
+    background: var(--bg-raised);
+    border: 1px solid var(--bg-border);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .capability-before-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+  }
+
+  .capability-before p {
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+  }
+
+  .capability-after {
+    background: var(--accent-bg);
+    border: 1px solid rgba(200,245,90,0.15);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+  }
+
+  .capability-after-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .capability-after p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .capability-card > h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+  }
+
+  /* ── THREAT MODEL ── */
+  #threat { border-top: 1px solid var(--bg-border); }
+
+  .threat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .threat-card {
+    padding: 2rem;
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    background: var(--bg-surface);
+  }
+
+  .threat-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .threat-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .threat-card.urgent {
+    border-color: rgba(255,95,95,0.3);
+    background: rgba(255,95,95,0.04);
+  }
+
+  .threat-card.urgent h3 { color: var(--red); }
+
+  /* ── ARCHITECTURE ── */
+  #architecture { border-top: 1px solid var(--bg-border); }
+
+  .arch-stack {
+    margin-top: 3rem;
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .arch-layer {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--bg-border);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .arch-layer:last-child { border-bottom: none; }
+
+  .arch-layer-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+
+  .arch-layer.control { background: var(--bg-raised); }
+  .arch-layer.control .arch-layer-label { color: var(--accent); }
+
+  .arch-layer-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .arch-layer-desc strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .arch-note {
+    margin-top: 1.5rem;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--bg-border);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+    font-family: var(--font-mono);
+    background: var(--bg-surface);
+  }
+
+  /* ── IMPLEMENTATIONS ── */
+  #implementations { border-top: 1px solid var(--bg-border); }
+
+  .impl-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .impl-card {
+    padding: 2rem;
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    background: var(--bg-surface);
+  }
+
+  .impl-card.reference {
+    border-color: var(--accent-dim);
+    background: var(--accent-bg);
+  }
+
+  .impl-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    border: 1px solid var(--bg-border);
+    padding: 3px 10px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .impl-card.reference .impl-tag {
+    color: var(--accent);
+    border-color: var(--accent-dim);
+  }
+
+  .impl-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+
+  .impl-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .impl-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .impl-link:hover { opacity: 0.8; }
+
+  /* ── ABOUT / FOOTER ── */
+  #about { border-top: 1px solid var(--bg-border); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+  }
+
+  .about-grid p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .about-grid a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer {
+    border-top: 1px solid var(--bg-border);
+    padding: 2.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-left {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+
+  .footer-left span { color: var(--accent); }
+
+  .footer-right {
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+
+  .footer-right a {
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+
+  .footer-right a:hover { color: var(--text-primary); }
+
+  /* ── VERSION BADGE ── */
+  .version-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-tertiary);
+    border: 1px solid var(--bg-border);
+    padding: 4px 12px;
+    border-radius: 4px;
+    background: var(--bg-surface);
+    margin-bottom: 1.5rem;
+  }
+
+  .version-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* ── OPEN QUESTIONS ── */
+  #open-questions { border-top: 1px solid var(--bg-border); }
+
+  .questions-list {
+    margin-top: 2.5rem;
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .question-item {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--bg-border);
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    background: var(--bg-surface);
+    transition: background 0.2s;
+  }
+
+  .question-item:last-child { border-bottom: none; }
+  .question-item:hover { background: var(--bg-raised); }
+
+  .question-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    padding-top: 2px;
+  }
+
+  .question-item h3 { font-size: 0.95rem; margin-bottom: 0.35rem; }
+
+  .question-item p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .container, .container-wide { padding: 0 1.25rem; }
+    section { padding: 5rem 0; }
+    #hero { padding: 7rem 0 5rem; }
+    .capabilities-grid { grid-template-columns: 1fr; }
+    .split-row { grid-template-columns: 1fr; }
+    .threat-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .arch-layer { grid-template-columns: 1fr; gap: 0.5rem; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">CCP // Standard</a>
+  <ul class="nav-links">
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#definition">Definition</a></li>
+    <li><a href="#capa">CAPA</a></li>
+    <li><a href="#maturity">Maturity</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#implementations">Implementations</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#" class="nav-cta">Read the standard →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="container" style="position:relative;">
+    <div class="version-badge">
+      <span class="version-dot"></span>
+      Version 0.1 — Preliminary Draft — 2026
+    </div>
+    <div class="hero-tag">Cryptographic Control Plane Standard</div>
+    <h1>Cryptography should be<br><em>infrastructure,</em><br>not implementation.</h1>
+    <p class="hero-sub">
+      An open architectural standard for separating cryptographic intent from cryptographic execution — enabling enterprises to govern, adapt, and evolve their cryptographic posture continuously.
+    </p>
+    <div class="hero-actions">
+      <a href="#definition" class="btn-primary">Read the standard →</a>
+      <a href="#capa" class="btn-secondary">CAPA framework</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-stat">
+        <span class="hero-stat-num">5</span>
+        <span class="hero-stat-label">CAPA pillars</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">6</span>
+        <span class="hero-stat-label">Maturity levels</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">14+</span>
+        <span class="hero-stat-label">Standards aligned</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">0.1</span>
+        <span class="hero-stat-label">Current version</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="section-eyebrow">The structural problem</div>
+    <h2>Cryptography is the last critical infrastructure layer still living inside application code.</h2>
+    <p class="section-lead">
+      For decades, cryptographic algorithms have been embedded directly within application code. This was manageable when standards changed slowly. It is no longer manageable.
+    </p>
+
+    <div class="problem-quote">
+      <p>"When cryptographic logic is embedded in application code, every algorithm transition becomes a distributed engineering effort. What should be a controlled infrastructure update instead becomes a large-scale application migration project."</p>
+    </div>
+
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">
+      Every other critical infrastructure domain has already made this transition. Networking evolved from per-device configuration to software-defined control planes. Identity management moved from embedded credentials to centralized IAM platforms. Secrets management moved from configuration files to dedicated vault systems.
+    </p>
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8;">
+      In each case, the same pattern emerged: when operational complexity exceeded what application-level management could sustain, the capability was abstracted into governed infrastructure. Cryptography is now reaching that same inflection point.
+    </p>
+
+    <div class="analogy-grid">
+      <div class="analogy-item">
+        <div class="analogy-era">1990s–2000s</div>
+        <h3>Networking</h3>
+        <div class="analogy-before">Config in every device</div>
+        <div class="analogy-after">→ Software-Defined Networking</div>
+      </div>
+      <div class="analogy-item">
+        <div class="analogy-era">2000s–2010s</div>
+        <h3>Identity</h3>
+        <div class="analogy-before">Credentials in every app</div>
+        <div class="analogy-after">→ IAM / PAM platforms</div>
+      </div>
+      <div class="analogy-item">
+        <div class="analogy-era">2010s–2020s</div>
+        <h3>Secrets</h3>
+        <div class="analogy-before">Hardcoded in config files</div>
+        <div class="analogy-after">→ Vault / secrets management</div>
+      </div>
+      <div class="analogy-item highlight">
+        <div class="analogy-era">Now</div>
+        <h3>Cryptography</h3>
+        <div class="analogy-before">Embedded in every application</div>
+        <div class="analogy-after">→ Cryptographic Control Plane</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEFINITION -->
+<section id="definition">
+  <div class="container">
+    <div class="section-eyebrow">The standard</div>
+    <h2>What is a Cryptographic Control Plane?</h2>
+    <p class="section-lead">A precise architectural definition, designed to be implementable, auditable, and vendor-neutral.</p>
+
+    <div class="definition-box">
+      <p>A <strong>Cryptographic Control Plane</strong> is a dedicated infrastructure layer that decouples cryptographic policy and lifecycle management from application implementation. Applications express cryptographic intent. Infrastructure governs how cryptographic operations are executed, which algorithms are applied, and how those algorithms evolve over time.</p>
+    </div>
+
+    <div class="split-row">
+      <div class="split-cell">
+        <div class="split-cell-label">Cryptographic intent (application)</div>
+        <p>The application calls a service with a <strong>Key ID reference</strong> and a requested operation — encrypt, sign, verify. It specifies what it needs, never how to do it. No algorithm name, no library import, no cipher selection occurs at the application level.</p>
+      </div>
+      <div class="split-cell">
+        <div class="split-cell-label">Cryptographic execution (infrastructure)</div>
+        <p>The Control Plane resolves the intent against the <strong>active cryptographic policy</strong>, selects the appropriate algorithm, validates key lifecycle state, enforces regulatory constraints, and executes the operation. Policy changes propagate to all connected applications instantly, without redeployment.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:2.5rem;">
+      <div class="section-eyebrow" style="margin-bottom:1.5rem;">Minimum capabilities</div>
+      <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:1.5rem;">A platform may be considered a Cryptographic Control Plane implementation if and only if it provides all of the following:</p>
+      <div style="border:1px solid var(--bg-border); border-radius:8px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:2rem 1fr; gap:1.25rem; padding:1.25rem 1.5rem; border-bottom:1px solid var(--bg-border); background:var(--bg-surface);">
+          <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);">01</span>
+          <div>
+            <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Cryptographic abstraction layer</h3>
+            <p style="font-size:0.85rem;color:var(--text-secondary);">Applications consume cryptographic services through a standardized interface with no direct algorithm selection or library invocation in application code.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:2rem 1fr; gap:1.25rem; padding:1.25rem 1.5rem; border-bottom:1px solid var(--bg-border); background:var(--bg-surface);">
+          <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);">02</span>
+          <div>
+            <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Policy-driven algorithm governance</h3>
+            <p style="font-size:0.85rem;color:var(--text-secondary);">Algorithm selection, key sizes, permitted operations, and cryptographic constraints are defined through policy — not application code — and enforced consistently across all systems.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:2rem 1fr; gap:1.25rem; padding:1.25rem 1.5rem; border-bottom:1px solid var(--bg-border); background:var(--bg-surface);">
+          <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);">03</span>
+          <div>
+            <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Algorithm lifecycle management</h3>
+            <p style="font-size:0.85rem;color:var(--text-secondary);">The platform can execute algorithm transitions — including migration to post-quantum mechanisms — without requiring application code changes or redeployment.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:2rem 1fr; gap:1.25rem; padding:1.25rem 1.5rem; border-bottom:1px solid var(--bg-border); background:var(--bg-surface);">
+          <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);">04</span>
+          <div>
+            <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Key lifecycle orchestration</h3>
+            <p style="font-size:0.85rem;color:var(--text-secondary);">Key generation, rotation, revocation, expiration, and audit are governed centrally, not by individual application teams. Integration with HSM and KMS infrastructure is required.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:2rem 1fr; gap:1.25rem; padding:1.25rem 1.5rem; background:var(--bg-surface);">
+          <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);">05</span>
+          <div>
+            <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Cryptographic audit and traceability</h3>
+            <p style="font-size:0.85rem;color:var(--text-secondary);">Every cryptographic operation is logged, traceable, and reportable. Demonstrating cryptographic posture to auditors requires querying the Control Plane — not inspecting individual applications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPA -->
+<section id="capa">
+  <div class="container">
+    <div class="section-eyebrow">CAPA framework</div>
+    <h2>Crypto Agility Posture Architecture</h2>
+    <p class="section-lead">CAPA defines the five foundational capabilities required to build and operate governed cryptographic infrastructure capable of supporting continuous cryptographic evolution.</p>
+
+    <div class="pillars-grid">
+      <div class="pillar">
+        <span class="pillar-num">Pillar 01</span>
+        <h3>Crypto-Agility</h3>
+        <p>The ability to transition between cryptographic algorithms and mechanisms without requiring modification of application code. Organizations can respond rapidly to algorithmic vulnerabilities, regulatory changes, and emerging post-quantum standards.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">Pillar 02</span>
+        <h3>Cryptographic sovereignty</h3>
+        <p>Organizations and governments maintain full control over cryptographic mechanisms, key material, and security policies — independent of vendor constraints and aligned with jurisdictional requirements.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">Pillar 03</span>
+        <h3>Frictionless modernization</h3>
+        <p>New cryptographic mechanisms can be introduced and existing protections updated without requiring redevelopment of existing applications. Modernization becomes an infrastructure operation, not an engineering project.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">Pillar 04</span>
+        <h3>Policy-driven governance</h3>
+        <p>Centralized policies define acceptable algorithms, key lifecycles, cryptographic operations, and security requirements. Standards are enforced consistently across distributed systems — not delegated to individual application teams.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">Pillar 05</span>
+        <h3>Regulatory compliance</h3>
+        <p>Cryptographic infrastructure can respond to evolving compliance requirements — NIST, ETSI, BSI, ISO/IEC, and regional frameworks — without requiring large-scale system redesign. Compliance becomes a policy configuration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATURITY MODEL -->
+<section id="maturity">
+  <div class="container">
+    <div class="section-eyebrow">CAPA maturity model</div>
+    <h2>Six levels of cryptographic capability.</h2>
+    <p class="section-lead">Maturity is measured by what the organization can do today in response to a vulnerability, a standard change, or an algorithm deprecation — not by how much legacy migration remains pending.</p>
+
+    <div class="maturity-track">
+      <div class="maturity-item">
+        <div class="maturity-level">
+          <span class="maturity-l-num">L1</span>
+          <span class="maturity-l-tag">Ad-hoc</span>
+        </div>
+        <div class="maturity-content">
+          <h3>Embedded cryptography</h3>
+          <p>Cryptographic logic hardcoded within each application. Algorithm changes require redeployment across every affected system. No centralized inventory. No governance. Audit is operationally impractical.</p>
+          <span class="maturity-pqc">PQC risk: critical — algorithms hardcoded like any other</span>
+        </div>
+      </div>
+      <div class="maturity-item">
+        <div class="maturity-level">
+          <span class="maturity-l-num">L2</span>
+          <span class="maturity-l-tag">Structured</span>
+        </div>
+        <div class="maturity-content">
+          <h3>Managed cryptography</h3>
+          <p>Centralized key management introduced (HSM, KMS). Keys are protected and lifecycle-governed. Cryptographic logic remains embedded in application code. Algorithm selection still per-application. A greenfield policy — no new applications embed cryptographic logic — should be established at this level.</p>
+          <span class="maturity-pqc">PQC risk: high — key storage can be PQC, algorithm governance cannot</span>
+        </div>
+      </div>
+      <div class="maturity-item active">
+        <div class="maturity-level">
+          <span class="maturity-l-num">L3</span>
+          <span class="maturity-l-tag">Governed</span>
+        </div>
+        <div class="maturity-content">
+          <h3>Cryptographic Control Plane</h3>
+          <p>The structural inflection point. A dedicated infrastructure layer decouples cryptographic behavior from application code. All new systems are built without embedded cryptographic logic immediately. Legacy migration initiated in parallel. The organization can respond to a vulnerability in any governed system in hours.</p>
+          <span class="maturity-pqc">PQC risk: medium — PQC is default for all new applications from day one</span>
+        </div>
+      </div>
+      <div class="maturity-item">
+        <div class="maturity-level">
+          <span class="maturity-l-num">L4</span>
+          <span class="maturity-l-tag">Agile</span>
+        </div>
+        <div class="maturity-content">
+          <h3>Cryptographic agility</h3>
+          <p>Control Plane coverage has expanded substantially. Critical and high-risk systems fully migrated. Algorithm transitions in governed systems are policy updates propagated in real time. Classical-PQC hybrid coexistence managed centrally. Brownfield migration in advanced stages.</p>
+          <span class="maturity-pqc">PQC risk: low-medium — critical systems governed, brownfield closing</span>
+        </div>
+      </div>
+      <div class="maturity-item">
+        <div class="maturity-level">
+          <span class="maturity-l-num">L5</span>
+          <span class="maturity-l-tag">Optimized</span>
+        </div>
+        <div class="maturity-content">
+          <h3>Optimized cryptography</h3>
+          <p>Full landscape under the Control Plane. No system retains embedded cryptographic logic. Algorithm changes are real-time policy updates. Vulnerability response measured in hours across the entire enterprise. PQC standards adopted without engineering projects.</p>
+          <span class="maturity-pqc">PQC risk: minimal — standards adoption via policy update</span>
+        </div>
+      </div>
+      <div class="maturity-item">
+        <div class="maturity-level">
+          <span class="maturity-l-num">L6</span>
+          <span class="maturity-l-tag">Continuous</span>
+        </div>
+        <div class="maturity-content">
+          <h3>Continuous crypto evolution</h3>
+          <p>Cryptographic governance embedded in organizational culture. Standards evolution absorbed through policy updates without disruption. Emerging threats responded to in days. The organization no longer manages cryptography as engineering projects — it governs it as infrastructure policy.</p>
+          <span class="maturity-pqc">PQC risk: residual — baseline for the full landscape, not a destination</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THREAT MODEL -->
+<section id="threat">
+  <div class="container">
+    <div class="section-eyebrow">Threat model</div>
+    <h2>Why urgency is not a future concern.</h2>
+    <p class="section-lead">The post-quantum transition is the proximate cause. The structural vulnerability — hardcoded cryptography — is the underlying condition. Both must be addressed.</p>
+
+    <div class="threat-grid">
+      <div class="threat-card urgent">
+        <h3>Harvest Now, Decrypt Later (HNDL)</h3>
+        <p>Adversaries can capture encrypted communications today and store them for decryption once quantum capabilities become available. For data with confidentiality horizons beyond 5–10 years, this threat is present now. The cryptographic transition must begin before quantum computers capable of breaking classical cryptography exist.</p>
+      </div>
+      <div class="threat-card urgent">
+        <h3>Cryptographic sprawl</h3>
+        <p>In large enterprises, cryptographic logic is dispersed across hundreds or thousands of independent systems. Identifying where specific algorithms are used can take weeks. Migrating a single algorithm can take months. Without a Control Plane, the organization has no central enforcement point — only distributed exposure.</p>
+      </div>
+      <div class="threat-card">
+        <h3>Regulatory acceleration</h3>
+        <p>Governments and standards bodies are mandating cryptographic modernization. U.S. federal directives require agencies to inventory and migrate vulnerable systems. Financial sector guidance requires demonstrated cryptographic agility. Organizations will increasingly be required to prove they can adapt — not just that they have deployed strong cryptography.</p>
+      </div>
+      <div class="threat-card">
+        <h3>Algorithm deprecation cycles</h3>
+        <p>Post-quantum standards are still maturing. Algorithm families standardized today may be revised or supplemented. The cryptographic landscape of 2030 will not be identical to today's. Organizations that treat the transition as a single migration event will face repeated distributed engineering efforts for every subsequent update.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section id="architecture">
+  <div class="container">
+    <div class="section-eyebrow">Reference architecture</div>
+    <h2>The enterprise cryptographic stack.</h2>
+    <p class="section-lead">A vendor-neutral reference architecture for implementing a Cryptographic Control Plane within existing enterprise infrastructure.</p>
+
+    <div class="arch-stack">
+      <div class="arch-layer">
+        <div class="arch-layer-label">Applications &amp; services</div>
+        <div class="arch-layer-desc">Microservices, APIs, databases, storage platforms, integration middleware. Applications reference cryptographic operations by <strong>Key ID only</strong> — no algorithm selection, no library invocation, no cipher configuration at the application level. This single constraint eliminates the root cause of crypto sprawl.</div>
+      </div>
+      <div class="arch-layer control">
+        <div class="arch-layer-label">Cryptographic Control Plane ←</div>
+        <div class="arch-layer-desc">The governance layer. Receives cryptographic requests via API-first interface. Evaluates requests against active cryptographic policy. Orchestrates execution. Returns results. <strong>Policy changes propagate instantaneously</strong> to all connected applications without redeployment. Contains: crypto-abstraction layer, crypto-agility engine, streaming operations, key lifecycle orchestration, policy governance engine.</div>
+      </div>
+      <div class="arch-layer">
+        <div class="arch-layer-label">Key infrastructure</div>
+        <div class="arch-layer-desc">Hardware Security Modules (HSM), Cloud Key Management Systems (KMS), certificate authorities, PKI infrastructure, secure key stores. The Control Plane orchestrates these systems — it does not replace them. <strong>Existing key infrastructure investments are preserved</strong> and extended.</div>
+      </div>
+      <div class="arch-layer">
+        <div class="arch-layer-label">Algorithm catalog</div>
+        <div class="arch-layer-desc">The full set of cryptographic algorithms available to the Control Plane, organized by family and aligned to international standards (NIST, ETSI, BSI, ISO/IEC). Includes classical algorithms, post-quantum algorithms (ML-KEM, ML-DSA, SLH-DSA), and composite hybrid combinations. <strong>Any algorithm in the catalog can be activated or deactivated through a policy decision</strong>, not a code change.</div>
+      </div>
+    </div>
+
+    <div class="arch-note">
+      Modern cryptography should not live inside applications. It should be governed by a dedicated cryptographic control plane.
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities">
+  <div class="container">
+    <div class="section-eyebrow">What becomes possible</div>
+    <h2>When cryptography is decoupled.</h2>
+    <p class="section-lead">Four operational capabilities that are simply unavailable in the traditional embedded model — and immediately available once a Control Plane is operational.</p>
+
+    <div class="capabilities-grid">
+      <div class="capability-card">
+        <h3>Algorithm migration without rewriting systems</h3>
+        <div class="capability-before">
+          <div class="capability-before-label">Without CCP</div>
+          <p>Change RSA → modify application code → recompile → redeploy → validate compatibility across every system. Months of coordinated engineering.</p>
+        </div>
+        <div class="capability-after">
+          <div class="capability-after-label">With CCP</div>
+          <p>Update the cryptographic policy. The Control Plane applies the change transparently — applications are untouched. Hours, not months.</p>
+        </div>
+      </div>
+      <div class="capability-card">
+        <h3>Enterprise-wide cryptographic policy</h3>
+        <div class="capability-before">
+          <div class="capability-before-label">Without CCP</div>
+          <p>Each development team chooses its own algorithms, key sizes, and configurations. Crypto sprawl across hundreds of services. No unified posture.</p>
+        </div>
+        <div class="capability-after">
+          <div class="capability-after-label">With CCP</div>
+          <p>One policy definition enforced centrally across every application, every environment, every operation — in real time.</p>
+        </div>
+      </div>
+      <div class="capability-card">
+        <h3>Large-scale data re-encryption</h3>
+        <div class="capability-before">
+          <div class="capability-before-label">Without CCP</div>
+          <p>Read every record, decrypt, re-encrypt under new algorithm, write back. A massive, error-prone engineering project across terabytes of data.</p>
+        </div>
+        <div class="capability-after">
+          <div class="capability-after-label">With CCP</div>
+          <p>Streaming re-encryption migrates entire data stores — files, databases, backups — from classical to PQC without application changes.</p>
+        </div>
+      </div>
+      <div class="capability-card">
+        <h3>Continuous cryptographic evolution</h3>
+        <div class="capability-before">
+          <div class="capability-before-label">Without CCP</div>
+          <p>Cryptographic updates forced by incidents, every several years. Each one a painful multi-team effort. Standards adoption takes years.</p>
+        </div>
+        <div class="capability-after">
+          <div class="capability-after-label">With CCP</div>
+          <p>Cryptography becomes adaptive. New algorithms, new vulnerabilities, new regulations — the organization responds in days, not years.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPEN QUESTIONS -->
+<section id="open-questions">
+  <div class="container">
+    <div class="section-eyebrow">Open questions</div>
+    <h2>Areas of active development.</h2>
+    <p class="section-lead">As version 0.1, this standard explicitly acknowledges areas of genuine uncertainty. We invite engagement from the community on all of the following.</p>
+
+    <div class="questions-list">
+      <div class="question-item">
+        <span class="question-num">01</span>
+        <div>
+          <h3>Standardized CCP API specification</h3>
+          <p>This document defines the architectural requirements for a Control Plane but does not specify a wire protocol or API contract. Should the community converge on a common API specification to enable interoperability between applications and CCP implementations?</p>
+        </div>
+      </div>
+      <div class="question-item">
+        <span class="question-num">02</span>
+        <div>
+          <h3>Conformance and certification</h3>
+          <p>What constitutes a conformant CCP implementation? Should this standard define a formal conformance testing process, and if so, what body should administer it? How should conformance claims be made and verified?</p>
+        </div>
+      </div>
+      <div class="question-item">
+        <span class="question-num">03</span>
+        <div>
+          <h3>Open-source reference implementation</h3>
+          <p>Should the CCP Initiative publish an open-source reference implementation of the minimum capability requirements defined in this standard? What governance model should such a project adopt?</p>
+        </div>
+      </div>
+      <div class="question-item">
+        <span class="question-num">04</span>
+        <div>
+          <h3>Integration with existing standards</h3>
+          <p>How should the CCP standard relate to NIST SP 800-57 (key management), NIST SP 800-131A (algorithm transitions), ETSI TS 119 312 (cryptographic suites), and emerging PQC migration guidance? Should this standard be structured as an overlay?</p>
+        </div>
+      </div>
+      <div class="question-item">
+        <span class="question-num">05</span>
+        <div>
+          <h3>Multi-cloud and hybrid deployment patterns</h3>
+          <p>The reference architecture describes a logical stack but does not prescribe deployment topology. What are the recommended patterns for operating a CCP across multi-cloud, on-premises, and hybrid environments while maintaining cryptographic sovereignty?</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem; padding:1.5rem 2rem; border:1px solid var(--bg-border); border-radius:8px; background:var(--bg-surface);">
+      <p style="font-size:0.9rem; color:var(--text-secondary);">We explicitly invite contributions from enterprise architects, security researchers, standards bodies, and cryptographic engineers. Reach out at <a href="mailto:standard@ccpstandard.org" style="color:var(--accent);text-decoration:none;">standard@ccpstandard.org</a> or open an issue on the project repository.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IMPLEMENTATIONS -->
+<section id="implementations">
+  <div class="container">
+    <div class="section-eyebrow">Implementations</div>
+    <h2>Platforms that implement this standard.</h2>
+    <p class="section-lead">The following platforms have been evaluated against the minimum capability requirements defined in this standard. Listings are maintained by the CCP Initiative.</p>
+
+    <div class="impl-grid">
+      <div class="impl-card reference">
+        <div class="impl-tag">Reference implementation</div>
+        <h3>ANKASecure©</h3>
+        <p>A Crypto Agility Orchestration Platform developed by ANKATech Solutions INC. Implements all five CAPA pillars. Supports 125+ cryptographic algorithms across 21+ families including 40+ composite hybrid combinations. Aligned with 14+ international standards. Full PQC support: ML-KEM, ML-DSA, SLH-DSA with hybrid coexistence.</p>
+        <a href="https://ankatech.co" class="impl-link" target="_blank">ankatech.co →</a>
+      </div>
+      <div class="impl-card">
+        <div class="impl-tag">Community</div>
+        <h3>Submit an implementation</h3>
+        <p>If your platform implements the minimum capability requirements defined in this standard, we invite you to submit it for review and listing. The CCP Initiative evaluates conformance claims against the five requirements defined in Section 2.</p>
+        <a href="mailto:standard@ccpstandard.org" class="impl-link">Contact the initiative →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-eyebrow">About this document</div>
+    <h2>The CCP Initiative.</h2>
+
+    <div class="about-grid">
+      <div>
+        <p>The Cryptographic Control Plane Standard is an open architectural document published by the CCP Initiative. It is designed to be read, implemented, and evolved by the community of enterprise architects, security engineers, and cryptographic practitioners who face the challenges described in this standard.</p>
+        <p>This is version 0.1 — a preliminary draft. Significant refinement is expected through continued engagement. The standard is intentionally structured to acknowledge areas of uncertainty and invite contribution. It is not a finished specification — it is the beginning of a necessary conversation.</p>
+        <p>The standard is published under a Creative Commons Attribution 4.0 International license. It may be freely reproduced, cited, and adapted with attribution.</p>
+      </div>
+      <div>
+        <p>The Cryptographic Control Plane concept and the CAPA framework were originally developed by <a href="https://ankatech.co">ANKATech Solutions INC</a> through research and product development in post-quantum cryptography. The foundational whitepaper — <em>The Cryptographic Control Plane: A New Architecture for Continuous Cryptographic Evolution</em> — is available for download.</p>
+        <p>ANKATech operates as the founding contributor to the CCP Initiative and maintains ANKASecure©, the reference implementation of this standard. ANKATech's role in this initiative is as author and contributor — the standard itself is designed to be vendor-neutral and community-governed.</p>
+        <p>To contribute, comment, or engage: <a href="mailto:standard@ccpstandard.org">standard@ccpstandard.org</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="container">
+  <footer>
+    <div class="footer-left">
+      <span>CCP Standard</span> — Version 0.1 Preliminary Draft — 2026<br>
+      Published by the CCP Initiative · CC BY 4.0
+    </div>
+    <div class="footer-right">
+      <a href="#problem">Problem</a> &nbsp;·&nbsp;
+      <a href="#definition">Definition</a> &nbsp;·&nbsp;
+      <a href="#capa">CAPA</a> &nbsp;·&nbsp;
+      <a href="#maturity">Maturity</a> &nbsp;·&nbsp;
+      <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
+      <a href="#implementations">Implementations</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
