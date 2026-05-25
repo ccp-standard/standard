@@ -26,3 +26,8 @@ Desktop.ini
 # Logs
 *.log
 npm-debug.log*
+
+# Local working files
+*.pdf
+imagesTmp/
+SETUP_INSTRUCTIONS.txt
