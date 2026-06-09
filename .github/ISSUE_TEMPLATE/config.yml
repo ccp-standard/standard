@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Community Discussion
+    url: https://github.com/ccp-standard/standard/discussions
+    about: For open-ended questions, proposals, and the five foundational open questions, start a Discussion.
+  - name: Steering Committee / organizational participation
+    url: mailto:standard@ccp-standard.org
+    about: To request a Steering Committee seat or discuss organizational participation, contact the initiative.

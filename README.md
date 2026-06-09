@@ -1,6 +1,6 @@
 # The Cryptographic Control Plane Standard
 
-![Version](https://img.shields.io/badge/version-0.1-blue) ![Status](https://img.shields.io/badge/status-Preliminary%20Draft-orange) ![Year](https://img.shields.io/badge/year-2026-lightgrey) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-green)
+![Version](https://img.shields.io/badge/version-0.9-blue) ![Status](https://img.shields.io/badge/status-Working%20Draft-orange) ![Year](https://img.shields.io/badge/year-2026-lightgrey) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-green)
 
 The Cryptographic Control Plane (CCP) Standard defines an open, vendor-neutral architectural framework for orchestrating cryptographic operations across enterprise environments. It establishes the minimum capabilities, integration patterns, and maturity benchmarks that enable organizations to achieve continuous cryptographic evolution — the ability to adopt, rotate, and retire cryptographic algorithms and protocols without disrupting the systems that depend on them.
 
@@ -41,6 +41,7 @@ The **CAPA Cryptographic Maturity Model** defines six levels of organizational c
 
 The CCP Standard is an open initiative. Contributions are welcome from cryptographers, security architects, compliance professionals, and implementors.
 
+- Read the [Governance model](GOVERNANCE.md) — vendor-neutral, with Steering Committee seats open to participating organizations
 - Read the [Contributing Guidelines](CONTRIBUTING.md) for process details
 - Open a [GitHub Issue](https://github.com/ccp-standard/standard/issues) to propose changes or raise questions
 - Submit a Pull Request for substantive additions or corrections
