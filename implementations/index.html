@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Implementations — Cryptographic Control Plane Standard</title>
-<meta name="description" content="Platforms evaluated against the minimum capability requirements of the Cryptographic Control Plane Standard, and how conformance claims are made.">
+<title>Implementations — Cryptographic Control Plane</title>
+<meta name="description" content="Implementations of the Cryptographic Control Plane reference architecture, and how they are listed. No conformance suite exists and no one certifies implementations.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo">CCP // Standard</a>
+  <a href="/" class="nav-logo">CCP // Architecture</a>
   <ul class="nav-links">
     <li><a href="/control-plane/">Control Plane</a></li>
     <li><a href="/capa/">CAPA</a></li>
@@ -28,39 +28,44 @@
 <section class="page-hero">
   <div class="container">
     <div class="page-kicker">Implementations</div>
-    <h1>Platforms that implement<br>this <em>standard.</em></h1>
-    <p class="section-lead">The standard describes an architectural model. An implementation operationalizes it. The two are not the same, and a listing here is a claim about capabilities — not an endorsement of a vendor.</p>
+    <h1>One, so far.</h1>
+    <p class="section-lead">This document describes a model. An implementation operationalizes it. Today there is exactly one, built by the same organization that wrote the document — which is the most important thing to know when reading any of this.</p>
   </div>
 </section>
 
-<section id="conformance">
+<section id="how-listed">
   <div class="container">
-    <div class="section-eyebrow">How conformance is claimed</div>
-    <h2>Evaluated against the minimum capabilities.</h2>
-    <p class="section-lead">The following platforms have been evaluated against the <a href="/control-plane/#capabilities-required" style="color:var(--accent);text-decoration:none;">six minimum capability requirements</a> defined by this standard. Listings are maintained by the CCP Initiative.</p>
+    <div class="section-eyebrow">How this page works</div>
+    <h2>Self-declared, not certified.</h2>
 
-    <div class="note">
-      <span class="note-label">What a listing does not assert</span>
-      Conformance describes the <strong>capabilities a platform provides</strong>. It does not assert that any particular deployment governs the whole of an organization's cryptographic landscape — coverage grows as applications are onboarded, and is a question for the <a href="/maturity/" style="color:var(--accent);text-decoration:none;">maturity model</a>.
-      <br><br>
-      Nor does a listing imply a one-to-one relationship between platform capabilities and <a href="/capa/" style="color:var(--accent);text-decoration:none;">CAPA</a> pillars. A single capability may contribute to several pillars, and each pillar may depend on several capabilities working together.
+    <div class="callout">
+      <span class="callout-label">What a listing here is, and is not</span>
+      <p>An implementation states for itself how it meets each required capability. No one verifies that claim.</p>
+      <p>There is no conformance suite, no test harness and no certification body. Whether any of those should exist is <a href="/about/#open-questions">Open Question 2</a>, and it is genuinely open. Until it is answered, a listing on this page is a public claim by its author — useful to read against <a href="/control-plane/#capabilities-required">the required capabilities</a>, and no stronger than the reputation of whoever makes it.</p>
+      <p>Listings are not endorsements, and the author of this document is not a neutral evaluator of the implementation he also builds.</p>
     </div>
 
     <div class="impl-grid">
       <div class="impl-card reference">
-        <div class="impl-tag">Reference implementation</div>
+        <div class="impl-tag">Originating implementation</div>
         <h3>ANKASecure©</h3>
-        <p>A Crypto Agility Orchestration Platform developed by ANKATech Solutions INC. It operationalizes the Cryptographic Control Plane architecture: governed applications invoke cryptographic operations using key identifiers, while the platform resolves the applicable policy, lifecycle state and cryptographic mechanism, then coordinates execution through the appropriate cryptographic infrastructure.</p>
-        <p style="margin-top:0.7rem;">Its operational capabilities contribute across the CAPA pillars rather than mapping to them individually. Cryptographic execution, key custody and Roots of Trust may remain distributed across designated HSMs, KMS platforms and trust domains, including PKCS#11-based environments, with the platform providing a common governance and orchestration layer above them. It supports a broad, extensible portfolio of cryptographic mechanisms spanning classical, hybrid and post-quantum cryptography, including NIST FIPS 203/204/205 (ML-KEM, ML-DSA, SLH-DSA) with hybrid coexistence.</p>
+        <p>A Crypto Agility Orchestration Platform built by ANKATech Solutions INC — the organization that authored this reference architecture. It operationalizes the model: governed applications invoke cryptographic operations using key identifiers, while the platform resolves the applicable policy, lifecycle state and cryptographic mechanism, then coordinates execution through the appropriate cryptographic infrastructure.</p>
+        <p style="margin-top:0.7rem;">Its capabilities contribute across the CAPA pillars rather than mapping to them individually. Cryptographic execution, key custody and Roots of Trust may remain distributed across designated HSMs, KMS platforms and trust domains, including PKCS#11-based environments, with the platform providing a common governance and orchestration layer above them. It supports classical, hybrid and post-quantum mechanisms, including NIST FIPS 203/204/205 (ML-KEM, ML-DSA, SLH-DSA) with hybrid coexistence.</p>
+        <p style="margin-top:0.9rem;color:var(--text-tertiary);font-size:0.82rem;">Shared authorship is a limitation of this listing, not a credential. An architecture demonstrated by a single implementation built by its own author has not yet been independently tested.</p>
         <a href="https://ankatech.co" class="impl-link" target="_blank" rel="noopener">ankatech.co →</a>
       </div>
       <div class="impl-card">
-        <div class="impl-tag">Community</div>
-        <h3>Submit an implementation</h3>
-        <p>If your platform provides the minimum capability requirements defined by this standard, we invite you to submit it for review and listing. The CCP Initiative evaluates conformance claims against the six requirements defined on the Control Plane page.</p>
-        <p style="margin-top:0.7rem;">Note in particular requirement 05: a platform that requires all keys or Roots of Trust to reside in a single provider, repository or cryptographic failure domain does not satisfy this standard.</p>
-        <a href="mailto:standard@ccp-standard.org" class="impl-link">Contact the initiative →</a>
+        <div class="impl-tag">Wanted</div>
+        <h3>A second, independent implementation</h3>
+        <p>This is the most valuable contribution anyone can make to this material, and it is worth considerably more than agreement with it. A second implementation, built by people who did not write the document, is what turns an architecture into something that can be evaluated at all.</p>
+        <p style="margin-top:0.7rem;">Build against <a href="/control-plane/#capabilities-required" style="color:var(--accent);text-decoration:none;">the required capabilities</a>. Where this document turns out to be ambiguous, unimplementable or simply wrong, that is a finding worth having — open an issue and it gets corrected in public.</p>
+        <a href="mailto:contact@cryptographiccontrolplane.org" class="impl-link">contact@cryptographiccontrolplane.org →</a>
       </div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">One requirement worth reading twice</span>
+      Required capability 05 — coordination across distributed trust infrastructure. A platform that requires all keys or Roots of Trust to reside in a single provider, repository or cryptographic failure domain does not implement this architecture, whatever else it provides. <strong>Centralized governance must not become centralized cryptographic risk</strong>, and that constraint is not negotiable within this model.
     </div>
 
     <div class="page-nav">
@@ -70,7 +75,7 @@
       </a>
       <a href="/about/" class="next">
         <span class="dir">Next</span>
-        <span class="label">The CCP Initiative →</span>
+        <span class="label">Stewardship and open questions →</span>
       </a>
     </div>
   </div>
@@ -80,8 +85,8 @@
 <div class="container">
   <footer>
     <div class="footer-left">
-      <span>CCP Standard</span> — Version 0.10 Working Draft — 2026<br>
-      Published by the CCP Initiative · CC BY 4.0
+      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.10 Working Draft · 2026<br>
+      Authored by Javier Galindo · ANKATech Solutions INC · CC BY 4.0
     </div>
     <div class="footer-right">
       <a href="/control-plane/">Control Plane</a> &nbsp;·&nbsp;

@@ -1472,6 +1472,18 @@
     background: var(--accent);
   }
 
+  /* ── AUTHOR BYLINE ── */
+  .byline {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 1.35rem;
+    letter-spacing: 0.02em;
+  }
+
+  .byline a { color: var(--text-secondary); text-decoration: none; }
+  .byline a:hover { color: var(--accent); }
+
   /* ── CANONICAL STATEMENT CALLOUT ── */
   .callout {
     margin: 2.5rem 0;
@@ -1529,6 +1541,41 @@
     color: var(--text-tertiary);
     display: block;
     margin-bottom: 0.4rem;
+  }
+
+  /* ── CURRENT-STATE TABLE ── */
+  .state-table {
+    margin: 2.5rem 0;
+    border: 1px solid var(--bg-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .state-row {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 1.5rem;
+    padding: 0.95rem 1.5rem;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--bg-border);
+  }
+
+  .state-row:last-child { border-bottom: none; }
+
+  .state-k {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    padding-top: 2px;
+  }
+
+  .state-v { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
+  .state-v a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .state-row { grid-template-columns: 1fr; gap: 0.3rem; }
   }
 
   /* ── THREE LAYERS: CAPA / CONTROL PLANE / ANKASECURE ── */

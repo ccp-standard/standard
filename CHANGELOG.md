@@ -1,12 +1,22 @@
 # Changelog
 
-All notable changes to the Cryptographic Control Plane Standard will be documented in this file.
+All notable changes to the Cryptographic Control Plane reference architecture will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [0.10.0] — 2026-09
 
-Realignment of the standard with the second edition of the foundational whitepaper. This is a conceptual revision, not an editorial one: the architectural model, the pillar structure and the reference architecture all change.
+Two changes in one release. The material is realigned with the second edition of the foundational whitepaper, and it stops calling itself a standard. Both are conceptual revisions rather than editorial ones: the architectural model, the pillar structure, the reference architecture and the positioning all change.
+
+### Repositioned
+
+- **This is a reference architecture, not a standard.** The material had been published as the *CCP Standard* — a claim the foundational whitepaper never makes. Measured against the V2 text: zero self-referential uses of the word, which appears 45 times and always for external standards. The whitepaper calls the Cryptographic Control Plane *an architectural layer* and CAPA *a framework*; the site now says the same.
+- **The word “standard” is reserved** for an interoperability specification and a conformance suite that do not exist — Open Questions 1 and 2. Neither ratification nor de-facto adoption has occurred.
+- **All claims of evaluation and certification removed.** The required capabilities are kept, stated normatively so they are precise to build against, with an explicit statement that no conformance suite, test harness or certification body exists and that listings are self-declared.
+- **ANKASecure© relabelled** from *reference implementation* to *originating implementation*, with shared authorship stated as a limitation rather than a credential.
+- **Governance replaced by stewardship.** The previous document described maintainers, steering-committee seats, lazy consensus and 14-day review windows for a body with no members. It now declares the actual state — zero maintainers, no committee, one author — and keeps the structure as a forward commitment with named triggers.
+- **Authorship made explicit**: Javier Galindo, ANKATech Solutions INC.
+- **Primary domain** is now `cryptographiccontrolplane.org`; `ccp-standard.org`, `ccpstandard.org` and `ccp-architecture.org` redirect to it.
 
 ### Added
 
@@ -23,7 +33,7 @@ Realignment of the standard with the second edition of the foundational whitepap
 
 ### Changed
 
-- **Site structure** — the single-page standard became seven pages, with a shared stylesheet and no build step
+- **Site structure** — the single page became seven, with a shared stylesheet and no build step
 - **CAPA pillars 4 and 5** — "Policy-Driven Governance" and "Regulatory Compliance" merged into a single context-aware pillar, *Cryptographic Governance & Compliance*
 - **Cryptographic Sovereignty** expanded from key ownership to three dimensions: sovereignty of trust, of cryptographic authority, and of choice — and stated explicitly not to require centralized key custody
 - **Frictionless Modernization** re-centred on existing protected data whose originating applications may have changed or been retired, rather than on application migration

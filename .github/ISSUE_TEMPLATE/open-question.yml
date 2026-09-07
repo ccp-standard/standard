@@ -1,12 +1,12 @@
 name: Open Question Contribution
-description: Contribute to one of the five foundational open questions of the CCP Standard.
+description: Contribute to one of the five foundational open questions of the Cryptographic Control Plane reference architecture.
 title: "[Open Question] <short summary>"
 labels: ["open-question", "discussion"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thank you for engaging with the CCP Standard. Use this template to contribute
+        Thank you for engaging with this reference architecture. Use this template to contribute
         to one of the five foundational open questions. For free-form proposals, open a
         blank issue or a Discussion instead.
   - type: dropdown

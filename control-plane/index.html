@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Cryptographic Control Plane — Architecture</title>
+<title>The Cryptographic Control Plane — The Architecture</title>
 <meta name="description" content="Definition, domain boundary and reference architecture of the Cryptographic Control Plane. Centralized governance, distributed trust.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo">CCP // Standard</a>
+  <a href="/" class="nav-logo">CCP // Architecture</a>
   <ul class="nav-links">
     <li><a href="/control-plane/" class="current">Control Plane</a></li>
     <li><a href="/capa/">CAPA</a></li>
@@ -228,9 +228,9 @@
 <!-- MINIMUM CAPABILITIES -->
 <section id="capabilities-required">
   <div class="container">
-    <div class="section-eyebrow">Conformance</div>
-    <h2>Minimum capabilities.</h2>
-    <p class="section-lead">A platform may be considered a Cryptographic Control Plane implementation if and only if it provides all of the following.</p>
+    <div class="section-eyebrow">Required capabilities</div>
+    <h2>What an implementation must provide.</h2>
+    <p class="section-lead">An implementation of this reference architecture provides all of the following. These are stated as requirements so that they are precise enough to build against — not because anyone administers them as a test.</p>
 
     <div style="border:1px solid var(--bg-border); border-radius:8px; overflow:hidden;">
       <div style="display:grid; grid-template-columns:2rem 1fr; gap:1.25rem; padding:1.25rem 1.5rem; border-bottom:1px solid var(--bg-border); background:var(--bg-surface);">
@@ -278,8 +278,10 @@
     </div>
 
     <div class="note">
-      <span class="note-label">On scope of conformance</span>
-      These requirements describe the capabilities a platform must provide. They do not assert that any deployment governs the whole of an organization's cryptographic landscape — coverage grows as applications are onboarded, and is addressed by the <a href="/maturity/" style="color:var(--accent);text-decoration:none;">maturity model</a> rather than by conformance.
+      <span class="note-label">No one certifies these</span>
+      There is no conformance suite, no certification body and no evaluation programme — whether there should be is <a href="/about/#open-questions" style="color:var(--accent);text-decoration:none;">Open Question 2</a>. An implementation states for itself how it meets each capability, and readers judge that claim on its merits.
+      <br><br>
+      These requirements also say nothing about <strong>coverage</strong>. They describe what a platform provides, not how much of an organization's cryptographic landscape is governed through it — that grows as applications are onboarded, and is the subject of the <a href="/maturity/" style="color:var(--accent);text-decoration:none;">maturity model</a>.
     </div>
   </div>
 </section>
@@ -355,8 +357,8 @@
 <div class="container">
   <footer>
     <div class="footer-left">
-      <span>CCP Standard</span> — Version 0.10 Working Draft — 2026<br>
-      Published by the CCP Initiative · CC BY 4.0
+      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.10 Working Draft · 2026<br>
+      Authored by Javier Galindo · ANKATech Solutions INC · CC BY 4.0
     </div>
     <div class="footer-right">
       <a href="/control-plane/">Control Plane</a> &nbsp;·&nbsp;

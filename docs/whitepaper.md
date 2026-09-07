@@ -26,14 +26,14 @@ The paper is explicit about scope. The Control Plane is primarily concerned with
 
 The document is organized in thirteen chapters: the post-quantum inflection point; the structural problem of hardcoded cryptography; the historical pattern of infrastructure abstraction; the emergence of the Cryptographic Control Plane; the five-stage evolution of enterprise cryptography; CAPA and its five pillars; the CAPA Cryptographic Maturity Model; the Enterprise Cryptographic Stack; the migration path; operationalizing the architecture; what becomes possible when cryptography is decoupled; and a conclusion.
 
-## Relationship to the Standard
+## Relationship to the published reference architecture
 
-This whitepaper is the foundational document for the [CCP Standard](https://ccp-standard.org). The standard extracts the normative architectural requirements, the maturity model and the capability definitions into a format suitable for community review, extension and adoption.
+This whitepaper is the source document for the [Cryptographic Control Plane reference architecture](https://cryptographiccontrolplane.org), which extracts the architectural model, the maturity model and the capability definitions into a format suitable for community review, extension and adoption.
 
-Where the two differ in wording, the whitepaper governs. The standard is intentionally more conservative in one respect: it is written to be vendor-neutral, so it describes capabilities and conformance requirements rather than any particular platform.
+**Where the two differ in wording, the whitepaper governs.** The published version is intentionally more conservative in two respects: it is written to be vendor-neutral, describing capabilities rather than any particular platform; and it states its own status explicitly — a reference architecture, not a standard, with one implementation, authored by the organization that built it.
 
-Standard version **0.10** is aligned to whitepaper **V2**.
+Published version **0.10** is aligned to whitepaper **V2**.
 
 ## Download
 
-*Distribution details for the V2 document are being finalized. To request a copy, contact [standard@ccp-standard.org](mailto:standard@ccp-standard.org).*
+*Distribution details for the V2 document are being finalized. To request a copy, contact [contact@cryptographiccontrolplane.org](mailto:contact@cryptographiccontrolplane.org).*

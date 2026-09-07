@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Cryptographic Control Plane — Standard</title>
-<meta name="description" content="An architectural standard for continuous cryptographic evolution. The Cryptographic Control Plane separates cryptographic intent from cryptographic execution.">
+<title>The Cryptographic Control Plane — A Reference Architecture</title>
+<meta name="description" content="A reference architecture for continuous cryptographic evolution. The Cryptographic Control Plane separates cryptographic intent from cryptographic execution. Authored by Javier Galindo, ANKATech Solutions INC.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo">CCP // Standard</a>
+  <a href="/" class="nav-logo">CCP // Architecture</a>
   <ul class="nav-links">
     <li><a href="/control-plane/">Control Plane</a></li>
     <li><a href="/capa/">CAPA</a></li>
@@ -31,15 +31,16 @@
   <div class="container" style="position:relative;">
     <div class="version-badge">
       <span class="version-dot"></span>
-      Version 0.10 — Working Draft — 2026
+      Reference Architecture · v0.10 Working Draft · Open for comment
     </div>
-    <div class="hero-tag">Cryptographic Control Plane Standard</div>
+    <div class="hero-tag">Cryptographic Control Plane</div>
     <h1>Cryptography should be<br><em>infrastructure,</em><br>not implementation.</h1>
     <p class="hero-sub">
-      An open architectural standard for separating cryptographic intent from cryptographic execution — enabling enterprises to govern, adapt, and evolve their cryptographic posture continuously.
+      A reference architecture for separating cryptographic intent from cryptographic execution — so enterprises can govern, adapt and evolve their cryptographic posture continuously.
     </p>
+    <p class="byline">Javier Galindo · ANKATech Solutions INC · <a href="mailto:javier@cryptographiccontrolplane.org">javier@cryptographiccontrolplane.org</a></p>
     <div class="hero-actions">
-      <a href="/control-plane/" class="btn-primary">Read the standard →</a>
+      <a href="/control-plane/" class="btn-primary">Read the architecture →</a>
       <a href="/capa/" class="btn-secondary">CAPA framework</a>
     </div>
     <div class="hero-meta">
@@ -326,7 +327,7 @@
 <!-- THE THREE LAYERS -->
 <section id="layers">
   <div class="container">
-    <div class="section-eyebrow">How to read this standard</div>
+    <div class="section-eyebrow">How to read this</div>
     <h2>Three things, related but distinct.</h2>
     <p class="section-lead">A posture framework, an architectural model, and an implementation. They are frequently used interchangeably. They are not the same, and conflating them is the most common way this material is misread.</p>
 
@@ -375,6 +376,13 @@
       <br><br>
       CAPA is also <strong>broader than any single Control Plane</strong>. An organization's cryptographic posture can extend across application and data cryptography, transport security, PKI, key infrastructure and external cryptographic ecosystems — domains that need not share one execution or control mechanism.
     </div>
+
+    <div class="callout">
+      <span class="callout-label">Status of this document</span>
+      <p>This is a reference architecture. It is not a standard.</p>
+      <p>The word <strong>standard</strong> is deliberately not used for this material. It is reserved for an interoperability specification and a conformance suite that do not exist yet — they are Open Questions 1 and 2. No body has ratified this document, and no one certifies implementations of it.</p>
+      <p>It is authored by Javier Galindo at ANKATech Solutions INC, and ANKASecure© is currently its only implementation. What would change that is written down in <a href="/about/">stewardship</a>: independent implementations, and people willing to argue with the substance.</p>
+    </div>
   </div>
 </section>
 
@@ -412,8 +420,8 @@
 <div class="container">
   <footer>
     <div class="footer-left">
-      <span>CCP Standard</span> — Version 0.10 Working Draft — 2026<br>
-      Published by the CCP Initiative · CC BY 4.0
+      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.10 Working Draft · 2026<br>
+      Authored by Javier Galindo · ANKATech Solutions INC · CC BY 4.0
     </div>
     <div class="footer-right">
       <a href="/control-plane/">Control Plane</a> &nbsp;·&nbsp;
