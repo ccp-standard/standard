@@ -45,7 +45,7 @@ maintainers, and safeguards the neutrality of the standard.
 
 The SC publishes its membership and meeting cadence. Until the SC reaches at least
 three independent organizations, the standard remains a **Working Draft** (current
-version 0.9) and is not promoted to a stable 1.0 release.
+version 0.10) and is not promoted to a stable 1.0 release.
 
 ## Decision Making
 

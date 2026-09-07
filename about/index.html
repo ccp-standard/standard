@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — The CCP Initiative</title>
+<meta name="description" content="The CCP Initiative, governance, open questions and document history of the Cryptographic Control Plane Standard.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ccp.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">CCP // Standard</a>
+  <ul class="nav-links">
+    <li><a href="/control-plane/">Control Plane</a></li>
+    <li><a href="/capa/">CAPA</a></li>
+    <li><a href="/maturity/">Maturity</a></li>
+    <li><a href="/migration/">Migration</a></li>
+    <li><a href="/implementations/">Implementations</a></li>
+    <li><a href="/about/" class="current">About</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-kicker">About this document</div>
+    <h1>The CCP<br><em>Initiative.</em></h1>
+    <p class="section-lead">An open architectural document, designed to be read, implemented and evolved by the community of enterprise architects, security engineers and cryptographic practitioners who face the challenges it describes.</p>
+  </div>
+</section>
+
+<section id="initiative">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <p>The Cryptographic Control Plane Standard is an open architectural document published by the CCP Initiative.</p>
+        <p>This is version 0.10 — a working draft. The framework has been refined through research, client engagement and academic review, and this revision aligns the standard with the second edition of the foundational whitepaper. The standard is intentionally structured to invite contribution and evolve through community participation.</p>
+        <p>The standard is published under a Creative Commons Attribution 4.0 International license. It may be freely reproduced, cited and adapted with attribution.</p>
+      </div>
+      <div>
+        <p>The Cryptographic Control Plane concept and the CAPA framework were originally developed by <a href="https://ankatech.co">ANKATech Solutions INC</a> through research and product development in post-quantum cryptography. The foundational whitepaper — <em>The Cryptographic Control Plane: A New Architecture for Continuous Cryptographic Evolution</em> — is the source document for this standard.</p>
+        <p>ANKATech operates as the founding contributor to the CCP Initiative and maintains ANKASecure©, a reference implementation. ANKATech's role in this initiative is as author and contributor — the standard itself is designed to be vendor-neutral and community-governed.</p>
+        <p>To contribute, comment or engage: <a href="mailto:standard@ccp-standard.org">standard@ccp-standard.org</a> or via the <a href="https://github.com/ccp-standard/standard" target="_blank" rel="noopener">project repository on GitHub</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPEN QUESTIONS -->
+<section id="open-questions">
+  <div class="container">
+    <div class="section-eyebrow">Open questions</div>
+    <h2>Areas of active development.</h2>
+    <p class="section-lead">This standard explicitly acknowledges areas requiring community input. We invite engagement from enterprise architects, security researchers and cryptographic engineers on the following.</p>
+
+    <div class="questions-list">
+      <div class="question-item">
+        <span class="question-num">01</span>
+        <div>
+          <h3>Standardized CCP API specification</h3>
+          <p>This document defines the architectural requirements for a Control Plane but does not specify a wire protocol or API contract. Should the community converge on a common API specification to enable interoperability between applications and CCP implementations?</p>
+        </div>
+      </div>
+      <div class="question-item">
+        <span class="question-num">02</span>
+        <div>
+          <h3>Conformance and certification</h3>
+          <p>What constitutes a conformant CCP implementation? Should this standard define a formal conformance testing process, and if so, what body should administer it? How should conformance claims be made and verified?</p>
+        </div>
+      </div>
+      <div class="question-item">
+        <span class="question-num">03</span>
+        <div>
+          <h3>Open-source reference implementation</h3>
+          <p>Should the CCP Initiative publish an open-source reference implementation of the minimum capability requirements defined in this standard? What governance model should such a project adopt?</p>
+        </div>
+      </div>
+      <div class="question-item">
+        <span class="question-num">04</span>
+        <div>
+          <h3>Integration with existing standards</h3>
+          <p>How should the CCP standard relate to NIST SP 800-57 (key management), NIST SP 800-131A (algorithm transitions), ETSI TS 119 312 (cryptographic suites), and emerging PQC migration guidance? Should this standard be structured as an overlay?</p>
+          <p style="margin-top:0.6rem;"><em style="color:var(--text-tertiary);">Current position: the standard scopes itself to <a href="/control-plane/#boundary" style="color:var(--accent);text-decoration:none;">application and data cryptography</a> and treats PKI, transport cryptography and key infrastructure as complementary rather than superseded. How that scoping should be expressed relative to the documents above remains open.</em></p>
+        </div>
+      </div>
+      <div class="question-item">
+        <span class="question-num">05</span>
+        <div>
+          <h3>Multi-cloud and hybrid deployment patterns</h3>
+          <p>The reference architecture describes a logical stack but does not prescribe deployment topology. What are the recommended patterns for operating a CCP across multi-cloud, on-premises and hybrid environments while maintaining cryptographic sovereignty?</p>
+          <p style="margin-top:0.6rem;"><em style="color:var(--text-tertiary);">Current position: the architecture requires that governance converge without requiring trust domains to be consolidated — <a href="/control-plane/#distributed-trust" style="color:var(--accent);text-decoration:none;">Centralized Governance, Distributed Trust</a>. The concrete topologies that satisfy this across specific provider combinations remain open.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem; padding:1.5rem 2rem; border:1px solid var(--bg-border); border-radius:8px; background:var(--bg-surface);">
+      <p style="font-size:0.9rem; color:var(--text-secondary);">We explicitly invite contributions from enterprise architects, security researchers, standards bodies and cryptographic engineers. Reach out at <a href="mailto:standard@ccp-standard.org" style="color:var(--accent);text-decoration:none;">standard@ccp-standard.org</a> or open an issue on the <a href="https://github.com/ccp-standard/standard" style="color:var(--accent);text-decoration:none;" target="_blank" rel="noopener">project repository on GitHub</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENT HISTORY -->
+<section id="history">
+  <div class="container">
+    <div class="section-eyebrow">Document history</div>
+    <h2>How this framework evolved.</h2>
+
+    <div style="border:1px solid var(--bg-border); border-radius:8px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:140px 1fr; border-bottom:1px solid var(--bg-border);">
+        <div style="padding:1rem 1.25rem; background:var(--bg-raised); border-right:1px solid var(--bg-border); font-family:var(--font-mono); font-size:11px; color:var(--text-tertiary);">May 2025</div>
+        <div style="padding:1rem 1.25rem; background:var(--bg-surface);">
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;"><strong style="color:var(--text-primary); font-weight:500;">Initial framework</strong> — Three foundational pillars identified: Crypto-Agility, Cryptographic Sovereignty, and Frictionless Modernization. Developed through early research in post-quantum cryptography infrastructure at ANKATech Solutions INC.</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; border-bottom:1px solid var(--bg-border);">
+        <div style="padding:1rem 1.25rem; background:var(--bg-raised); border-right:1px solid var(--bg-border); font-family:var(--font-mono); font-size:11px; color:var(--text-tertiary);">January 2026</div>
+        <div style="padding:1rem 1.25rem; background:var(--bg-surface);">
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;"><strong style="color:var(--text-primary); font-weight:500;">Extended to five pillars</strong> — Governance and compliance capabilities added following engagement with enterprise clients, security architects and academic reviewers. The framework began to address the full spectrum of organizational cryptographic capability.</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; border-bottom:1px solid var(--bg-border);">
+        <div style="padding:1rem 1.25rem; background:var(--bg-raised); border-right:1px solid var(--bg-border); font-family:var(--font-mono); font-size:11px; color:var(--text-tertiary);">March 2026</div>
+        <div style="padding:1rem 1.25rem; background:var(--bg-surface);">
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;"><strong style="color:var(--text-primary); font-weight:500;">CAPA formally defined</strong> — The Crypto Agility Posture Architecture framework named and structured. Cryptographic Maturity Model established (6 levels). Foundational whitepaper published: <em>The Cryptographic Control Plane: A New Architecture for Continuous Cryptographic Evolution</em>.</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; border-bottom:1px solid var(--bg-border);">
+        <div style="padding:1rem 1.25rem; background:var(--bg-raised); border-right:1px solid var(--bg-border); font-family:var(--font-mono); font-size:11px; color:var(--text-tertiary);">May 2026</div>
+        <div style="padding:1rem 1.25rem; background:var(--bg-surface);">
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;"><strong style="color:var(--text-primary); font-weight:500;">CCP Standard v0.9 published</strong> — Standard released as an open, vendor-neutral architectural document. Migration path and modernization programme defined. Open questions established for community engagement. Published under CC BY 4.0.</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr;">
+        <div style="padding:1rem 1.25rem; background:var(--bg-raised); border-right:1px solid var(--bg-border); font-family:var(--font-mono); font-size:11px; color:var(--accent);">September 2026</div>
+        <div style="padding:1rem 1.25rem; background:var(--bg-surface);">
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;"><strong style="color:var(--accent); font-weight:500;">CCP Standard v0.10 — realigned to whitepaper V2</strong> — Three substantive changes. <strong style="color:var(--text-primary);font-weight:500;">Centralized Governance, Distributed Trust</strong> established as a core architectural principle: the Control Plane centralizes governance, not cryptographic custody or execution. The <strong style="color:var(--text-primary);font-weight:500;">domain boundary</strong> stated explicitly — the Control Plane governs application and data cryptography, and does not replace TLS, QUIC, SSH, IPsec or PKI. The CAPA pillars restructured: governance and compliance merged into a single context-aware pillar, and <strong style="color:var(--text-primary);font-weight:500;">Enterprise Readiness</strong> introduced as the fifth. The enterprise cryptographic stack expanded from four layers to six, and the migration path restated as three parallel tracks and five activities.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="/implementations/">
+        <span class="dir">Previous</span>
+        <span class="label">← Implementations</span>
+      </a>
+      <a href="/" class="next">
+        <span class="dir">Back to</span>
+        <span class="label">The thesis →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="container">
+  <footer>
+    <div class="footer-left">
+      <span>CCP Standard</span> — Version 0.10 Working Draft — 2026<br>
+      Published by the CCP Initiative · CC BY 4.0
+    </div>
+    <div class="footer-right">
+      <a href="/control-plane/">Control Plane</a> &nbsp;·&nbsp;
+      <a href="/capa/">CAPA</a> &nbsp;·&nbsp;
+      <a href="/maturity/">Maturity</a> &nbsp;·&nbsp;
+      <a href="/migration/">Migration</a> &nbsp;·&nbsp;
+      <a href="/implementations/">Implementations</a> &nbsp;·&nbsp;
+      <a href="/about/">About</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

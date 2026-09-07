@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CAPA Cryptographic Maturity Model</title>
+<meta name="description" content="Six levels of cryptographic capability, from embedded cryptography to continuous cryptographic evolution. Maturity is measured by capability, not by remaining legacy backlog.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ccp.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">CCP // Standard</a>
+  <ul class="nav-links">
+    <li><a href="/control-plane/">Control Plane</a></li>
+    <li><a href="/capa/">CAPA</a></li>
+    <li><a href="/maturity/" class="current">Maturity</a></li>
+    <li><a href="/migration/">Migration</a></li>
+    <li><a href="/implementations/">Implementations</a></li>
+    <li><a href="/about/">About</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-kicker">CAPA maturity model</div>
+    <h1>Six levels of<br><em>cryptographic capability.</em></h1>
+    <p class="section-lead">A diagnostic framework that helps organizations understand where they stand and what capabilities they need to develop next — not a deployment checklist.</p>
+  </div>
+</section>
+
+<!-- THE TWO PRINCIPLES -->
+<section id="principles">
+  <div class="container">
+    <div class="section-eyebrow">How to read the model</div>
+    <h2>Two principles underpin it.</h2>
+
+    <div class="callout">
+      <span class="callout-label">Principle one</span>
+      <p>Maturity is measured by capability, not by remaining backlog.</p>
+      <p>By what the organization can do <em>today</em> in response to a vulnerability, a standard change or an algorithm deprecation — not by how much legacy migration remains pending. A legacy estate in active migration does not reduce the maturity level; it represents work in progress, not a deficit of capability.</p>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">Principle two</span>
+      <p>Post-quantum cryptography is not a level to be reached at the end.</p>
+      <p>It is a dimension that improves at <em>every</em> level, and that can begin to be adopted from the moment the organization deploys a Cryptographic Control Plane. A model that places PQC at the summit misrepresents both the risk and the remedy.</p>
+    </div>
+
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8;">
+      Maturity should therefore be understood as the organization's ability to exercise the capabilities defined by <a href="/capa/" style="color:var(--accent);text-decoration:none;">CAPA</a> across an increasing portion of its cryptographic environment. Progress is not determined by the adoption of a particular technology, provider or key infrastructure model, but by the organization's increasing ability to govern cryptographic change, retain cryptographic sovereignty, modernize existing protection, enforce policy and compliance requirements, and operate across heterogeneous enterprise environments.
+    </p>
+  </div>
+</section>
+
+<!-- THE SIX LEVELS -->
+<section id="levels">
+  <div class="container">
+    <div class="section-eyebrow">The model</div>
+    <h2>From embedded cryptography to continuous evolution.</h2>
+
+    <div class="maturity-track">
+      <div class="maturity-item">
+        <div class="maturity-level">
+          <span class="maturity-l-num">L1</span>
+          <span class="maturity-l-tag">Embedded</span>
+        </div>
+        <div class="maturity-content">
+          <h3>Embedded cryptography</h3>
+          <p>Cryptographic logic is embedded directly within application code. Algorithm selection, library invocation and cryptographic parameters are decided at development time and become tightly coupled with the application. Implementations are inconsistent across systems, visibility is limited, and upgrades are manual. A critical characteristic is that the problem perpetuates itself: new applications are built with the same embedded patterns, because no architectural discipline requires otherwise. The cryptographic debt grows with every new deployment.</p>
+          <span class="maturity-pqc">PQC at this level: absent or isolated — an adopted PQC algorithm is hardcoded exactly as a classical one would be, solving nothing structurally</span>
+        </div>
+      </div>
+
+      <div class="maturity-item">
+        <div class="maturity-level">
+          <span class="maturity-l-num">L2</span>
+          <span class="maturity-l-tag">Managed</span>
+        </div>
+        <div class="maturity-content">
+          <h3>Managed cryptography</h3>
+          <p>Centralized components improve the management of cryptographic assets — HSMs, KMS platforms, certificate management, centralized key lifecycle. Key protection and governance improve materially. The limitation is not <em>where keys reside</em>: these infrastructures may themselves be distributed across providers, environments or organizational domains, and their consolidation is not a prerequisite for maturity. The limitation is that cryptographic behaviour and lifecycle decisions remain substantially coupled to individual applications. This is the earliest point at which an organization should establish a <strong>greenfield policy</strong>: a formal commitment that new applications will not embed cryptographic logic. That policy does not resolve existing debt — it stops its accumulation.</p>
+          <span class="maturity-pqc">PQC at this level: PQC keys can be stored and rotated in the HSM or KMS, but algorithm governance remains per-application — enterprise-wide adoption stays uncoordinated</span>
+        </div>
+      </div>
+
+      <div class="maturity-item active">
+        <div class="maturity-level">
+          <span class="maturity-l-num">L3</span>
+          <span class="maturity-l-tag">Inflection point</span>
+        </div>
+        <div class="maturity-content">
+          <h3>Cryptographic Control Plane</h3>
+          <p>The structural inflection point. The organization deploys a Cryptographic Control Plane — a dedicated infrastructure layer that decouples cryptographic behaviour from application code and centralizes its governance. This is not an incremental improvement over Level 2; it is an architectural change. The defining capability is <strong>not the existence of a cryptographic inventory</strong> — it is the ability to act on cryptographic policy without modifying or redeploying governed applications. For the existing landscape, a parallel process begins: the brownfield estate is inventoried and prioritized by exposure and data sensitivity. Discovery is applied to the past; the Control Plane governs the future.</p>
+          <span class="maturity-pqc">PQC at this level: post-quantum and hybrid mechanisms can be introduced where risk, policy, interoperability or regulation require, without creating new application-level algorithm dependencies</span>
+        </div>
+      </div>
+
+      <div class="maturity-item">
+        <div class="maturity-level">
+          <span class="maturity-l-num">L4</span>
+          <span class="maturity-l-tag">Agile</span>
+        </div>
+        <div class="maturity-content">
+          <h3>Cryptographic agility</h3>
+          <p>The Control Plane has been operational for a significant period and its coverage has expanded substantially. The focus has shifted from deployment to depth of migration: the most critical and most exposed systems now operate under centralized cryptographic governance, and algorithm transitions in those systems are executed through governed policy changes rather than code changes. The defining characteristic is the <strong>dual-track state</strong>: the greenfield is fully governed, while the brownfield is in advanced migration. The gap between the two tracks is the remaining technical debt, and systematically closing it is the primary operational objective of this level.</p>
+          <span class="maturity-pqc">PQC at this level: classical–PQC hybrid coexistence is managed centrally across the governed landscape</span>
+        </div>
+      </div>
+
+      <div class="maturity-item">
+        <div class="maturity-level">
+          <span class="maturity-l-num">L5</span>
+          <span class="maturity-l-tag">Optimized</span>
+        </div>
+        <div class="maturity-content">
+          <h3>Optimized cryptography</h3>
+          <p>Enterprise-scale adoption of governed cryptographic infrastructure. The organization's <strong>relevant cryptographic landscape operates predominantly under the Control Plane</strong>, including the critical brownfield environments identified for migration. Policy and lifecycle decisions are governed coherently across the enterprise, while cryptographic execution, keys and Roots of Trust may remain distributed across heterogeneous HSMs, KMS platforms, providers, jurisdictions and organizational trust domains. Vulnerability response across the governed landscape is coordinated through established policy and lifecycle mechanisms, and cryptographic posture is continuously evaluated against applicable standards and regulatory requirements.</p>
+          <span class="maturity-pqc">PQC at this level: supported post-quantum strategies are introduced across governed systems through policy rather than repeated application-level implementation</span>
+        </div>
+      </div>
+
+      <div class="maturity-item">
+        <div class="maturity-level">
+          <span class="maturity-l-num">L6</span>
+          <span class="maturity-l-tag">Continuous</span>
+        </div>
+        <div class="maturity-content">
+          <h3>Continuous crypto evolution</h3>
+          <p>The long-term state in which cryptographic evolution has become an embedded organizational capability. The distinction from Level 5 is not the deployment of additional technology, but the organization's ability to continuously absorb changes in algorithms, threats, standards, regulations, trust requirements, enterprise environments and external ecosystems through established governance and operational processes. At Level 5 that capability exists; at Level 6 it is <strong>the normal mode of operation</strong> — absorbed the way operating system patches, certificate renewals or infrastructure scaling events are absorbed today. New providers, trust domains, jurisdictions and external ecosystems can be incorporated without redesigning the cryptographic architecture.</p>
+          <span class="maturity-pqc">PQC at this level: classical, hybrid, post-quantum and future mechanisms coexist and evolve according to policy and context</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">On Level 5 and Level 6</span>
+      Optimization at Level 5 <strong>does not imply consolidation of cryptographic trust into a single platform or provider</strong>. The defining capability is coordinated governance across the cryptographic landscape; organizations retain the ability to determine where trust resides.
+      <br><br>
+      Level 5 is the strategic target — the point organizations should aim to reach before major cryptographic transitions become urgent. Level 6 is the long-term horizon: continuous cryptographic evolution as an embedded organizational discipline rather than an achieved milestone.
+    </div>
+  </div>
+</section>
+
+<!-- GREENFIELD / BROWNFIELD COEXISTENCE -->
+<section id="coexistence">
+  <div class="container">
+    <div class="section-eyebrow">Reading your own position</div>
+    <h2>Organizations operate at several levels at once.</h2>
+    <p class="section-lead">The model is not a rigid progression in which one stage must be completed before the next begins. Many enterprises operate across multiple maturity levels simultaneously — some systems still at Level 1 while others have reached Level 3 or 4. This is not a failure of implementation; it is the expected reality of any enterprise transformation.</p>
+
+    <div class="callout">
+      <span class="callout-label">The useful lens</span>
+      <p>An organization may simultaneously operate a greenfield at Level 5 and a brownfield at Level 2.</p>
+      <p>The <strong>greenfield</strong> — all new systems being developed today — can and should adopt decoupled cryptographic architecture immediately, regardless of where the organization sits overall. The <strong>brownfield</strong> — the existing landscape with embedded cryptographic logic — requires a structured, phased migration prioritized by risk and operational feasibility. The organization's maturity reflects the weighted state of both tracks, and the strategic objective is to progressively close the gap between them.</p>
+    </div>
+
+    <div class="note">
+      <span class="note-label">What brownfield modernization does not require</span>
+      Brownfield modernization <strong>should not be interpreted as requiring the consolidation or replacement of existing cryptographic trust infrastructure</strong>. An application or data domain may become governed by the Control Plane while continuing to use an existing HSM, KMS, key hierarchy or trust domain. Governance convergence and infrastructure consolidation are separate decisions and may proceed on different timelines.
+    </div>
+
+    <div class="page-nav">
+      <a href="/capa/">
+        <span class="dir">Previous</span>
+        <span class="label">← CAPA — the five pillars</span>
+      </a>
+      <a href="/migration/" class="next">
+        <span class="dir">Next</span>
+        <span class="label">The migration path →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="container">
+  <footer>
+    <div class="footer-left">
+      <span>CCP Standard</span> — Version 0.10 Working Draft — 2026<br>
+      Published by the CCP Initiative · CC BY 4.0
+    </div>
+    <div class="footer-right">
+      <a href="/control-plane/">Control Plane</a> &nbsp;·&nbsp;
+      <a href="/capa/">CAPA</a> &nbsp;·&nbsp;
+      <a href="/maturity/">Maturity</a> &nbsp;·&nbsp;
+      <a href="/migration/">Migration</a> &nbsp;·&nbsp;
+      <a href="/implementations/">Implementations</a> &nbsp;·&nbsp;
+      <a href="/about/">About</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

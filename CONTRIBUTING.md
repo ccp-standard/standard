@@ -56,7 +56,7 @@ The CCP Standard follows semantic versioning:
 - **Minor versions** (0.1 → 0.2): substantive additions, new sections, expanded definitions
 - **Major versions** (0.x → 1.0): structural changes, normative requirement modifications, breaking changes to the framework
 
-The current version is **0.9** (Working Draft). Minor version increments will accompany each substantive round of community-driven changes, with **1.0** marking the first stable release.
+The current version is **0.10** (Working Draft). Minor version increments will accompany each substantive round of community-driven changes, with **1.0** marking the first stable release.
 
 ## Acknowledgment
 
