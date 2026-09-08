@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stewardship — Cryptographic Control Plane</title>
+<meta name="description" content="Who authors this reference architecture, how it is stewarded today, the open questions, and the document history.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ccp.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">CCP // Architecture</a>
+  <ul class="nav-links">
+    <li><a href="/control-plane/">Control Plane</a></li>
+    <li><a href="/capa/">CAPA</a></li>
+    <li><a href="/maturity/">Maturity</a></li>
+    <li><a href="/migration/">Migration</a></li>
+    <li><a href="/implementations/">Implementations</a></li>
+    <li><a href="/about/" class="current">About</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-kicker">About this document</div>
+    <h1>Stewardship, and<br>the <em>state of things.</em></h1>
+    <p class="section-lead">Who wrote this, what it is today, what would have to change for it to become something more — and the questions that are genuinely still open.</p>
+  </div>
+</section>
+
+<section id="initiative">
+  <div class="container">
+    <div class="section-eyebrow">Current state</div>
+    <h2>What is true today.</h2>
+    <p class="section-lead">There is no steering committee, no maintainer group and no formal decision process — because there are no participants yet. Publishing a governance structure for a body with no members would be a promise nobody could keep.</p>
+
+    <div class="state-table">
+      <div class="state-row"><span class="state-k">Author and maintainer</span><span class="state-v">Javier Galindo · ANKATech Solutions INC</span></div>
+      <div class="state-row"><span class="state-k">Independent implementations</span><span class="state-v">0 — ANKASecure© is built by the author’s own organization</span></div>
+      <div class="state-row"><span class="state-k">Maintainers seated</span><span class="state-v">0</span></div>
+      <div class="state-row"><span class="state-k">Steering committee</span><span class="state-v">Not constituted</span></div>
+      <div class="state-row"><span class="state-k">Conformance suite</span><span class="state-v">None — see Open Question 2</span></div>
+      <div class="state-row"><span class="state-k">Status</span><span class="state-v">Reference architecture, v0.10 Working Draft. Not a standard</span></div>
+      <div class="state-row"><span class="state-k">Licence</span><span class="state-v">CC BY 4.0 — freely reproduced, cited and adapted with attribution</span></div>
+      <div class="state-row"><span class="state-k">Contact</span><span class="state-v"><a href="mailto:javier@cryptographiccontrolplane.org">javier@cryptographiccontrolplane.org</a> · <a href="mailto:contact@cryptographiccontrolplane.org">contact@cryptographiccontrolplane.org</a></span></div>
+    </div>
+
+    <div class="about-grid" style="margin-top:3rem;">
+      <div>
+        <h3 style="margin-bottom:0.75rem;">What this is looking for</h3>
+        <p>Two things, in that order of value. <strong>A second, independent implementation</strong> — this architecture cannot be evaluated on one, and being argued with is worth more than being agreed with. And <strong>disagreement on the substance</strong>: the domain boundary, the capability list, the maturity model, the claim that governance can converge while trust stays distributed.</p>
+        <p>Contributions arrive as issues and pull requests on the <a href="https://github.com/cryptographiccontrolplane/reference-architecture" target="_blank" rel="noopener">repository</a>. Every change and its rationale is recorded in public.</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:0.75rem;">What changes when contributors arrive</h3>
+        <p>These are commitments, not descriptions of anything that exists. The first contributor with a sustained record is invited to maintainership, which is personal and not tied to an employer. When three or more independent organizations are engaged, decision-making moves to a shared model and the governance document is rewritten by them rather than by ANKATech.</p>
+        <p>The full text is in <a href="https://github.com/cryptographiccontrolplane/reference-architecture/blob/main/GOVERNANCE.md" target="_blank" rel="noopener">GOVERNANCE.md</a>. It is deliberately short, and it stays short until there are people to govern.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">Provenance</span>
+      The Cryptographic Control Plane concept and the CAPA framework were developed at <a href="https://ankatech.co" style="color:var(--accent);text-decoration:none;">ANKATech Solutions INC</a> through research and product development in post-quantum cryptography. The foundational whitepaper — <em>The Cryptographic Control Plane: A New Architecture for Continuous Cryptographic Evolution</em> — is the source document, and where the two differ in wording, the whitepaper governs.
+    </div>
+  </div>
+</section>
+
+<!-- OPEN QUESTIONS -->
+<section id="open-questions">
+  <div class="container">
+    <div class="section-eyebrow">Open questions</div>
+    <h2>Areas of active development.</h2>
+    <p class="section-lead">This reference architecture explicitly acknowledges areas requiring community input. We invite engagement from enterprise architects, security researchers and cryptographic engineers on the following.</p>
+
+    <div class="questions-list">
+      <div class="question-item">
+        <span class="question-num">01</span>
+        <div>
+          <h3>A CCP API specification</h3>
+          <p>This document defines the architectural requirements for a Control Plane but does not specify a wire protocol or API contract. Should the community converge on a common API specification to enable interoperability between applications and CCP implementations?</p>
+          <p style="margin-top:0.6rem;"><em style="color:var(--text-tertiary);">This is the artifact that would legitimately be a standard. It does not exist — which is why this material does not use the word.</em></p>
+        </div>
+      </div>
+      <div class="question-item">
+        <span class="question-num">02</span>
+        <div>
+          <h3>Conformance and certification</h3>
+          <p>What constitutes a conformant implementation, and who certifies it? There is no conformance suite, no test harness and no certification body today. Should there be — a self-assessment framework, a test suite, an independent certifier? Each implies a different governance model. Until this is answered, listings are self-declared.</p>
+        </div>
+      </div>
+      <div class="question-item">
+        <span class="question-num">03</span>
+        <div>
+          <h3>Open-source reference implementation</h3>
+          <p>Should there be an open-source implementation of the required capabilities, and under what governance? One would accelerate adoption, provide a testbed for the architecture, and lower the barrier for organizations evaluating the approach.</p>
+        </div>
+      </div>
+      <div class="question-item">
+        <span class="question-num">04</span>
+        <div>
+          <h3>Integration with existing standards</h3>
+          <p>How should this reference architecture relate to NIST SP 800-57 (key management), NIST SP 800-131A (algorithm transitions), ETSI TS 119 312 (cryptographic suites), ISO/IEC 19790 (cryptographic modules), and emerging PQC migration guidance? It should complement rather than duplicate them, but the precise integration points need community input.</p>
+          <p style="margin-top:0.6rem;"><em style="color:var(--text-tertiary);">Current position: this material scopes itself to <a href="/control-plane/#boundary" style="color:var(--accent);text-decoration:none;">application and data cryptography</a> and treats PKI, transport cryptography and key infrastructure as complementary rather than superseded. How that scoping should be expressed relative to the documents above remains open.</em></p>
+        </div>
+      </div>
+      <div class="question-item">
+        <span class="question-num">05</span>
+        <div>
+          <h3>Multi-cloud and hybrid deployment patterns</h3>
+          <p>The reference architecture describes a logical stack but does not prescribe deployment topology. What are the recommended patterns for operating a CCP across multi-cloud, on-premises and hybrid environments while maintaining cryptographic sovereignty?</p>
+          <p style="margin-top:0.6rem;"><em style="color:var(--text-tertiary);">Current position: the architecture requires that governance converge without requiring trust domains to be consolidated — <a href="/control-plane/#distributed-trust" style="color:var(--accent);text-decoration:none;">Centralized Governance, Distributed Trust</a>. The concrete topologies that satisfy this across specific provider combinations remain open.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem; padding:1.5rem 2rem; border:1px solid var(--bg-border); border-radius:8px; background:var(--bg-surface);">
+      <p style="font-size:0.9rem; color:var(--text-secondary);">We explicitly invite contributions from enterprise architects, security researchers, standards bodies and cryptographic engineers. Reach out at <a href="mailto:contact@cryptographiccontrolplane.org" style="color:var(--accent);text-decoration:none;">contact@cryptographiccontrolplane.org</a> or open an issue on the <a href="https://github.com/cryptographiccontrolplane/reference-architecture" style="color:var(--accent);text-decoration:none;" target="_blank" rel="noopener">project repository on GitHub</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENT HISTORY -->
+<section id="history">
+  <div class="container">
+    <div class="section-eyebrow">Document history</div>
+    <h2>How this framework evolved.</h2>
+
+    <div style="border:1px solid var(--bg-border); border-radius:8px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:140px 1fr; border-bottom:1px solid var(--bg-border);">
+        <div style="padding:1rem 1.25rem; background:var(--bg-raised); border-right:1px solid var(--bg-border); font-family:var(--font-mono); font-size:11px; color:var(--text-tertiary);">May 2025</div>
+        <div style="padding:1rem 1.25rem; background:var(--bg-surface);">
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;"><strong style="color:var(--text-primary); font-weight:500;">Initial framework</strong> — Three foundational pillars identified: Crypto-Agility, Cryptographic Sovereignty, and Frictionless Modernization. Developed through early research in post-quantum cryptography infrastructure at ANKATech Solutions INC.</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; border-bottom:1px solid var(--bg-border);">
+        <div style="padding:1rem 1.25rem; background:var(--bg-raised); border-right:1px solid var(--bg-border); font-family:var(--font-mono); font-size:11px; color:var(--text-tertiary);">January 2026</div>
+        <div style="padding:1rem 1.25rem; background:var(--bg-surface);">
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;"><strong style="color:var(--text-primary); font-weight:500;">Extended to five pillars</strong> — Governance and compliance capabilities added following engagement with enterprise clients, security architects and academic reviewers. The framework began to address the full spectrum of organizational cryptographic capability.</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; border-bottom:1px solid var(--bg-border);">
+        <div style="padding:1rem 1.25rem; background:var(--bg-raised); border-right:1px solid var(--bg-border); font-family:var(--font-mono); font-size:11px; color:var(--text-tertiary);">March 2026</div>
+        <div style="padding:1rem 1.25rem; background:var(--bg-surface);">
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;"><strong style="color:var(--text-primary); font-weight:500;">CAPA formally defined</strong> — The Crypto Agility Posture Architecture framework named and structured. Cryptographic Maturity Model established (6 levels). Foundational whitepaper published: <em>The Cryptographic Control Plane: A New Architecture for Continuous Cryptographic Evolution</em>.</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; border-bottom:1px solid var(--bg-border);">
+        <div style="padding:1rem 1.25rem; background:var(--bg-raised); border-right:1px solid var(--bg-border); font-family:var(--font-mono); font-size:11px; color:var(--text-tertiary);">May 2026</div>
+        <div style="padding:1rem 1.25rem; background:var(--bg-surface);">
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;"><strong style="color:var(--text-primary); font-weight:500;">Published as v0.9</strong> — Released as an open, vendor-neutral architectural document, under the title <em>CCP Standard</em>. Migration path and modernization programme defined. Open questions established for community engagement. Published under CC BY 4.0.</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr;">
+        <div style="padding:1rem 1.25rem; background:var(--bg-raised); border-right:1px solid var(--bg-border); font-family:var(--font-mono); font-size:11px; color:var(--text-tertiary);">September 2026</div>
+        <div style="padding:1rem 1.25rem; background:var(--bg-surface);">
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;"><strong style="color:var(--text-primary); font-weight:500;">Realigned to whitepaper V2</strong> — Three substantive changes. <strong style="color:var(--text-primary);font-weight:500;">Centralized Governance, Distributed Trust</strong> established as a core architectural principle: the Control Plane centralizes governance, not cryptographic custody or execution. The <strong style="color:var(--text-primary);font-weight:500;">domain boundary</strong> stated explicitly — the Control Plane governs application and data cryptography, and does not replace TLS, QUIC, SSH, IPsec or PKI. The CAPA pillars restructured: governance and compliance merged into a single context-aware pillar, and <strong style="color:var(--text-primary);font-weight:500;">Enterprise Readiness</strong> introduced as the fifth. The enterprise cryptographic stack expanded from four layers to six, and the migration path restated as three parallel tracks and five activities.</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; border-top:1px solid var(--bg-border);">
+        <div style="padding:1rem 1.25rem; background:var(--bg-raised); border-right:1px solid var(--bg-border); font-family:var(--font-mono); font-size:11px; color:var(--accent);">September 2026</div>
+        <div style="padding:1rem 1.25rem; background:var(--bg-surface);">
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;"><strong style="color:var(--accent); font-weight:500;">Repositioned from &ldquo;standard&rdquo; to reference architecture</strong> — The material had been published under the title <em>CCP Standard</em>, a claim the foundational whitepaper never made: it describes the Cryptographic Control Plane as <em>an architectural layer</em> and CAPA as <em>a framework</em>, and uses the word &ldquo;standard&rdquo; only for external ones. The site is brought back into line with its source. <strong style="color:var(--text-primary);font-weight:500;">Standard</strong> is now reserved for an interoperability specification and a conformance suite that do not exist — Open Questions 1 and 2. Claims of evaluation and certification were removed, the required capabilities kept. The governance document was cut to a short stewardship statement declaring that no committee or maintainer group exists yet. Authorship made explicit.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="/implementations/">
+        <span class="dir">Previous</span>
+        <span class="label">← Implementations</span>
+      </a>
+      <a href="/" class="next">
+        <span class="dir">Back to</span>
+        <span class="label">The thesis →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="container">
+  <footer>
+    <div class="footer-left">
+      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.10 Working Draft · 2026<br>
+      Authored by Javier Galindo · ANKATech Solutions INC · CC BY 4.0
+    </div>
+    <div class="footer-right">
+      <a href="/control-plane/">Control Plane</a> &nbsp;·&nbsp;
+      <a href="/capa/">CAPA</a> &nbsp;·&nbsp;
+      <a href="/maturity/">Maturity</a> &nbsp;·&nbsp;
+      <a href="/migration/">Migration</a> &nbsp;·&nbsp;
+      <a href="/implementations/">Implementations</a> &nbsp;·&nbsp;
+      <a href="/about/">About</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

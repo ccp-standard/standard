@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAPA — Crypto Agility Posture Architecture</title>
+<meta name="description" content="CAPA defines the five foundational capabilities required to establish and sustain a governed cryptographic posture: Crypto-Agility, Cryptographic Sovereignty, Frictionless Modernization, Cryptographic Governance & Compliance, and Enterprise Readiness.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ccp.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">CCP // Architecture</a>
+  <ul class="nav-links">
+    <li><a href="/control-plane/">Control Plane</a></li>
+    <li><a href="/capa/" class="current">CAPA</a></li>
+    <li><a href="/maturity/">Maturity</a></li>
+    <li><a href="/migration/">Migration</a></li>
+    <li><a href="/implementations/">Implementations</a></li>
+    <li><a href="/about/">About</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-kicker">The posture framework</div>
+    <h1>CAPA<br><em>Crypto Agility<br>Posture Architecture.</em></h1>
+    <p class="section-lead">CAPA defines the foundational capabilities required to build and operate governed cryptographic infrastructure capable of supporting continuous cryptographic evolution.</p>
+  </div>
+</section>
+
+<!-- WHAT CAPA IS AND IS NOT -->
+<section id="what-capa-is">
+  <div class="container">
+    <div class="section-eyebrow">Orientation</div>
+    <h2>What CAPA is, and what it is not.</h2>
+
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">
+      Rather than focusing on individual algorithms or cryptographic libraries, CAPA focuses on the <strong style="color:var(--text-primary);font-weight:400;">organizational posture</strong> required to manage cryptography as infrastructure. It defines the capabilities that allow enterprises to adapt their cryptographic environments as technologies, threat models, standards, regulations, jurisdictions, trust requirements, business relationships and enterprise technology environments evolve.
+    </p>
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8;">
+      A cryptographic posture therefore encompasses more than the algorithms an organization uses. It includes how cryptographic trust is established and distributed, how keys and cryptographic authority are governed, which policies apply under different contexts, how existing protected data can be modernized, and how cryptographic infrastructure integrates with the broader enterprise ecosystem.
+    </p>
+
+    <div class="note">
+      <span class="note-label">CAPA is not the Control Plane, and neither is a product</span>
+      <strong>CAPA</strong> defines the posture and the required capabilities. <strong>The <a href="/control-plane/" style="color:var(--accent);text-decoration:none;">Cryptographic Control Plane</a></strong> defines the governance and orchestration architecture through which those capabilities operate. <strong>An <a href="/implementations/" style="color:var(--accent);text-decoration:none;">implementation</a></strong> operationalizes that architecture in a real platform.
+      <br><br>
+      The relationship between pillars and platform capabilities is <strong>not one-to-one</strong>: a single platform capability may contribute to several pillars, and each pillar may depend on several capabilities working together. Any presentation that maps one product feature to one pillar has flattened the model.
+    </div>
+  </div>
+</section>
+
+<!-- THE FIVE PILLARS -->
+<section id="pillars">
+  <div class="container">
+    <div class="section-eyebrow">The framework</div>
+    <h2>Five foundational pillars.</h2>
+    <p class="section-lead">Together these pillars enable the operation of a Cryptographic Control Plane capable of supporting continuous cryptographic evolution. They are complementary: centralized governance does not require centralized trust; agility does not remove the need to modernize historical data; sovereignty does not eliminate interoperability requirements.</p>
+
+    <!-- PILLAR 1 -->
+    <div class="pillar-detail" id="crypto-agility">
+      <div class="pillar-detail-head">
+        <span class="pillar-detail-num">Pillar 01</span>
+        <h2>Crypto-Agility</h2>
+      </div>
+      <p>Crypto-agility is the ability to transition between cryptographic algorithms, mechanisms and security strategies <strong>without requiring changes to application code, application releases, or disruption to business operations</strong> for systems that have been brought under governed cryptographic infrastructure.</p>
+      <p>It enables organizations to respond rapidly to algorithmic vulnerabilities, emerging standards, regulatory requirements and evolving threat models without initiating application development, testing, certification, change-management or deployment cycles. It supports transitions across classical, hybrid and post-quantum cryptography while maintaining operational continuity.</p>
+      <p>The architectural objective is to transform subsequent cryptographic transitions from application engineering projects into governed infrastructure and policy operations.</p>
+
+      <div class="pillar-principle">
+        <span>Core principle</span>
+        <p>Cryptographic change without application change.</p>
+      </div>
+
+      <div class="note">
+        <span class="note-label">Boundary</span>
+        This applies to applications <strong>once governed</strong> through the abstraction and Control Plane model. It does not imply that arbitrary legacy applications can change cryptography before being onboarded. Onboarding is real work; what changes is the economics of every transition after it.
+      </div>
+
+      <div class="practice">
+        <div class="practice-label">CAPA in practice</div>
+        <details class="scenario">
+          <summary>Responding to an algorithm vulnerability</summary>
+          <div class="scenario-body">A critical application relies on a cryptographic algorithm that is found to be vulnerable or no longer acceptable. In a traditional architecture, replacing it may require code changes, regression testing, security validation, change approvals and a new application release. With crypto-agility, the cryptographic strategy can be changed through governed infrastructure and policy while the application continues operating without modification or redeployment.</div>
+        </details>
+        <details class="scenario">
+          <summary>Transitioning to post-quantum cryptography</summary>
+          <div class="scenario-body">An organization needs to move from classical cryptography to hybrid classical–post-quantum mechanisms and, eventually, to fully post-quantum cryptography. Rather than treating each application as an independent migration project, the organization can evolve the cryptographic strategy through the Control Plane, allowing governed applications to transition without embedding new algorithm dependencies into their code.</div>
+        </details>
+        <details class="scenario">
+          <summary>Evolving cryptographic strategy without an application release</summary>
+          <div class="scenario-body">A security team decides to strengthen the cryptographic posture by changing an algorithm family, security level or cryptographic strategy, even though no immediate vulnerability exists. Instead of initiating a new software development and release cycle, the organization implements the change through cryptographic policy. Cryptographic evolution becomes an infrastructure governance activity rather than an application engineering project.</div>
+        </details>
+      </div>
+    </div>
+
+    <!-- PILLAR 2 -->
+    <div class="pillar-detail" id="sovereignty">
+      <div class="pillar-detail-head">
+        <span class="pillar-detail-num">Pillar 02</span>
+        <h2>Cryptographic Sovereignty</h2>
+      </div>
+      <p>Cryptographic sovereignty is the ability of an organization to retain <strong>ultimate authority and control over its cryptographic trust, cryptographic choices, and the use of cryptographic capabilities</strong> — regardless of where its data, infrastructure or business processes operate.</p>
+      <p>It is not merely "owning your keys", and it is not BYOK. It has three dimensions.</p>
+
+      <div class="dimensions">
+        <div class="dimension">
+          <h4>Sovereignty of Trust</h4>
+          <p>The organization determines where Roots of Trust reside, and which providers, infrastructures, jurisdictions, regions, HSMs, KMS platforms and trust domains may participate.</p>
+        </div>
+        <div class="dimension">
+          <h4>Sovereignty of Cryptographic Authority</h4>
+          <p>The organization governs who or what may exercise cryptographic capabilities, under which conditions, for what data or purpose, for how long — and when that authority can be revoked.</p>
+        </div>
+        <div class="dimension">
+          <h4>Sovereignty of Choice</h4>
+          <p>External interoperability requirements do not have to dictate the organization's entire internal cryptographic posture. Different strategies may coexist across different trust and interoperability contexts.</p>
+        </div>
+      </div>
+
+      <div class="pillar-principle">
+        <span>Core principle</span>
+        <p>Retain control of cryptographic trust, choice, and authority wherever your data operates.</p>
+      </div>
+
+      <div class="note">
+        <span class="note-label">A major implication</span>
+        <strong>Sovereignty does not require centralizing keys or trust infrastructure.</strong> Organizations may deliberately distribute keys and Roots of Trust across multiple HSMs, KMS platforms, providers, environments, regions or organizational domains to preserve autonomy, isolate risk, improve resilience, or satisfy jurisdictional and operational requirements. Centralized governance should not create unnecessary concentration of cryptographic dependency.
+      </div>
+
+      <div class="practice">
+        <div class="practice-label">CAPA in practice</div>
+        <details class="scenario">
+          <summary>Retaining control of the Root of Trust</summary>
+          <div class="scenario-body">An organization deliberately distributes cryptographic keys and Roots of Trust across multiple HSMs, KMS platforms, cloud providers, on-premises environments, regions or organizational domains. This distribution may reflect resilience, risk isolation, jurisdictional, operational or business requirements. Cryptographic sovereignty allows the organization to govern these trust domains coherently without requiring their consolidation into a single key repository, infrastructure provider or cryptographic failure domain.</div>
+        </details>
+        <details class="scenario">
+          <summary>Maintaining revocable cryptographic authority over third parties</summary>
+          <div class="scenario-body">A financial institution must provide sensitive encrypted information to an external service provider for processing. Instead of transferring a long-lived private key that gives the provider persistent decryption capability, the organization grants governed authorization to perform only the required cryptographic operations. That authority can be constrained by identity, data scope, purpose, time or policy — and revoked when the business relationship changes or ends.</div>
+        </details>
+        <details class="scenario">
+          <summary>Preserving cryptographic choice across trust domains</summary>
+          <div class="scenario-body">An organization determines that one cryptographic strategy best reflects its internal security and trust requirements, while a customer, partner or external ecosystem requires a different standard for interoperability. The organization can satisfy the external requirement for that interaction without making it the universal standard for its internal environment. Interoperability is maintained without surrendering cryptographic choice.</div>
+        </details>
+      </div>
+    </div>
+
+    <!-- PILLAR 3 -->
+    <div class="pillar-detail" id="modernization">
+      <div class="pillar-detail-head">
+        <span class="pillar-detail-num">Pillar 03</span>
+        <h2>Frictionless Modernization</h2>
+      </div>
+      <p>Frictionless modernization is the ability to evolve the cryptographic protection of <strong>existing data and systems</strong> without requiring the applications that originally produced that data to recreate, reprocess or re-encrypt it.</p>
+      <p>Its centre is not application migration. Organizations may possess data encrypted years earlier whose original applications have changed, been retired, or no longer retain the original plaintext. Cryptographic protection should be capable of evolving independently from the applications that created the data.</p>
+      <p>Modernization can include re-encryption, key rotation, migration between algorithms, migration between cryptographic mechanisms, migration of key protection, changes in trust infrastructure, correction of long-lived key dependencies, and modernization of historical protected data. For large datasets, streaming cryptographic transformation is an important implementation mechanism.</p>
+
+      <div class="pillar-principle">
+        <span>Core principle</span>
+        <p>Modernize the cryptography protecting your data, without recreating the data or rewriting the applications.</p>
+      </div>
+
+      <div class="note">
+        <span class="note-label">A precise security claim</span>
+        These transformations should be performed <strong>without creating persistent plaintext exposure or artifacts</strong>. This is not a claim that plaintext mathematically never exists during cryptographic processing — it is a claim about what the modernization workflow persists.
+      </div>
+
+      <div class="practice">
+        <div class="practice-label">CAPA in practice</div>
+        <details class="scenario">
+          <summary>Modernizing historical encrypted data</summary>
+          <div class="scenario-body">An organization has millions of records or files encrypted over many years using cryptographic mechanisms that must now be replaced. The applications that originally produced the data may have changed, been retired, or no longer retain the original plaintext. The organization can transform the cryptographic protection of the existing data under new algorithms, keys or policies without requiring the originating applications to recreate it, and without creating persistent plaintext intermediate artifacts.</div>
+        </details>
+        <details class="scenario">
+          <summary>Correcting long-lived key dependencies</summary>
+          <div class="scenario-body">Large volumes of historical information may remain protected under the same keys or key structures for longer than the organization's current security policy permits. Frictionless modernization allows the organization to rotate, segment or migrate those protections to new keys and key hierarchies without reconstructing the systems that originally created the data. Modernization therefore addresses key-management debt as well as algorithmic obsolescence.</div>
+        </details>
+        <details class="scenario">
+          <summary>Migrating legacy cryptographic infrastructure</summary>
+          <div class="scenario-body">An organization needs to retire a legacy key store, trust infrastructure or cryptographic mechanism on which years of protected information still depend. Rather than performing a disruptive big-bang migration, the organization can progressively move cryptographic assets to the target infrastructure while business systems continue operating. The protection evolves independently from the lifecycle of the applications that originally created the data.</div>
+        </details>
+      </div>
+    </div>
+
+    <!-- PILLAR 4 -->
+    <div class="pillar-detail" id="governance">
+      <div class="pillar-detail-head">
+        <span class="pillar-detail-num">Pillar 04</span>
+        <h2>Cryptographic Governance &amp; Compliance</h2>
+      </div>
+      <p>Cryptographic governance and compliance is the ability to translate internal security requirements, regulatory obligations, industry standards and jurisdictional constraints into <strong>centrally governed and enforceable cryptographic policies</strong>.</p>
+      <p>Organizations must be able to maintain multiple cryptographic policies simultaneously and apply them <strong>according to context</strong> — the data being protected, the operation being performed, the systems involved, the parties exchanging information, the purpose, the trust domain, and the jurisdictions or requirements that apply.</p>
+      <p>These policies govern permitted cryptographic mechanisms, security levels, key lifecycles, trust requirements and transition strategies through infrastructure rather than application-specific implementations. Governance must also provide visibility, traceability and evidence of policy enforcement — and must be able to evolve as regulations, standards, business relationships, jurisdictions and organizational structures change.</p>
+
+      <div class="pillar-principle">
+        <span>Core principle</span>
+        <p>Turn cryptographic requirements into enforceable policy and verifiable evidence.</p>
+      </div>
+
+      <div class="note">
+        <span class="note-label">The conceptual chain</span>
+        Requirements → Context → Policy → Enforcement → Visibility → Evidence → Evolution.
+        <br><br>
+        Governance is therefore not only policy definition. It includes enforcement, visibility, traceability, evidence, and the ability for policy itself to evolve.
+      </div>
+
+      <div class="practice">
+        <div class="practice-label">CAPA in practice</div>
+        <details class="scenario">
+          <summary>Applying policy across multiple jurisdictions</summary>
+          <div class="scenario-body">A multinational organization operates across jurisdictions with different cryptographic requirements. Data processed within one jurisdiction may be governed by one policy, while information exchanged with headquarters, a regulated customer or an external provider may require another. The organization can maintain multiple cryptographic policies simultaneously and apply the appropriate one according to context — including data, operation, counterparty, purpose and jurisdiction.</div>
+        </details>
+        <details class="scenario">
+          <summary>Adapting governance after a merger or acquisition</summary>
+          <div class="scenario-body">An acquisition can change the cryptographic requirements applicable to systems and data even when no algorithm, standard or regulation has changed. New corporate policies, contractual obligations, jurisdictions or trust requirements may become applicable immediately. Centralized cryptographic governance allows the organization to introduce and enforce the resulting policies without requiring those decisions to be individually implemented within every affected application.</div>
+        </details>
+        <details class="scenario">
+          <summary>Enforcing a new enterprise security requirement</summary>
+          <div class="scenario-body">A security or compliance team determines that a particular algorithm, key lifecycle, security level or cryptographic strategy is no longer permitted for a category of information. The requirement is translated into centrally governed policy and enforced consistently across the affected systems. The same governance infrastructure provides visibility, traceability and evidence that the required policy was actually applied.</div>
+        </details>
+      </div>
+    </div>
+
+    <!-- PILLAR 5 -->
+    <div class="pillar-detail" id="enterprise-readiness">
+      <div class="pillar-detail-head">
+        <span class="pillar-detail-num">Pillar 05</span>
+        <h2>Enterprise Readiness</h2>
+      </div>
+      <p>Enterprise readiness is the ability of cryptographic infrastructure to operate as a <strong>native component of complex, heterogeneous enterprise technology environments</strong> rather than as another isolated security silo.</p>
+      <p>A modern cryptographic architecture must integrate or interoperate with the capabilities organizations already use: identity and access infrastructure, workload and machine identity, HSMs, KMS platforms, PKI and digital trust services, security operations, SIEM, XDR, logging, metrics, tracing, observability, monitoring and alerting, communications and notifications, operational tooling, and external cryptographic ecosystems.</p>
+      <p>It must also interoperate with external systems that may impose different protocols, formats, standards or cryptographic requirements. Enterprise readiness assumes that <strong>multiple technologies, providers and deployment models coexist</strong>, and must therefore support extensibility as those environments evolve.</p>
+
+      <div class="pillar-principle">
+        <span>Core principle</span>
+        <p>Cryptographic infrastructure must interoperate with the enterprise, not require the enterprise to adapt around it.</p>
+      </div>
+
+      <div class="note">
+        <span class="note-label">What this rules out</span>
+        Existing investments should be <strong>preserved where appropriate rather than replaced</strong> merely to introduce centralized cryptographic governance. An architecture that requires the enterprise to consolidate its identity, key, trust, security or observability infrastructure before cryptographic governance can improve has not satisfied this pillar.
+      </div>
+
+      <div class="practice">
+        <div class="practice-label">CAPA in practice</div>
+        <details class="scenario">
+          <summary>Integrating with the existing enterprise security ecosystem</summary>
+          <div class="scenario-body">An organization already operates enterprise identity and access infrastructure, workload identities, key management and hardware security systems, trust services, security monitoring, SIEM or XDR capabilities, observability platforms, communication services and operational tooling. A Cryptographic Control Plane integrates with these existing capabilities rather than creating parallel technology silos, allowing cryptographic operations to participate naturally in the organization's established security and operational ecosystem.</div>
+        </details>
+        <details class="scenario">
+          <summary>Operating across heterogeneous environments after an acquisition</summary>
+          <div class="scenario-body">Following an acquisition, two organizations may use different identity infrastructures, KMS and HSM environments, security monitoring platforms, observability tooling, trust services and deployment models. Establishing common cryptographic governance should not require immediate consolidation of those technologies. An enterprise-ready architecture can integrate with both environments while allowing each underlying technology or trust domain to be retained, evolved, migrated or consolidated independently according to security, resilience, jurisdictional and business requirements.</div>
+        </details>
+        <details class="scenario">
+          <summary>Interoperating with external cryptographic ecosystems</summary>
+          <div class="scenario-body">An organization may use one cryptographic posture internally while a customer, provider, government system, industry network or other external ecosystem requires different protocols, formats, standards or cryptographic mechanisms. Enterprise readiness enables the organization to participate in those ecosystems while preserving its internal architecture and cryptographic posture. External interoperability becomes an integration capability rather than a requirement to redesign the enterprise around each counterparty.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMPLE -->
+<section id="posture">
+  <div class="container">
+    <div class="section-eyebrow">The posture</div>
+    <h2>What the five pillars hold up.</h2>
+    <p class="section-lead">Together, the pillars define the capabilities required to establish and sustain a governed cryptographic posture at enterprise scale.</p>
+
+    <div class="temple">
+      <div class="temple-roof">
+        <div class="temple-roof-title">Governed Cryptographic Posture</div>
+        <div class="temple-roof-sub">Agile · Sovereign · Modernizable · Governed · Enterprise-native</div>
+      </div>
+      <div class="temple-pillars">
+        <div class="temple-pillar">
+          <span class="temple-pillar-num">I</span>
+          <h3>Crypto-Agility</h3>
+          <p>Cryptographic change without application change</p>
+        </div>
+        <div class="temple-pillar">
+          <span class="temple-pillar-num">II</span>
+          <h3>Cryptographic Sovereignty</h3>
+          <p>Control of trust, choice and authority wherever data operates</p>
+        </div>
+        <div class="temple-pillar">
+          <span class="temple-pillar-num">III</span>
+          <h3>Frictionless Modernization</h3>
+          <p>Modernize protection without recreating the data</p>
+        </div>
+        <div class="temple-pillar">
+          <span class="temple-pillar-num">IV</span>
+          <h3>Governance &amp; Compliance</h3>
+          <p>Requirements become enforceable policy and evidence</p>
+        </div>
+        <div class="temple-pillar">
+          <span class="temple-pillar-num">V</span>
+          <h3>Enterprise Readiness</h3>
+          <p>Interoperate with the enterprise, not around it</p>
+        </div>
+      </div>
+      <div class="temple-foundation">
+        <div class="temple-foundation-title">CAPA — Crypto Agility Posture Architecture</div>
+        <div class="temple-foundation-sub">The framework defining the capabilities a governed cryptographic posture requires</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">CAPA's organizational scope</span>
+      This posture can extend across cryptographic domains <strong>without requiring every domain to use the same execution or control mechanism</strong>. Application and data cryptography, transport security, PKI, key infrastructure and other trust services may retain specialized operational mechanisms while participating in a coordinated organizational cryptographic posture.
+      <br><br>
+      CAPA therefore describes the capabilities required to govern cryptographic evolution — not a requirement to centralize every cryptographic function within a single platform.
+    </div>
+
+    <div class="page-nav">
+      <a href="/control-plane/">
+        <span class="dir">Previous</span>
+        <span class="label">← The Control Plane</span>
+      </a>
+      <a href="/maturity/" class="next">
+        <span class="dir">Next</span>
+        <span class="label">The maturity model →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="container">
+  <footer>
+    <div class="footer-left">
+      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.10 Working Draft · 2026<br>
+      Authored by Javier Galindo · ANKATech Solutions INC · CC BY 4.0
+    </div>
+    <div class="footer-right">
+      <a href="/control-plane/">Control Plane</a> &nbsp;·&nbsp;
+      <a href="/capa/">CAPA</a> &nbsp;·&nbsp;
+      <a href="/maturity/">Maturity</a> &nbsp;·&nbsp;
+      <a href="/migration/">Migration</a> &nbsp;·&nbsp;
+      <a href="/implementations/">Implementations</a> &nbsp;·&nbsp;
+      <a href="/about/">About</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

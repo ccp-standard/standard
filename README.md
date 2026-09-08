@@ -1,64 +1,110 @@
-# The Cryptographic Control Plane Standard
+# The Cryptographic Control Plane
 
-![Version](https://img.shields.io/badge/version-0.9-blue) ![Status](https://img.shields.io/badge/status-Working%20Draft-orange) ![Year](https://img.shields.io/badge/year-2026-lightgrey) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-green)
+**A Reference Architecture for Continuous Cryptographic Evolution**
 
-The Cryptographic Control Plane (CCP) Standard defines an open, vendor-neutral architectural framework for orchestrating cryptographic operations across enterprise environments. It establishes the minimum capabilities, integration patterns, and maturity benchmarks that enable organizations to achieve continuous cryptographic evolution — the ability to adopt, rotate, and retire cryptographic algorithms and protocols without disrupting the systems that depend on them.
+![Version](https://img.shields.io/badge/version-0.10-blue) ![Status](https://img.shields.io/badge/status-Working%20Draft-orange) ![Type](https://img.shields.io/badge/type-Reference%20Architecture-lightgrey) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-green)
 
-**Live site:** [https://ccp-standard.org](https://ccp-standard.org)
+Authored by **Javier Galindo** · ANKATech Solutions INC · javier@cryptographiccontrolplane.org
+
+**Live site:** [https://cryptographiccontrolplane.org](https://cryptographiccontrolplane.org)
 
 ---
 
+## Status: this is not a standard
+
+The word **standard** is deliberately not used for this material. It is reserved for an interoperability specification and a conformance suite that do not exist yet — they are Open Questions 1 and 2. No body has ratified this document, no one certifies implementations of it, and ANKASecure© is currently its only implementation, built by the same organization that wrote the document.
+
+What would change that is written down in [GOVERNANCE.md](GOVERNANCE.md): independent implementations, and people willing to argue with the substance.
+
 ## Overview
 
-Modern enterprises face an unprecedented cryptographic challenge. The transition to post-quantum cryptography, evolving compliance mandates, and the proliferation of cryptographic dependencies across distributed systems demand a new operational model — one where cryptography is managed as infrastructure, not embedded as code.
+Modern enterprises face an unprecedented cryptographic challenge. The transition to post-quantum cryptography, evolving compliance mandates and the proliferation of cryptographic dependencies across distributed systems demand a different operational model — one where cryptography is managed as infrastructure rather than embedded as code.
 
-The CCP Standard addresses this challenge by defining the **Cryptographic Control Plane**: a dedicated architectural layer that decouples cryptographic policy from application logic, enabling centralized governance with decentralized execution.
+This reference architecture defines the **Cryptographic Control Plane**: an architectural layer that decouples cryptographic policy and lifecycle management from application implementation. Applications express cryptographic intent; infrastructure governs how that intent is fulfilled according to policy and context.
 
-## CAPA Framework
+### Three things, related but distinct
 
-The standard introduces the **CAPA (Crypto-Agility Posture Assessment) Framework**, built on five pillars:
+They are frequently used interchangeably. They are not the same.
 
-1. **Crypto-Agility** — the ability to transition between cryptographic algorithms without application changes
-2. **Sovereignty** — organizational control over cryptographic assets, policies, and key material
-3. **Frictionless Modernization** — zero-downtime migration paths for cryptographic transitions
-4. **Policy Governance** — centralized, auditable policy enforcement across all cryptographic operations
-5. **Regulatory Compliance** — continuous alignment with evolving standards (NIST, ETSI, national mandates)
+| | What it is |
+|---|---|
+| **CAPA** — Crypto Agility Posture Architecture | The framework defining the organizational and architectural **capabilities** required to establish and sustain a governed cryptographic posture. |
+| **Cryptographic Control Plane** | The **architectural model** through which cryptographic intent, policy, lifecycle, trust, execution and modernization are governed independently from individual application implementations. |
+| **An implementation** | A platform that operationalizes that architecture. ANKASecure© is one. |
 
-## Maturity Model
+The relationship between CAPA pillars and platform capabilities is **not one-to-one**: a single capability may contribute to several pillars, and each pillar may depend on several capabilities.
 
-The **CAPA Cryptographic Maturity Model** defines six levels of organizational cryptographic capability:
+### Centralized Governance, Distributed Trust
+
+The Control Plane centralizes **governance** — not cryptographic custody, not execution, and not Roots of Trust. An enterprise may deliberately operate multiple HSMs, multiple KMS platforms, cloud and on-premises infrastructure, several providers, regions, jurisdictions and independent trust domains. The Control Plane provides a common governance layer across them without requiring consolidation.
+
+Centralized governance must not become centralized cryptographic risk.
+
+### Scope boundary
+
+The Control Plane governs **application and data cryptography**. It does not replace protocol and transport cryptography (TLS, QUIC, SSH, IPsec), which evolves through its own protocols and implementations, and it complements rather than replaces PKI and digital trust services.
+
+## CAPA — the five pillars
+
+1. **Crypto-Agility** — *Cryptographic change without application change.*
+2. **Cryptographic Sovereignty** — *Retain control of cryptographic trust, choice and authority wherever your data operates.*
+3. **Frictionless Modernization** — *Modernize the cryptography protecting your data, without recreating the data or rewriting the applications.*
+4. **Cryptographic Governance & Compliance** — *Turn cryptographic requirements into enforceable policy and verifiable evidence.*
+5. **Enterprise Readiness** — *Cryptographic infrastructure must interoperate with the enterprise, not require the enterprise to adapt around it.*
+
+## Maturity model
+
+Six levels of organizational cryptographic capability:
 
 | Level | Name | Description |
 |-------|------|-------------|
-| 0 | Ad Hoc | No centralized cryptographic management |
-| 1 | Aware | Cryptographic inventory exists; no automation |
-| 2 | Managed | Centralized policy definition; manual enforcement |
-| 3 | Orchestrated | Automated key lifecycle; policy-driven operations |
-| 4 | Adaptive | Real-time algorithm rotation; continuous compliance |
-| 5 | Autonomous | Self-healing cryptographic infrastructure; predictive transitions |
+| L1 | Embedded Cryptography | Cryptographic logic embedded in application code; changes require redeployment |
+| L2 | Managed Cryptography | Key protection centralized (HSM, KMS); cryptographic behaviour still coupled to applications |
+| L3 | Cryptographic Control Plane | The architectural inflection point — policy can be acted on without modifying governed applications |
+| L4 | Cryptographic Agility | Coverage expanded across critical systems; brownfield migration advanced |
+| L5 | Optimized Cryptography | The relevant cryptographic landscape operates predominantly under the Control Plane |
+| L6 | Continuous Crypto Evolution | Cryptographic evolution embedded in normal operating practice |
 
-## How to Contribute
+Two principles underpin it. Maturity is measured by **capability today**, not by how much legacy migration remains pending. And **post-quantum cryptography is not a level** — it is a dimension that improves at every level, adoptable from the moment a Control Plane is deployed.
 
-The CCP Standard is an open initiative. Contributions are welcome from cryptographers, security architects, compliance professionals, and implementors.
+## Migration
 
-- Read the [Governance model](GOVERNANCE.md) — vendor-neutral, with Steering Committee seats open to participating organizations
-- Read the [Contributing Guidelines](CONTRIBUTING.md) for process details
-- Open a [GitHub Issue](https://github.com/ccp-standard/standard/issues) to propose changes or raise questions
-- Submit a Pull Request for substantive additions or corrections
+Three tracks run in parallel from day one: **greenfield** (all new applications), **brownfield critical** (the five to ten highest-risk applications, analysed immediately without waiting for the full inventory) and **brownfield general** (the remaining landscape, phased by risk).
+
+Two distinctions matter: discovery produces **visibility**, not control; and governance convergence is a separate decision from infrastructure consolidation.
+
+## Contributing
+
+The most valuable contribution is **a second, independent implementation** — worth considerably more than agreement with the document. After that, disagreement on the substance.
+
+- Read [GOVERNANCE.md](GOVERNANCE.md) for how this is stewarded today (briefly: by one person, in public)
+- Read [CONTRIBUTING.md](CONTRIBUTING.md) for the mechanics
+- Open a [GitHub Issue](https://github.com/cryptographiccontrolplane/reference-architecture/issues)
 - Review the [Changelog](CHANGELOG.md) for version history
 
-Five foundational questions are open for community discussion. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Five foundational questions are open for community discussion. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## License
+## Repository layout
 
-This work is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](LICENSE).
+The site is plain static HTML served directly by GitHub Pages — there is no build step, so a contributor can correct a paragraph without a toolchain.
 
-You are free to share and adapt this material for any purpose, provided appropriate credit is given.
+```
+index.html               The thesis
+control-plane/           Definition, domain boundary, six-layer stack, required capabilities
+capa/                    The five pillars and their practice scenarios
+maturity/                The six-level maturity model
+migration/               Three tracks, five activities
+implementations/         Implementations and how they are listed
+about/                   Current state, open questions, document history
+assets/ccp.css           Shared stylesheet
+assets/legacy-anchors.js Redirects for pre-0.10 single-page anchors
+docs/whitepaper.md       The foundational whitepaper
+```
 
-## About
+## Licence
 
-The Cryptographic Control Plane Standard was initiated by **ANKATech Solutions INC** as a contribution to the global effort to modernize cryptographic infrastructure management.
+Licensed under [CC BY 4.0](LICENSE). Free to share and adapt for any purpose, with attribution.
 
-**ANKASecure©** is the reference implementation of the CCP Standard — a post-quantum cryptography platform that demonstrates the full CAPA framework in production environments. ANKASecure© provides the operational proof that the architectural patterns defined in this standard are implementable, scalable, and effective.
+## Provenance
 
-The standard is published independently of any single implementation. Organizations are encouraged to build conformant CCP solutions using the technology and governance model best suited to their requirements.
+The Cryptographic Control Plane concept and the CAPA framework were developed at **ANKATech Solutions INC** through research and product development in post-quantum cryptography. The foundational whitepaper — *The Cryptographic Control Plane: A New Architecture for Continuous Cryptographic Evolution* — is the source document; where the two differ in wording, the whitepaper governs.

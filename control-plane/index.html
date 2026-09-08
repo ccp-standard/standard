@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cryptographic Control Plane — The Architecture</title>
+<meta name="description" content="Definition, domain boundary and reference architecture of the Cryptographic Control Plane. Centralized governance, distributed trust.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ccp.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">CCP // Architecture</a>
+  <ul class="nav-links">
+    <li><a href="/control-plane/" class="current">Control Plane</a></li>
+    <li><a href="/capa/">CAPA</a></li>
+    <li><a href="/maturity/">Maturity</a></li>
+    <li><a href="/migration/">Migration</a></li>
+    <li><a href="/implementations/">Implementations</a></li>
+    <li><a href="/about/">About</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-kicker">The architectural model</div>
+    <h1>The Cryptographic<br>Control Plane.</h1>
+    <p class="section-lead">A precise architectural definition, designed to be implementable, auditable, and vendor-neutral — together with an explicit statement of what it does <em>not</em> govern.</p>
+  </div>
+</section>
+
+<!-- DEFINITION -->
+<section id="definition">
+  <div class="container">
+    <div class="section-eyebrow">Definition</div>
+    <h2>What is a Cryptographic Control Plane?</h2>
+
+    <div class="definition-box">
+      <p>A <strong>Cryptographic Control Plane</strong> is a dedicated infrastructure layer that decouples cryptographic policy and lifecycle management from application implementation. Applications express cryptographic intent. Infrastructure governs how cryptographic operations are executed, which algorithms are applied, and how those algorithms evolve over time.</p>
+    </div>
+
+    <div class="split-row">
+      <div class="split-cell">
+        <div class="split-cell-label">Cryptographic intent (application)</div>
+        <p>The application calls a service with a <strong>Key ID reference</strong> and a requested operation — encrypt, sign, verify. It specifies what it needs, never how to do it. No algorithm name, no library import, no cipher selection occurs at the application level.</p>
+      </div>
+      <div class="split-cell">
+        <div class="split-cell-label">Cryptographic execution (infrastructure)</div>
+        <p>The Control Plane resolves the intent against the <strong>applicable cryptographic policy and context</strong>, selects a permitted algorithm, validates key lifecycle state, and coordinates execution. A governed policy change applies to subsequent operations without requiring an application release solely to implement the cryptographic change.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE BOUNDARY -->
+<section id="boundary">
+  <div class="container">
+    <div class="section-eyebrow">Scope</div>
+    <h2>What the Control Plane governs — and what it does not.</h2>
+    <p class="section-lead">This boundary is part of the architecture, not a caveat attached to it. The objective is not to route every use of cryptography through a single control mechanism, but to make <strong style="color:var(--text-primary);font-weight:400;">application and data cryptography</strong> independently governable and evolvable.</p>
+
+    <div class="boundary-grid">
+      <div class="domain-card in-scope">
+        <div class="domain-status">Primary domain</div>
+        <h3>Application and data cryptography</h3>
+        <p>Cryptographic capabilities whose implementation, policy and lifecycle would otherwise be embedded within, or tightly coupled to, individual applications.</p>
+        <ul class="domain-examples">
+          <li>Application-level encryption / decryption</li>
+          <li>Digital signatures and verification</li>
+          <li>Cryptographic policy and security strategy</li>
+          <li>Key usage and lifecycle</li>
+          <li>Re-encryption and modernization of protected data</li>
+        </ul>
+      </div>
+      <div class="domain-card">
+        <div class="domain-status">Not replaced</div>
+        <h3>Protocol and transport cryptography</h3>
+        <p>These protocols carry their own negotiation, ephemeral key establishment, session state and cryptographic state machines. They evolve through their own protocols, standards, libraries, platforms and termination infrastructure.</p>
+        <ul class="domain-examples">
+          <li>TLS</li>
+          <li>QUIC</li>
+          <li>SSH</li>
+          <li>IPsec</li>
+        </ul>
+      </div>
+      <div class="domain-card">
+        <div class="domain-status">Complementary</div>
+        <h3>PKI and digital trust</h3>
+        <p>These services establish and maintain identity and trust relationships. The Control Plane integrates with and consumes them where application and data cryptography depends on them — it does not seek to replace them.</p>
+        <ul class="domain-examples">
+          <li>Certificate authorities</li>
+          <li>Certificate lifecycle services</li>
+          <li>Trust stores</li>
+          <li>Certificate validation services</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">Why this matters for posture, not just for scope</span>
+      An organization's cryptographic posture may still set requirements for domains the Control Plane does not execute. Governance may establish an organizational requirement for TLS or post-quantum readiness even though the handshake itself remains executed by the relevant protocol implementation. <strong>CAPA describes the capabilities required to govern cryptographic evolution across the organization</strong> — not a requirement that every cryptographic operation pass through one control mechanism.
+    </div>
+  </div>
+</section>
+
+<!-- CENTRALIZED GOVERNANCE, DISTRIBUTED TRUST -->
+<section id="distributed-trust">
+  <div class="container">
+    <div class="section-eyebrow">Core architectural principle</div>
+    <h2>Centralized Governance, Distributed Trust.</h2>
+    <p class="section-lead">The Control Plane centralizes <strong style="color:var(--text-primary);font-weight:400;">governance</strong> — not cryptographic custody, not execution, and not Roots of Trust.</p>
+
+    <div class="cgdt">
+      <div class="cgdt-band">Applications express cryptographic intent</div>
+      <div class="cgdt-apps">
+        <div class="cgdt-app">Business application</div>
+        <div class="cgdt-app">Microservice</div>
+        <div class="cgdt-app">Data platform</div>
+        <div class="cgdt-app">Integration layer</div>
+      </div>
+
+      <div class="cgdt-arrow">↓ &nbsp; standardized interface · key identifier · requested operation</div>
+
+      <div class="cgdt-gov">
+        <div class="cgdt-gov-title">Cryptographic Control Plane</div>
+        <div class="cgdt-gov-sub">Policy · lifecycle · algorithm and strategy selection · trust orchestration · modernization · evidence</div>
+      </div>
+
+      <div class="cgdt-arrow">↓ &nbsp; coordinates according to policy, sovereignty and jurisdictional requirements</div>
+
+      <div class="cgdt-band">Trust and execution remain where the organization decides</div>
+      <div class="cgdt-domains">
+        <div class="cgdt-domain">
+          <span class="cgdt-domain-name">On-premises HSM</span>
+          <span class="cgdt-domain-meta">Data centre</span>
+        </div>
+        <div class="cgdt-domain">
+          <span class="cgdt-domain-name">Cloud KMS</span>
+          <span class="cgdt-domain-meta">Provider A · region 1</span>
+        </div>
+        <div class="cgdt-domain">
+          <span class="cgdt-domain-name">Cloud KMS</span>
+          <span class="cgdt-domain-meta">Provider B · region 2</span>
+        </div>
+        <div class="cgdt-domain">
+          <span class="cgdt-domain-name">PKI / trust services</span>
+          <span class="cgdt-domain-meta">Identity-to-key bindings</span>
+        </div>
+        <div class="cgdt-domain">
+          <span class="cgdt-domain-name">Business-unit domain</span>
+          <span class="cgdt-domain-meta">Separate jurisdiction</span>
+        </div>
+      </div>
+
+      <div class="cgdt-caption">
+        Convergence happens at the <strong>governance layer</strong>, not at the infrastructure layer.
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">Supporting principle</span>
+      <p>Centralized governance must not become centralized cryptographic risk.</p>
+      <p>An enterprise may deliberately operate multiple HSMs, multiple KMS platforms, cloud and on-premises infrastructure, different providers, multiple regions, multiple jurisdictions, distinct business-unit trust domains and external trust environments. That distribution is frequently intentional — reflecting sovereignty, resilience, risk isolation, provider independence, jurisdictional requirements or organizational structure. The Control Plane provides a common governance layer across those environments without requiring them to be consolidated.</p>
+    </div>
+
+    <div class="note">
+      <span class="note-label">A consequence worth stating plainly</span>
+      <strong>Governance convergence and infrastructure consolidation are separate decisions</strong>, and may proceed on different timelines. An application or data domain can become governed by the Control Plane while continuing to use its existing HSM, KMS, key hierarchy or trust domain.
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE CRYPTOGRAPHIC STACK -->
+<section id="stack">
+  <div class="container">
+    <div class="section-eyebrow">Reference architecture</div>
+    <h2>The enterprise cryptographic stack.</h2>
+    <p class="section-lead">Six layers. The lower layers are heterogeneous by design — they are not a single centralized cryptographic backend.</p>
+
+    <div class="arch-stack">
+      <div class="arch-layer">
+        <div class="arch-layer-label"><span class="layer-index">Layer 01</span>Applications &amp; services</div>
+        <div class="arch-layer-desc">The applications, services and systems that process business data and require cryptographic capabilities. In a Control Plane architecture, governed applications <strong>express cryptographic intent</strong> without embedding algorithm-specific implementation decisions.</div>
+      </div>
+      <div class="arch-layer">
+        <div class="arch-layer-label"><span class="layer-index">Layer 02</span>Integration &amp; API layers</div>
+        <div class="arch-layer-desc">APIs, messaging platforms, middleware, service integration layers and external interfaces. These rely on cryptographic protection for authentication, message integrity, confidentiality and secure service-to-service communication, and may need to <strong>interoperate with external ecosystems</strong> that impose their own protocols, formats and standards.</div>
+      </div>
+      <div class="arch-layer control">
+        <div class="arch-layer-label"><span class="layer-index">Layer 03</span>Cryptographic Control Plane ←</div>
+        <div class="arch-layer-desc">The governance and orchestration layer. It evaluates cryptographic intent against the applicable policy and context and determines how the required capability is fulfilled. Responsibilities include policy enforcement, algorithm and security-strategy selection, key and trust orchestration, lifecycle management, cryptographic modernization, interoperability decisions, and coordination across distributed trust domains. <strong>It centralizes governance without requiring cryptographic execution or key custody to be centralized.</strong></div>
+      </div>
+      <div class="arch-layer ecosystem">
+        <div class="arch-layer-label"><span class="layer-index">Layer 04</span>Enterprise integration ecosystem</div>
+        <div class="arch-layer-desc">The Control Plane is not an isolated security system. It participates in the enterprise technology ecosystem that already governs identity and access, workload and machine identity, PKI and trust services, security operations, SIEM and XDR, logging, metrics, tracing and observability, communication and notification services, and operational tooling. <strong>These integrations are not necessarily part of the cryptographic execution path</strong> — they provide the surrounding context through which identity, authorization, monitoring, evidence and alerting become part of governed cryptographic operations.</div>
+      </div>
+      <div class="arch-layer">
+        <div class="arch-layer-label"><span class="layer-index">Layer 05</span>Distributed cryptographic trust &amp; execution</div>
+        <div class="arch-layer-desc">
+          These infrastructures perform <strong>complementary, non-interchangeable functions</strong>. HSMs, KMS platforms, key stores and cryptographic engines provide key protection and cryptographic execution. PKI and related digital trust services establish identity-to-key bindings, certificate chains, validation status and other trust relationships. They may coexist across providers, business units, regions, jurisdictions and independent trust domains; the Control Plane does not require them to be consolidated.
+          <div class="trust-domains">
+            <div class="trust-domain">HSMs<em>key protection · execution</em></div>
+            <div class="trust-domain">Cloud KMS<em>key protection · execution</em></div>
+            <div class="trust-domain">On-prem key management<em>key protection</em></div>
+            <div class="trust-domain">Secure key stores<em>key protection</em></div>
+            <div class="trust-domain">Cryptographic engines<em>execution</em></div>
+            <div class="trust-domain">PKI &amp; certificate authorities<em>identity-to-key binding</em></div>
+            <div class="trust-domain">Certificate lifecycle &amp; validation<em>trust status</em></div>
+          </div>
+        </div>
+      </div>
+      <div class="arch-layer">
+        <div class="arch-layer-label"><span class="layer-index">Layer 06</span>Hardware &amp; trusted execution</div>
+        <div class="arch-layer-desc">The foundational security guarantees underneath cryptographic operations: secure hardware modules, trusted platform modules (TPM), secure enclaves and trusted execution environments, and hardware-based random number generators. <strong>Different trust domains may rely on different hardware technologies</strong>, reinforcing the distinction between common governance and distributed execution.</div>
+      </div>
+    </div>
+
+    <div class="arch-note">
+      Governed cryptography is not created by replacing existing cryptographic infrastructure with a single centralized system. It emerges by introducing a governance layer capable of coordinating cryptographic behaviour across applications, distributed trust infrastructure, enterprise services and external ecosystems.
+    </div>
+  </div>
+</section>
+
+<!-- MINIMUM CAPABILITIES -->
+<section id="capabilities-required">
+  <div class="container">
+    <div class="section-eyebrow">Required capabilities</div>
+    <h2>What an implementation must provide.</h2>
+    <p class="section-lead">An implementation of this reference architecture provides all of the following. These are stated as requirements so that they are precise enough to build against — not because anyone administers them as a test.</p>
+
+    <div style="border:1px solid var(--bg-border); border-radius:8px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:2rem 1fr; gap:1.25rem; padding:1.25rem 1.5rem; border-bottom:1px solid var(--bg-border); background:var(--bg-surface);">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);">01</span>
+        <div>
+          <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Cryptographic abstraction layer</h3>
+          <p style="font-size:0.85rem;color:var(--text-secondary);">Applications consume cryptographic services through a standardized interface with no direct algorithm selection or library invocation in application code.</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:2rem 1fr; gap:1.25rem; padding:1.25rem 1.5rem; border-bottom:1px solid var(--bg-border); background:var(--bg-surface);">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);">02</span>
+        <div>
+          <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Context-aware policy governance</h3>
+          <p style="font-size:0.85rem;color:var(--text-secondary);">Permitted mechanisms, security levels, key lifecycles and cryptographic constraints are defined through policy — not application code — and enforced across the systems governed through the Control Plane. Multiple policies may coexist and apply according to context.</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:2rem 1fr; gap:1.25rem; padding:1.25rem 1.5rem; border-bottom:1px solid var(--bg-border); background:var(--bg-surface);">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);">03</span>
+        <div>
+          <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Algorithm and lifecycle transition</h3>
+          <p style="font-size:0.85rem;color:var(--text-secondary);">For governed applications, supported algorithm and security-strategy transitions — including classical, hybrid and post-quantum strategies — can be executed through policy and lifecycle mechanisms without requiring an application release solely to implement the cryptographic change.</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:2rem 1fr; gap:1.25rem; padding:1.25rem 1.5rem; border-bottom:1px solid var(--bg-border); background:var(--bg-surface);">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);">04</span>
+        <div>
+          <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Key lifecycle governance</h3>
+          <p style="font-size:0.85rem;color:var(--text-secondary);">Key generation, rotation, revocation, expiration and audit are governed centrally rather than by individual application teams, according to policy and the capabilities of the underlying key infrastructure. <strong style="color:var(--text-primary);font-weight:400;">Lifecycle governance is centralized; key custody need not be.</strong></p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:2rem 1fr; gap:1.25rem; padding:1.25rem 1.5rem; border-bottom:1px solid var(--bg-border); background:var(--bg-surface);">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);">05</span>
+        <div>
+          <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Coordination across distributed trust infrastructure</h3>
+          <p style="font-size:0.85rem;color:var(--text-secondary);">The platform can coordinate cryptographic operations across heterogeneous and distributed HSMs, KMS platforms, key stores and trust infrastructure. <strong style="color:var(--text-primary);font-weight:400;">A platform that requires all keys or Roots of Trust to reside in a single provider, repository or cryptographic failure domain does not satisfy this requirement.</strong></p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:2rem 1fr; gap:1.25rem; padding:1.25rem 1.5rem; background:var(--bg-surface);">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);">06</span>
+        <div>
+          <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Audit, traceability and evidence</h3>
+          <p style="font-size:0.85rem;color:var(--text-secondary);">Cryptographic operations performed through the Control Plane generate centralized audit and traceability records providing evidence of governed cryptographic activity, policy enforcement and lifecycle events — without requiring that activity to be reconstructed independently from each onboarded application.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">No one certifies these</span>
+      There is no conformance suite, no certification body and no evaluation programme — whether there should be is <a href="/about/#open-questions" style="color:var(--accent);text-decoration:none;">Open Question 2</a>. An implementation states for itself how it meets each capability, and readers judge that claim on its merits.
+      <br><br>
+      These requirements also say nothing about <strong>coverage</strong>. They describe what a platform provides, not how much of an organization's cryptographic landscape is governed through it — that grows as applications are onboarded, and is the subject of the <a href="/maturity/" style="color:var(--accent);text-decoration:none;">maturity model</a>.
+    </div>
+  </div>
+</section>
+
+<!-- WHAT BECOMES POSSIBLE -->
+<section id="capabilities">
+  <div class="container">
+    <div class="section-eyebrow">What becomes possible</div>
+    <h2>When cryptography is decoupled.</h2>
+    <p class="section-lead">Four operational capabilities that become substantially more scalable, governable and repeatable once cryptography is treated as infrastructure.</p>
+
+    <div class="capabilities-grid">
+      <div class="capability-card">
+        <h3>Algorithm evolution without repeated application change</h3>
+        <div class="capability-before">
+          <div class="capability-before-label">Without CCP</div>
+          <p>Identify every application using the algorithm, modify libraries or configurations, validate interoperability, test and coordinate releases. Even a technically straightforward transition becomes a prolonged engineering and change-management programme.</p>
+        </div>
+        <div class="capability-after">
+          <div class="capability-after-label">With CCP</div>
+          <p>A governed application invokes a stable cryptographic capability while algorithm selection, security strategy, policy and lifecycle are managed beneath it. The integration effort establishes a governed boundary once, rather than repeating for every subsequent transition.</p>
+        </div>
+      </div>
+      <div class="capability-card">
+        <h3>Centrally governed policy across systems and environments</h3>
+        <div class="capability-before">
+          <div class="capability-before-label">Without CCP</div>
+          <p>Each development team chooses its own algorithms, key sizes and configurations. Crypto sprawl across hundreds of services. Determining whether enterprise standards are actually applied requires inspecting individual systems.</p>
+        </div>
+        <div class="capability-after">
+          <div class="capability-after-label">With CCP</div>
+          <p>Requirements are expressed as centrally governed policies and enforced across governed systems. Central governance does not mean one uniform policy: different policies apply according to data, operation, system, counterparty, jurisdiction, trust domain and interoperability requirement.</p>
+        </div>
+      </div>
+      <div class="capability-card">
+        <h3>Modernizing existing encrypted data without recreating it</h3>
+        <div class="capability-before">
+          <div class="capability-before-label">Without CCP</div>
+          <p>Read every record, decrypt, re-encrypt under a new algorithm, write back — a large, error-prone engineering project, and one that may be impossible where the originating application no longer holds the plaintext.</p>
+        </div>
+        <div class="capability-after">
+          <div class="capability-after-label">With CCP</div>
+          <p>Governed mechanisms progressively modernize existing protected data — re-encryption, key rotation, mechanism migration, changes to key protection or trust infrastructure. For large objects, streaming transformation avoids loading the dataset into memory and avoids creating persistent plaintext artifacts.</p>
+        </div>
+      </div>
+      <div class="capability-card">
+        <h3>Authority across distributed trust infrastructure</h3>
+        <div class="capability-before">
+          <div class="capability-before-label">Without CCP</div>
+          <p>Governance fragments along infrastructure boundaries. Consistency across multiple HSMs, KMS platforms, providers, regions and jurisdictions requires either consolidation or per-domain duplication of the same decisions.</p>
+        </div>
+        <div class="capability-after">
+          <div class="capability-after-label">With CCP</div>
+          <p>Governance converges without requiring trust domains to be physically consolidated. The organization governs which infrastructure may participate, which policies apply and how capabilities are exercised, while key custody and Roots of Trust remain distributed where appropriate.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="/">
+        <span class="dir">Previous</span>
+        <span class="label">← The thesis</span>
+      </a>
+      <a href="/capa/" class="next">
+        <span class="dir">Next</span>
+        <span class="label">CAPA — the five pillars →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="container">
+  <footer>
+    <div class="footer-left">
+      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.10 Working Draft · 2026<br>
+      Authored by Javier Galindo · ANKATech Solutions INC · CC BY 4.0
+    </div>
+    <div class="footer-right">
+      <a href="/control-plane/">Control Plane</a> &nbsp;·&nbsp;
+      <a href="/capa/">CAPA</a> &nbsp;·&nbsp;
+      <a href="/maturity/">Maturity</a> &nbsp;·&nbsp;
+      <a href="/migration/">Migration</a> &nbsp;·&nbsp;
+      <a href="/implementations/">Implementations</a> &nbsp;·&nbsp;
+      <a href="/about/">About</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
