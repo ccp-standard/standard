@@ -10,11 +10,13 @@ Authored by **Javier Galindo** · ANKATech Solutions INC · javier@cryptographic
 
 ---
 
-## Status: this is not a standard
+## Where this stands
 
-The word **standard** is deliberately not used for this material. It is reserved for an interoperability specification and a conformance suite that do not exist yet — they are Open Questions 1 and 2. No body has ratified this document, no one certifies implementations of it, and ANKASecure© is currently its only implementation, built by the same organization that wrote the document.
+A reference architecture, published in the open for critique. It describes how cryptographic governance can be separated from application implementation.
 
-What would change that is written down in [GOVERNANCE.md](GOVERNANCE.md): independent implementations, and people willing to argue with the substance.
+The word **standard** is reserved for what would earn it — the interoperability specification and conformance suite described in Open Questions 1 and 2.
+
+Authored by Javier Galindo at ANKATech Solutions INC. ANKASecure© is the first implementation, built by that same organization — which is why implementations from others are the contribution this most needs. The rest is in [GOVERNANCE.md](GOVERNANCE.md).
 
 ## Overview
 
@@ -75,9 +77,9 @@ Two distinctions matter: discovery produces **visibility**, not control; and gov
 
 ## Contributing
 
-The most valuable contribution is **a second, independent implementation** — worth considerably more than agreement with the document. After that, disagreement on the substance.
+The most valuable contribution is **an implementation**. After that, disagreement on the substance.
 
-- Read [GOVERNANCE.md](GOVERNANCE.md) for how this is stewarded today (briefly: by one person, in public)
+- Read [GOVERNANCE.md](GOVERNANCE.md) for how this is stewarded today
 - Read [CONTRIBUTING.md](CONTRIBUTING.md) for the mechanics
 - Open a [GitHub Issue](https://github.com/ccp-standard/standard/issues)
 - Review the [Changelog](CHANGELOG.md) for version history

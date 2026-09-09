@@ -3,20 +3,16 @@
 The Cryptographic Control Plane reference architecture and the CAPA framework are
 authored and maintained by **Javier Galindo** at **ANKATech Solutions INC**.
 
-There is no steering committee, no maintainer group and no formal decision process,
-because there are no participants yet. This document states what is true today, and
-what changes when that changes.
+Governance follows participants. This document describes how the work is stewarded
+today, and the structure that activates as contributors arrive.
 
 ## Today
 
 | | |
 |---|---|
 | Author and maintainer | Javier Galindo · ANKATech Solutions INC |
-| Independent implementations | 0 — ANKASecure© is built by the author's own organization |
-| Maintainers seated | 0 |
-| Steering committee | Not constituted |
-| Conformance suite | None — whether there should be one is Open Question 2 |
-| Status | Reference architecture, v0.11 Working Draft. Not a standard |
+| Implementations | [ANKASecure©](https://ankatech.co) |
+| Status | Reference architecture, v0.11 Working Draft |
 
 Decisions are made by the author and recorded publicly in this repository together
 with their rationale. Contributions are open: issues and pull requests are read and
@@ -26,9 +22,8 @@ answered in public, by name.
 
 Two things, in that order of value.
 
-1. **A second, independent implementation.** This architecture cannot be evaluated on
-   one, and the one that exists was built by the organization that wrote the document.
-   Being argued with is worth more here than being agreed with.
+1. **Implementations.** An architecture becomes evaluable when people build against
+   it. Implementations from any organization are welcome, and get listed.
 2. **Disagreement on the substance** — the domain boundary, the required capability
    list, the maturity model, or the claim that governance can converge while
    cryptographic trust stays distributed.
@@ -36,9 +31,9 @@ Two things, in that order of value.
 Where this document turns out to be ambiguous, unimplementable or simply wrong, that
 is a finding worth having, and it gets corrected in public.
 
-## What changes when contributors arrive
+## What changes as contributors arrive
 
-These are commitments. None of them describes anything that exists today.
+Commitments for the structure that activates with the first of them:
 
 - The first contributor with a sustained record of accepted contributions is invited
   to maintainership. Maintainership is **personal**, not tied to an employer.
@@ -47,25 +42,20 @@ These are commitments. None of them describes anything that exists today.
   ANKATech.
 - No single organization — including ANKATech — should hold a majority of whatever
   decision-making body eventually exists.
-- The word **standard** is deliberately not used for this material. It is reserved for
-  an interoperability specification and a conformance suite that do not exist yet
-  (Open Questions 1 and 2). Neither ratification nor de-facto adoption has occurred,
-  and until one of them does, calling this a standard would be a claim rather than a
-  description.
+- The word **standard** is reserved for what would earn it: an interoperability
+  specification and a conformance suite, described in Open Questions 1 and 2. Until
+  those exist, this material is a reference architecture, which is what it says it is.
 
-## How to contribute now
+## How to contribute
 
 See `CONTRIBUTING.md`. In short: open an issue or a pull request. Substantive changes
 get a public response and, if accepted, a `CHANGELOG.md` entry with attribution.
 
 ## Why this document is short
 
-Publishing a governance structure for a body with no members would be a promise that
-could not be kept. If someone arrived expecting a steering committee, meeting cadence
-and review windows, they would find none of it.
-
-**Governance follows participants; it does not precede them.** When there are
-participants, this document grows — written by them.
+**Governance follows participants; it does not precede them.** A structure is worth
+publishing when there are people it governs — so this document grows as they arrive,
+written by them.
 
 ## Amending this document
 
