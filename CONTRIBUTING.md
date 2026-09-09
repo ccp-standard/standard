@@ -18,7 +18,7 @@ After that: **disagreement on the substance** — the domain boundary, the requi
 
 ### GitHub Issues
 
-Use [GitHub Issues](https://github.com/cryptographiccontrolplane/reference-architecture/issues) to:
+Use [GitHub Issues](https://github.com/ccp-standard/standard/issues) to:
 
 - Propose additions or modifications
 - Report errors, ambiguities or inconsistencies

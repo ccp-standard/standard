@@ -79,7 +79,7 @@ The most valuable contribution is **a second, independent implementation** — w
 
 - Read [GOVERNANCE.md](GOVERNANCE.md) for how this is stewarded today (briefly: by one person, in public)
 - Read [CONTRIBUTING.md](CONTRIBUTING.md) for the mechanics
-- Open a [GitHub Issue](https://github.com/cryptographiccontrolplane/reference-architecture/issues)
+- Open a [GitHub Issue](https://github.com/ccp-standard/standard/issues)
 - Review the [Changelog](CHANGELOG.md) for version history
 
 Five foundational questions are open for community discussion. See [CONTRIBUTING.md](CONTRIBUTING.md).
