@@ -28,8 +28,8 @@
 <section class="page-hero">
   <div class="container">
     <div class="page-kicker">Implementations</div>
-    <h1>One, so far.</h1>
-    <p class="section-lead">This document describes a model. An implementation operationalizes it. Today there is exactly one, built by the same organization that wrote the document — which is the most important thing to know when reading any of this.</p>
+    <h1>The second one<br>is what <em>counts.</em></h1>
+    <p class="section-lead">This document describes a model; an implementation operationalizes it. Today there is one, built by the organization that wrote the document. An independent second is what turns an architecture into something the industry can evaluate — and it is the contribution this material most needs.</p>
   </div>
 </section>
 
@@ -41,8 +41,7 @@
     <div class="callout">
       <span class="callout-label">What a listing here is, and is not</span>
       <p>An implementation states for itself how it meets each required capability. No one verifies that claim.</p>
-      <p>There is no conformance suite, no test harness and no certification body. Whether any of those should exist is <a href="/about/#open-questions">Open Question 2</a>, and it is genuinely open. Until it is answered, a listing on this page is a public claim by its author — useful to read against <a href="/control-plane/#capabilities-required">the required capabilities</a>, and no stronger than the reputation of whoever makes it.</p>
-      <p>Listings are not endorsements, and the author of this document is not a neutral evaluator of the implementation he also builds.</p>
+      <p>Whether a conformance suite, a test harness or a certification body should exist is <a href="/about/#open-questions">Open Question 2</a>, and it is genuinely open. Until it is answered, a listing here is a public claim by its author — read it against <a href="/control-plane/#capabilities-required">the required capabilities</a>, and weigh it as you would any claim. A listing is not an endorsement.</p>
     </div>
 
     <div class="impl-grid">
@@ -51,7 +50,7 @@
         <h3>ANKASecure©</h3>
         <p>A Crypto Agility Orchestration Platform built by ANKATech Solutions INC — the organization that authored this reference architecture. It operationalizes the model: governed applications invoke cryptographic operations using key identifiers, while the platform resolves the applicable policy, lifecycle state and cryptographic mechanism, then coordinates execution through the appropriate cryptographic infrastructure.</p>
         <p style="margin-top:0.7rem;">Its capabilities contribute across the CAPA pillars rather than mapping to them individually. Cryptographic execution, key custody and Roots of Trust may remain distributed across designated HSMs, KMS platforms and trust domains, including PKCS#11-based environments, with the platform providing a common governance and orchestration layer above them. It supports classical, hybrid and post-quantum mechanisms, including NIST FIPS 203/204/205 (ML-KEM, ML-DSA, SLH-DSA) with hybrid coexistence.</p>
-        <p style="margin-top:0.9rem;color:var(--text-tertiary);font-size:0.82rem;">Shared authorship is a limitation of this listing, not a credential. An architecture demonstrated by a single implementation built by its own author has not yet been independently tested.</p>
+        <p style="margin-top:0.9rem;color:var(--text-tertiary);font-size:0.82rem;">ANKASecure© and this document share an author — worth knowing when weighing the listing. An architecture is properly tested when someone who did not write it builds against it.</p>
         <a href="https://ankatech.co" class="impl-link" target="_blank" rel="noopener">ankatech.co →</a>
       </div>
       <div class="impl-card">
