@@ -50,7 +50,28 @@
       </div>
       <div class="split-cell">
         <div class="split-cell-label">Cryptographic execution (infrastructure)</div>
-        <p>The Control Plane resolves the intent against the <strong>applicable cryptographic policy and context</strong>, selects a permitted algorithm, validates key lifecycle state, and coordinates execution. A governed policy change applies to subsequent operations without requiring an application release solely to implement the cryptographic change.</p>
+        <p>The Control Plane resolves the intent against the <strong>applicable cryptographic policy and context</strong>, selects a permitted algorithm, validates key lifecycle state, and coordinates or performs execution. A governed policy change applies to subsequent operations without requiring an application release solely to implement the cryptographic change.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">Intent is not only about algorithms</span>
+      Cryptographic coupling also exists at the <strong>representation layer</strong>. An application can depend not just on an algorithm or a library, but on the algorithm-specific formats, encodings, parameters and metadata used to represent ciphertext, signatures and keys. Expressing intent therefore includes being freed from those: a Control Plane can offer <strong>stable representation models</strong> across heterogeneous mechanisms, while still supporting specialized formats or profiles where interoperability demands them.
+      <br><br>
+      <strong>This is not universal interoperability, and must not be read as such.</strong> An external system can process a cryptographic representation only when it supports the algorithms, identifiers, parameters, profiles and extensions that operation used. The architecture separates <em>internal representation stability</em> from <em>external interoperability requirements</em>; it does not collapse them.
+    </div>
+
+    <div style="margin-top:2.5rem;">
+      <div class="section-eyebrow">Capability areas</div>
+      <h3 style="font-size:1.1rem;margin-bottom:0.75rem;">Six responsibilities, however they are packaged.</h3>
+      <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.8;margin-bottom:1.25rem;">The Control Plane's responsibilities can be understood through six complementary capability areas. These are <strong style="color:var(--text-primary);font-weight:400;">architectural responsibilities, not a prescribed product decomposition</strong> — implementations may organize and deliver them differently, and a conformant one need not expose them as six separate things.</p>
+      <div class="capability-areas">
+        <div class="cap-area"><span class="cap-area-num">01</span>Cryptographic abstraction</div>
+        <div class="cap-area"><span class="cap-area-num">02</span>Policy evaluation</div>
+        <div class="cap-area"><span class="cap-area-num">03</span>Crypto-agility</div>
+        <div class="cap-area"><span class="cap-area-num">04</span>Key and trust orchestration</div>
+        <div class="cap-area"><span class="cap-area-num">05</span>Modernization of existing protection</div>
+        <div class="cap-area"><span class="cap-area-num">06</span>Audit and evidence</div>
       </div>
     </div>
   </div>
@@ -102,6 +123,8 @@
 
     <div class="note">
       <span class="note-label">Why this matters for posture, not just for scope</span>
+      There is a second boundary alongside the domain one. <strong>Representation abstraction does not imply universal interoperability</strong> — a stable internal representation across mechanisms is not the same as every external system being able to read it. That separation is deliberate and permanent.
+      <br><br>
       An organization's cryptographic posture may still set requirements for domains the Control Plane does not execute. Governance may establish an organizational requirement for TLS or post-quantum readiness even though the handshake itself remains executed by the relevant protocol implementation. <strong>CAPA describes the capabilities required to govern cryptographic evolution across the organization</strong> — not a requirement that every cryptographic operation pass through one control mechanism.
     </div>
   </div>
@@ -112,7 +135,7 @@
   <div class="container">
     <div class="section-eyebrow">Core architectural principle</div>
     <h2>Centralized Governance, Distributed Trust.</h2>
-    <p class="section-lead">The Control Plane centralizes <strong style="color:var(--text-primary);font-weight:400;">governance</strong> — not cryptographic custody, not execution, and not Roots of Trust.</p>
+    <p class="section-lead">The Control Plane centralizes <strong style="color:var(--text-primary);font-weight:400;">governance</strong>. It does not require cryptographic custody, execution or Roots of Trust to be centralized with it — which is a narrower claim than saying it never performs them.</p>
 
     <div class="cgdt">
       <div class="cgdt-band">Applications express cryptographic intent</div>
@@ -128,6 +151,7 @@
       <div class="cgdt-gov">
         <div class="cgdt-gov-title">Cryptographic Control Plane</div>
         <div class="cgdt-gov-sub">Policy · lifecycle · algorithm and strategy selection · trust orchestration · modernization · evidence</div>
+        <div class="cgdt-gov-exec">may also execute directly, through its own cryptographic engines — with key protection anchored to an external Root of Trust</div>
       </div>
 
       <div class="cgdt-arrow">↓ &nbsp; coordinates according to policy, sovereignty and jurisdictional requirements</div>
@@ -157,7 +181,8 @@
       </div>
 
       <div class="cgdt-caption">
-        Convergence happens at the <strong>governance layer</strong>, not at the infrastructure layer.
+        Convergence happens at the <strong>governance layer</strong>, not at the infrastructure layer.<br>
+        Execution happens wherever policy, key architecture and trust boundaries place it — inside the Control Plane, or in any of the domains below.
       </div>
     </div>
 
@@ -171,6 +196,13 @@
       <span class="note-label">A consequence worth stating plainly</span>
       <strong>Governance convergence and infrastructure consolidation are separate decisions</strong>, and may proceed on different timelines. An application or data domain can become governed by the Control Plane while continuing to use its existing HSM, KMS, key hierarchy or trust domain.
     </div>
+
+    <div class="note">
+      <span class="note-label">Where cryptographic operations actually run</span>
+      A Control Plane is <strong>not limited to policy evaluation and orchestration</strong>. It may provide cryptographic execution and key-management capabilities directly, while also coordinating external cryptographic infrastructure. Depending on the architecture and the operation, execution may occur <strong>within the Control Plane itself</strong>, within an HSM or KMS, or through another specialized cryptographic engine — chosen by policy, key architecture and trust boundary rather than fixed by the architecture.
+      <br><br>
+      This does not weaken distributed trust, and it is not a licence to centralize keys. Key material may be generated, managed and used by the Control Plane while <strong>its protection remains anchored to an external Root of Trust controlled by the organization</strong>. What stays distributed is trust; what converges is governance.
+    </div>
   </div>
 </section>
 
@@ -179,7 +211,7 @@
   <div class="container">
     <div class="section-eyebrow">Reference architecture</div>
     <h2>The enterprise cryptographic stack.</h2>
-    <p class="section-lead">Six layers. The lower layers are heterogeneous by design — they are not a single centralized cryptographic backend.</p>
+    <p class="section-lead">The stack holds two different kinds of thing, and conflating them is the most common way it is misread: <strong style="color:var(--text-primary);font-weight:400;">layers that participate in the cryptographic execution path</strong>, and <strong style="color:var(--text-primary);font-weight:400;">capabilities that define posture or provide enterprise context</strong> without sitting on that path. The lower layers are heterogeneous by design — they are not a single centralized cryptographic backend.</p>
 
     <div class="arch-stack">
       <div class="arch-layer">
@@ -192,10 +224,10 @@
       </div>
       <div class="arch-layer control">
         <div class="arch-layer-label"><span class="layer-index">Layer 03</span>Cryptographic Control Plane ←</div>
-        <div class="arch-layer-desc">The governance and orchestration layer. It evaluates cryptographic intent against the applicable policy and context and determines how the required capability is fulfilled. Responsibilities include policy enforcement, algorithm and security-strategy selection, key and trust orchestration, lifecycle management, cryptographic modernization, interoperability decisions, and coordination across distributed trust domains. <strong>It centralizes governance without requiring cryptographic execution or key custody to be centralized.</strong></div>
+        <div class="arch-layer-desc">The governance and orchestration layer. It evaluates cryptographic intent against the applicable policy and context and determines how the required capability is fulfilled. Responsibilities include policy enforcement, algorithm and security-strategy selection, key and trust orchestration, lifecycle management, cryptographic modernization, interoperability decisions, and coordination across distributed trust domains. <strong>It centralizes governance without requiring cryptographic execution or key custody to be centralized</strong> — which does not mean execution occurs exclusively outside it. A Control Plane may execute operations through its own cryptographic engines while relying on external infrastructure for key protection, Roots of Trust, or operations that must remain inside those trust boundaries.</div>
       </div>
       <div class="arch-layer ecosystem">
-        <div class="arch-layer-label"><span class="layer-index">Layer 04</span>Enterprise integration ecosystem</div>
+        <div class="arch-layer-label"><span class="layer-index">Layer 04</span>Enterprise integration ecosystem<span class="layer-role-tag">context, not execution path</span></div>
         <div class="arch-layer-desc">The Control Plane is not an isolated security system. It participates in the enterprise technology ecosystem that already governs identity and access, workload and machine identity, PKI and trust services, security operations, SIEM and XDR, logging, metrics, tracing and observability, communication and notification services, and operational tooling. <strong>These integrations are not necessarily part of the cryptographic execution path</strong> — they provide the surrounding context through which identity, authorization, monitoring, evidence and alerting become part of governed cryptographic operations.</div>
       </div>
       <div class="arch-layer">
@@ -211,12 +243,14 @@
             <div class="trust-domain">PKI &amp; certificate authorities<em>identity-to-key binding</em></div>
             <div class="trust-domain">Certificate lifecycle &amp; validation<em>trust status</em></div>
           </div>
+          <p style="margin-top:1rem;font-size:0.84rem;line-height:1.75;color:var(--text-secondary);"><strong style="color:var(--text-primary);font-weight:400;">Hardware and trusted execution are not drawn as a separate layer.</strong> Secure hardware modules, TPMs, enclaves and hardware random number generators provide foundational guarantees within or beneath these infrastructures — embedded in HSMs, cryptographic engines and platforms rather than standing beside them.</p>
         </div>
       </div>
-      <div class="arch-layer">
-        <div class="arch-layer-label"><span class="layer-index">Layer 06</span>Hardware &amp; trusted execution</div>
-        <div class="arch-layer-desc">The foundational security guarantees underneath cryptographic operations: secure hardware modules, trusted platform modules (TPM), secure enclaves and trusted execution environments, and hardware-based random number generators. <strong>Different trust domains may rely on different hardware technologies</strong>, reinforcing the distinction between common governance and distributed execution.</div>
-      </div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">Some capabilities sit in more than one place</span>
+      A capability's position in this stack depends on <strong>the role it performs in a given operation</strong>, not on a fixed slot. PKI is the clearest example: certificate lifecycle, trust services and validation often act as surrounding enterprise capabilities (layer 04), while certificates, trust chains and certificate authorities may participate directly in the cryptographic trust relationship of an operation (layer 05). Both readings are correct, for different operations.
     </div>
 
     <div class="arch-note">
@@ -357,7 +391,7 @@
 <div class="container">
   <footer>
     <div class="footer-left">
-      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.10 Working Draft · 2026<br>
+      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.11 Working Draft · 2026<br>
       Authored by Javier Galindo · ANKATech Solutions INC · CC BY 4.0
     </div>
     <div class="footer-right">

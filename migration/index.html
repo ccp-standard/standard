@@ -75,7 +75,7 @@
         <div class="activity-num">01</div>
         <div>
           <h3>Discovery — understanding the cryptographic landscape</h3>
-          <p>Map how cryptography is currently used, governed and supported: where algorithms and mechanisms are used, dependencies on specific libraries and implementations, key management mechanisms, HSMs, KMS platforms, certificate and trust services, where keys and Roots of Trust reside across providers, environments, regions, jurisdictions and organizational trust domains, cryptographic protocols and external interoperability requirements, applicable policies and jurisdictional constraints, exposure to vulnerable or deprecated mechanisms, and the enterprise identity, security-operations and observability dependencies relevant to governance.</p>
+          <p>Map how cryptography is currently used, governed and supported: where algorithms and mechanisms are used, dependencies on specific libraries and implementations, key management mechanisms, HSMs, KMS platforms, certificate and trust services, where keys and Roots of Trust reside across providers, environments, regions, jurisdictions and organizational trust domains, cryptographic protocols, <strong style="color:var(--text-primary);font-weight:400;">representation formats and profiles</strong>, and external interoperability requirements, applicable policies and jurisdictional constraints, exposure to vulnerable or deprecated mechanisms, and the enterprise identity, security-operations and observability dependencies relevant to governance.</p>
           <p style="margin-top:0.7rem;">This activity should also produce a <strong style="color:var(--text-primary);font-weight:400;">greenfield policy decision</strong>: a formal organizational commitment, with executive sponsorship, that new systems will not embed cryptographic logic. That policy does not depend on completing the brownfield migration.</p>
           <div class="activity-tracks">
             <span class="track-chip on">Greenfield</span>
@@ -89,7 +89,7 @@
         <div class="activity-num">02</div>
         <div>
           <h3>Critical application analysis — preparing priority migrations</h3>
-          <p>Not all systems require equal preparation. The highest-priority applications warrant a structured analysis before migration begins, across four dimensions: <strong style="color:var(--text-primary);font-weight:400;">cryptographic exposure</strong> (what the application does cryptographically and where those operations live), <strong style="color:var(--text-primary);font-weight:400;">post-quantum risk</strong> (its specific exposure and the urgency of migration), <strong style="color:var(--text-primary);font-weight:400;">migration feasibility</strong> (how it can be migrated and what constraints must be managed), and <strong style="color:var(--text-primary);font-weight:400;">governance and enterprise context</strong> (applicable policies, key and trust dependencies, jurisdictional constraints, identity dependencies, external interoperability, and security or operational integrations).</p>
+          <p>Not all systems require equal preparation. The highest-priority applications warrant a structured analysis before migration begins, across four dimensions: <strong style="color:var(--text-primary);font-weight:400;">cryptographic exposure</strong> (what the application does cryptographically, where those operations live, and which cryptographic representations or formats it produces, consumes or persists), <strong style="color:var(--text-primary);font-weight:400;">post-quantum risk</strong> (its specific exposure and the urgency of migration), <strong style="color:var(--text-primary);font-weight:400;">migration feasibility</strong> (how it can be migrated and what constraints must be managed), and <strong style="color:var(--text-primary);font-weight:400;">governance and enterprise context</strong> (applicable policies, key and trust dependencies, jurisdictional constraints, identity dependencies, external interoperability, and security or operational integrations).</p>
           <p style="margin-top:0.7rem;">The output for each application is a <strong style="color:var(--text-primary);font-weight:400;">migration profile</strong> — the execution plan for the brownfield critical track. Prepared in parallel with Control Plane deployment, these profiles let high-priority migrations begin as soon as the infrastructure is operational.</p>
           <div class="activity-tracks">
             <span class="track-chip">Greenfield</span>
@@ -102,9 +102,9 @@
       <div class="activity">
         <div class="activity-num">03</div>
         <div>
-          <h3>Abstraction — reducing direct algorithm dependencies</h3>
+          <h3>Abstraction — reducing direct cryptographic dependencies</h3>
           <p>This activity applies differently to the two kinds of estate. For the <strong style="color:var(--text-primary);font-weight:400;">greenfield</strong>, abstraction is not a future phase but an immediate condition: every new application consumes cryptographic services through a standardized interface from the outset. For the <strong style="color:var(--text-primary);font-weight:400;">brownfield</strong>, abstraction is introduced progressively — cryptographic service interfaces added during planned maintenance cycles, operations centralized through APIs as systems are refactored, direct library dependencies reduced incrementally as each system is onboarded.</p>
-          <p style="margin-top:0.7rem;">The goal for both is identical: applications express cryptographic intent rather than directly invoking specific implementations.</p>
+          <p style="margin-top:0.7rem;">The goal for both is identical: applications express cryptographic intent rather than directly invoking specific implementations. As systems are onboarded, this reduces application-level dependence on specific algorithms, libraries, execution mechanisms <strong style="color:var(--text-primary);font-weight:400;">and algorithm-specific representation formats</strong> — which is why the dependency being removed is cryptographic, not merely algorithmic.</p>
           <div class="activity-tracks">
             <span class="track-chip on">Greenfield</span>
             <span class="track-chip on">Brownfield critical</span>
@@ -197,7 +197,7 @@
 <div class="container">
   <footer>
     <div class="footer-left">
-      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.10 Working Draft · 2026<br>
+      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.11 Working Draft · 2026<br>
       Authored by Javier Galindo · ANKATech Solutions INC · CC BY 4.0
     </div>
     <div class="footer-right">

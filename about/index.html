@@ -45,7 +45,7 @@
       <div class="state-row"><span class="state-k">Maintainers seated</span><span class="state-v">0</span></div>
       <div class="state-row"><span class="state-k">Steering committee</span><span class="state-v">Not constituted</span></div>
       <div class="state-row"><span class="state-k">Conformance suite</span><span class="state-v">None — see Open Question 2</span></div>
-      <div class="state-row"><span class="state-k">Status</span><span class="state-v">Reference architecture, v0.10 Working Draft. Not a standard</span></div>
+      <div class="state-row"><span class="state-k">Status</span><span class="state-v">Reference architecture, v0.11 Working Draft. Not a standard</span></div>
       <div class="state-row"><span class="state-k">Licence</span><span class="state-v">CC BY 4.0 — freely reproduced, cited and adapted with attribution</span></div>
       <div class="state-row"><span class="state-k">Contact</span><span class="state-v"><a href="mailto:javier@cryptographiccontrolplane.org">javier@cryptographiccontrolplane.org</a> · <a href="mailto:contact@cryptographiccontrolplane.org">contact@cryptographiccontrolplane.org</a></span></div>
     </div>
@@ -169,6 +169,15 @@
       </div>
     </div>
 
+    <div style="border:1px solid var(--bg-border); border-radius:8px; overflow:hidden; margin-top:1rem;">
+      <div style="display:grid; grid-template-columns:140px 1fr;">
+        <div style="padding:1rem 1.25rem; background:var(--bg-raised); border-right:1px solid var(--bg-border); font-family:var(--font-mono); font-size:11px; color:var(--accent);">September 2026</div>
+        <div style="padding:1rem 1.25rem; background:var(--bg-surface);">
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.7;"><strong style="color:var(--accent); font-weight:500;">Aligned to a later revision of the whitepaper</strong> — Three corrections and one addition. The claim that the Control Plane <em>does not execute</em> was <strong style="color:var(--text-primary);font-weight:500;">wrong and is withdrawn</strong>: governance is centralized, and execution is merely not <em>required</em> to be — a Control Plane may execute directly through its own engines while key protection stays anchored to an external Root of Trust. Hardware and trusted execution are <strong style="color:var(--text-primary);font-weight:500;">no longer a separate stack layer</strong>, being embedded within the infrastructures above them, and the stack now distinguishes execution-path layers from posture and context. PKI placement is <strong style="color:var(--text-primary);font-weight:500;">role-dependent</strong> rather than fixed. Added: <strong style="color:var(--text-primary);font-weight:500;">representation coupling</strong> as a second dimension of the problem, with its interoperability boundary; the six capability areas; and, for each CAPA pillar, four sub-capabilities and a practical test.</p>
+        </div>
+      </div>
+    </div>
+
     <div class="page-nav">
       <a href="/implementations/">
         <span class="dir">Previous</span>
@@ -186,7 +195,7 @@
 <div class="container">
   <footer>
     <div class="footer-left">
-      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.10 Working Draft · 2026<br>
+      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.11 Working Draft · 2026<br>
       Authored by Javier Galindo · ANKATech Solutions INC · CC BY 4.0
     </div>
     <div class="footer-right">
