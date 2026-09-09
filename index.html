@@ -31,7 +31,7 @@
   <div class="container" style="position:relative;">
     <div class="version-badge">
       <span class="version-dot"></span>
-      Reference Architecture · v0.10 Working Draft · Open for comment
+      Reference Architecture · v0.11 Working Draft · Open for comment
     </div>
     <div class="hero-tag">Cryptographic Control Plane</div>
     <h1>Cryptography should be<br><em>infrastructure,</em><br>not implementation.</h1>
@@ -57,7 +57,7 @@
         <span class="hero-stat-label">Migration tracks</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-num">0.10</span>
+        <span class="hero-stat-num">0.11</span>
         <span class="hero-stat-label">Current version</span>
       </div>
     </div>
@@ -77,6 +77,9 @@
       <p>"When cryptographic logic is embedded in application code, every algorithm transition becomes a distributed engineering effort. What should be a controlled infrastructure update instead becomes a large-scale application migration project."</p>
     </div>
 
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">
+      The coupling runs deeper than algorithm choice. Applications become dependent not only on a specific algorithm or library, but on the algorithm-specific <strong style="color:var(--text-primary);font-weight:400;">formats, encodings, parameters and metadata</strong> used to represent ciphertext, signatures and keys. As mechanisms diversify across classical, hybrid and post-quantum models, these representation dependencies become a second thing that has to change every time the cryptography does.
+    </p>
     <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">
       Every other critical infrastructure domain has already made this transition. Networking evolved from per-device configuration to software-defined control planes. Identity management moved from embedded credentials to centralized IAM platforms. Secrets management moved from configuration files to dedicated vault systems.
     </p>
@@ -420,7 +423,7 @@
 <div class="container">
   <footer>
     <div class="footer-left">
-      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.10 Working Draft · 2026<br>
+      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.11 Working Draft · 2026<br>
       Authored by Javier Galindo · ANKATech Solutions INC · CC BY 4.0
     </div>
     <div class="footer-right">

@@ -2,7 +2,7 @@
 
 **A Reference Architecture for Continuous Cryptographic Evolution**
 
-![Version](https://img.shields.io/badge/version-0.10-blue) ![Status](https://img.shields.io/badge/status-Working%20Draft-orange) ![Type](https://img.shields.io/badge/type-Reference%20Architecture-lightgrey) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-green)
+![Version](https://img.shields.io/badge/version-0.11-blue) ![Status](https://img.shields.io/badge/status-Working%20Draft-orange) ![Type](https://img.shields.io/badge/type-Reference%20Architecture-lightgrey) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-green)
 
 Authored by **Javier Galindo** · ANKATech Solutions INC · javier@cryptographiccontrolplane.org
 

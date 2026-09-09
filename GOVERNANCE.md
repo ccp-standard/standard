@@ -16,7 +16,7 @@ what changes when that changes.
 | Maintainers seated | 0 |
 | Steering committee | Not constituted |
 | Conformance suite | None — whether there should be one is Open Question 2 |
-| Status | Reference architecture, v0.10 Working Draft. Not a standard |
+| Status | Reference architecture, v0.11 Working Draft. Not a standard |
 
 Decisions are made by the author and recorded publicly in this repository together
 with their rationale. Contributions are open: issues and pull requests are read and

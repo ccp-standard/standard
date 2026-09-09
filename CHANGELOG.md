@@ -4,6 +4,59 @@ All notable changes to the Cryptographic Control Plane reference architecture wi
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.11.0] — 2026-09
+
+Aligned to a later revision of the foundational whitepaper (767 paragraphs, up from 622).
+Three corrections and four additions. The corrections matter more: the site asserted things the
+revision explicitly contradicts, and one of them contradicted another line on the same page.
+
+### Fixed
+
+- **“The Control Plane does not execute” was wrong and is withdrawn.** Governance is centralized;
+  execution is merely not *required* to be. A Control Plane may execute operations directly through
+  its own cryptographic engines while key protection stays anchored to an external Root of Trust.
+  The control-plane page previously contradicted itself — one line denied execution, another stated
+  the correct, narrower claim.
+- **Hardware and trusted execution are no longer a separate stack layer.** They are embedded within
+  HSMs, cryptographic engines and platforms rather than standing beside them, so the stack no longer
+  presents six flat layers.
+- **PKI placement is role-dependent, not fixed.** Certificate lifecycle, trust services and
+  validation may act as surrounding enterprise capabilities or participate directly in an
+  operation's cryptographic trust relationship, depending on the operation.
+
+### Added
+
+- **Representation coupling** as a second dimension of the problem: applications depend not only on
+  algorithms and libraries but on algorithm-specific formats, encodings, parameters and metadata.
+  Threaded through the problem statement, the definition, the scope boundary and all three migration
+  activities that touch it — always paired with its boundary, that **representation abstraction does
+  not imply universal interoperability**.
+- **The dual execution model**, stated positively: execution occurs inside the Control Plane, inside
+  an HSM or KMS, or in another engine, chosen by policy, key architecture and trust boundary.
+- **Six capability areas** of the Control Plane, marked explicitly as architectural responsibilities
+  rather than a prescribed product decomposition.
+- **Four sub-capabilities per CAPA pillar** (twenty in total) and **a practical test per pillar** — a
+  diagnostic question a reader can apply to their own organization.
+
+### Changed
+
+- The enterprise stack now distinguishes **execution-path layers** from **capabilities that define
+  posture or provide enterprise context**.
+- Migration activity 03 renamed from *reducing direct algorithm dependencies* to *reducing direct
+  **cryptographic** dependencies*, following the whitepaper — the dependency being removed is
+  broader than algorithms.
+- Pillar 2's three named “sovereignty dimensions” replaced by the whitepaper's four sub-capabilities.
+  The three appeared in **neither** revision of the whitepaper (measured: zero occurrences); they
+  originated in an earlier conceptual brief. The four cover the same ground, add
+  *distribute trust, keep governance*, and keep all five pillars structurally uniform.
+
+### Verified unchanged
+
+The five core principles, the pillar definitions, the domain boundary, Centralized Governance /
+Distributed Trust, the six maturity levels, the three migration tracks, and the non-one-to-one
+mapping between platform capabilities and pillars. The revision also still contains zero
+self-referential uses of “standard”.
+
 ## [0.10.0] — 2026-09
 
 Two changes in one release. The material is realigned with the second edition of the foundational whitepaper, and it stops calling itself a standard. Both are conceptual revisions rather than editorial ones: the architectural model, the pillar structure, the reference architecture and the positioning all change.
