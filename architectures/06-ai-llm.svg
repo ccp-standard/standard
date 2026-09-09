@@ -1,0 +1,72 @@
+<svg viewBox="0 0 1200 860" xmlns="http://www.w3.org/2000/svg" width="1200" height="860">
+<rect width="1200" height="860" fill="#FFFFFF"/>
+<defs><marker id="at" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#00C2D4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="ap" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#534AB7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<text x="600" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#0B1F3A">AI &amp; LLM security architecture</text>
+<text x="600" y="64" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#5F5E5A">Cryptographic protection for models, prompts, embeddings and training data</text>
+<rect x="40" y="86" width="1120" height="64" rx="8" fill="#E6F1FB" stroke="#378ADD" stroke-width="1.5"/>
+<text x="600" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#0C447C">AI Users</text>
+<text x="600" y="136" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#185FA5">Developers · Analysts · Autonomous systems · AI agents · LLM orchestrators · Tool chains</text>
+<line x1="600" y1="150" x2="600" y2="180" stroke="#534AB7" stroke-width="2" marker-end="url(#ap)"/>
+<rect x="160" y="182" width="880" height="72" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.5"/>
+<text x="600" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#3C3489">AI Gateway / LLM proxy</text>
+<text x="600" y="232" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Rate limiting · PII detection · Prompt injection guard · Cost control · Model routing</text>
+<text x="600" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#534AB7">LangChain · LlamaIndex · Semantic Kernel — agent and chain orchestration</text>
+<line x1="600" y1="254" x2="600" y2="284" stroke="#00C2D4" stroke-width="2" marker-end="url(#at)"/>
+<rect x="40" y="286" width="1120" height="180" rx="12" fill="#E0F9FC" stroke="#00C2D4" stroke-width="2.5"/>
+<text x="600" y="322" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#00C2D4">ANKASecure© — Cryptographic Control Plane</text>
+<text x="600" y="346" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#005F6B">Cryptographic protection layer for all AI components</text>
+<rect x="64" y="362" width="250" height="64" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="189" y="386" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#005F6B">Encrypted prompts</text>
+<text x="189" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">User data encrypted in transit</text>
+<rect x="330" y="362" width="250" height="64" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="455" y="386" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#005F6B">Model signing</text>
+<text x="455" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">Integrity and authenticity</text>
+<rect x="596" y="362" width="250" height="64" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="721" y="386" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#005F6B">Encrypted vector DB</text>
+<text x="721" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">Embeddings protected at rest</text>
+<rect x="862" y="362" width="258" height="64" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="991" y="386" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#005F6B">Secure RAG pipeline</text>
+<text x="991" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">Context isolation · Access control</text>
+<text x="600" y="452" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#00C2D4">AI models are high-value assets — their weights, data and prompts deserve the same protection as private keys</text>
+<line x1="600" y1="466" x2="600" y2="496" stroke="#3B6D11" stroke-width="2" marker-end="url(#ag)"/>
+<text x="40" y="516" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#5F5E5A" letter-spacing="1">LANGUAGE MODELS (protected by the Control Plane)</text>
+<rect x="40" y="526" width="240" height="80" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="160" y="552" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">Proprietary</text>
+<text x="160" y="574" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#5F5E5A">GPT-4 · Claude · Gemini</text>
+<text x="160" y="596" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Encrypted external APIs</text>
+<rect x="295" y="526" width="240" height="80" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="415" y="552" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">Open source</text>
+<text x="415" y="574" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#5F5E5A">Llama · Mistral · Falcon</text>
+<text x="415" y="596" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Weights encrypted on-prem</text>
+<rect x="550" y="526" width="240" height="80" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="670" y="552" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">On-prem / air-gap</text>
+<text x="670" y="574" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#5F5E5A">Regulated models</text>
+<text x="670" y="596" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Defense · Banking</text>
+<rect x="805" y="526" width="355" height="80" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="982" y="552" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">Fine-tuned / RAG</text>
+<text x="982" y="574" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#5F5E5A">Proprietary models with sensitive data</text>
+<text x="982" y="596" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Encrypted vector DB mandatory</text>
+<line x1="600" y1="606" x2="600" y2="636" stroke="#3B6D11" stroke-width="2" marker-end="url(#ag)"/>
+<text x="40" y="656" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#3B6D11" letter-spacing="1">AI DATA STORES (encrypted by the Control Plane)</text>
+<rect x="40" y="666" width="360" height="72" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1.5"/>
+<text x="220" y="694" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#27500A">Vector database</text>
+<text x="220" y="716" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#3B6D11">pgvector · Pinecone · Weaviate · Chroma</text>
+<rect x="420" y="666" width="360" height="72" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1.5"/>
+<text x="600" y="694" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#27500A">Training data</text>
+<text x="600" y="716" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#3B6D11">S3 · GCS · Azure Blob — encrypted at rest</text>
+<rect x="800" y="666" width="360" height="72" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1.5"/>
+<text x="980" y="694" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#27500A">Model weights</text>
+<text x="980" y="716" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#3B6D11">Encrypted weights + integrity signature</text>
+<rect x="40" y="754" width="1120" height="88" rx="8" fill="rgba(83,74,183,0.06)" stroke="#534AB7" stroke-width="1"/>
+<text x="600" y="778" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#3C3489">Critical use cases</text>
+<text x="215" y="802" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Banking: prompts with</text>
+<text x="215" y="820" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">encrypted customer data</text>
+<text x="500" y="802" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Healthcare: RAG over</text>
+<text x="500" y="820" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">encrypted clinical records</text>
+<text x="800" y="802" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Defense: air-gap models</text>
+<text x="800" y="820" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">with integrity signing</text>
+<text x="1060" y="802" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Government: AI with</text>
+<text x="1060" y="820" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">data sovereignty</text>
+</svg>

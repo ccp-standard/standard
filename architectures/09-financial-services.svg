@@ -1,0 +1,78 @@
+<svg viewBox="0 0 1200 880" xmlns="http://www.w3.org/2000/svg" width="1200" height="880">
+<rect width="1200" height="880" fill="#FFFFFF"/>
+<defs><marker id="at" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#00C2D4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="ap" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#534AB7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<text x="600" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#0B1F3A">Financial services reference architecture</text>
+<text x="600" y="64" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#5F5E5A">PCI DSS v4.0, DORA, PQC and tokenization for banking and payments</text>
+<rect x="40" y="86" width="1120" height="64" rx="8" fill="#E6F1FB" stroke="#378ADD" stroke-width="1.5"/>
+<text x="600" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#0C447C">Financial channels</text>
+<text x="600" y="136" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#185FA5">Digital banking · Mobile banking · ATM network · POS · Open banking APIs · SWIFT / SEPA · Correspondent banks</text>
+<line x1="600" y1="150" x2="600" y2="180" stroke="#534AB7" stroke-width="2" marker-end="url(#ap)"/>
+<rect x="40" y="182" width="555" height="80" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.5"/>
+<text x="317" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#3C3489">Core banking / CBS</text>
+<text x="317" y="232" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Temenos · Finacle · FIS · Jack Henry</text>
+<text x="317" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#534AB7">Accounts · Loans · Deposits</text>
+<rect x="605" y="182" width="555" height="80" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.5"/>
+<text x="882" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#3C3489">Payments &amp; clearing</text>
+<text x="882" y="232" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">SWIFT · ACH · SPEI · PIX · Visa/MC</text>
+<text x="882" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#534AB7">ISO 20022 · Real-time payments</text>
+<line x1="600" y1="262" x2="600" y2="292" stroke="#00C2D4" stroke-width="2" marker-end="url(#at)"/>
+<rect x="40" y="294" width="1120" height="180" rx="12" fill="#E0F9FC" stroke="#00C2D4" stroke-width="2.5"/>
+<text x="600" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#00C2D4">ANKASecure© — Cryptographic Control Plane</text>
+<text x="600" y="354" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#005F6B">Regulatory cryptographic layer for financial services</text>
+<rect x="64" y="370" width="250" height="72" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="189" y="394" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#005F6B">PIN encryption</text>
+<text x="189" y="414" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">HSM-only · TR-31</text>
+<text x="189" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">ANSI X9.24</text>
+<rect x="330" y="370" width="250" height="72" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="455" y="394" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#005F6B">Card data (PAN)</text>
+<text x="455" y="414" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">P2PE tokenization</text>
+<text x="455" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">PCI DSS v4.0</text>
+<rect x="596" y="370" width="250" height="72" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="721" y="394" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#005F6B">Digital signing</text>
+<text x="721" y="414" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">Contracts · Letters · Invoices</text>
+<text x="721" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">CAdES · XAdES · PAdES</text>
+<rect x="862" y="370" width="258" height="72" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="991" y="394" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#005F6B">PQC readiness</text>
+<text x="991" y="414" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">CNSA 2.0 · NSM-10</text>
+<text x="991" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">ML-KEM · ML-DSA</text>
+<text x="600" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#00C2D4">Three-track migration model — Greenfield PQC · Critical brownfield · General brownfield</text>
+<line x1="600" y1="474" x2="600" y2="504" stroke="#3B6D11" stroke-width="2" marker-end="url(#ag)"/>
+<rect x="40" y="506" width="1120" height="64" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1.5"/>
+<text x="600" y="534" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#27500A">Certified financial-grade HSM (regulatory requirement)</text>
+<text x="600" y="558" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#3B6D11">Thales payShield 10K · Utimaco Se-Series · Entrust nShield — FIPS 140-2 L3 · PCI HSM v3</text>
+<text x="40" y="596" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#5F5E5A" letter-spacing="1">REGULATORY FRAMEWORKS</text>
+<rect x="40" y="606" width="258" height="100" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="169" y="632" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">PCI DSS v4.0</text>
+<text x="169" y="654" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Req 3, 4, 6, 10</text>
+<text x="169" y="674" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Crypto inventory mandatory</text>
+<text x="169" y="694" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">from 2025</text>
+<rect x="314" y="606" width="258" height="100" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="443" y="632" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">DORA (EU)</text>
+<text x="443" y="654" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">ICT risk management</text>
+<text x="443" y="674" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Crypto resilience</text>
+<text x="443" y="694" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">In effect January 2025</text>
+<rect x="588" y="606" width="258" height="100" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="717" y="632" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">Central bank</text>
+<text x="717" y="654" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Crypto circular Colombia</text>
+<text x="717" y="674" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">BanRep · SBS · CNBV</text>
+<text x="717" y="694" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Encryption reports</text>
+<rect x="862" y="606" width="298" height="100" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="1011" y="632" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">NSM-10 / CNSA 2.0</text>
+<text x="1011" y="654" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Mandatory PQC migration</text>
+<text x="1011" y="674" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Deadline: 2030–2035</text>
+<text x="1011" y="694" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">ML-KEM · ML-DSA mandatory</text>
+<rect x="40" y="724" width="1120" height="140" rx="8" fill="rgba(0,194,212,0.07)" stroke="#00C2D4" stroke-width="1"/>
+<text x="600" y="752" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#00C2D4">Strategic use cases — Banco de la República and the financial sector</text>
+<text x="250" y="780" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#0C7A8A">Greenfield PQC</text>
+<text x="250" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#0C7A8A">from day 1</text>
+<text x="250" y="820" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#0C7A8A">New digital products</text>
+<text x="600" y="780" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#0C7A8A">Critical brownfield</text>
+<text x="600" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#0C7A8A">top 5–10 systems</text>
+<text x="600" y="820" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#0C7A8A">Core banking · Payments · Swift</text>
+<text x="950" y="780" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#0C7A8A">General brownfield</text>
+<text x="950" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#0C7A8A">full inventory</text>
+<text x="950" y="820" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#0C7A8A">Audit and compliance</text>
+<text x="600" y="850" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#534AB7">ITAC — certified distributor of ANKASecure© for the Colombian financial sector</text>
+</svg>

@@ -1,0 +1,120 @@
+<svg viewBox="0 0 1200 960" xmlns="http://www.w3.org/2000/svg" width="1200" height="960">
+<rect width="1200" height="960" fill="#FFFFFF"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#00C2D4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<text x="600" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#0B1F3A">Shared services &amp; Cryptographic Control Plane</text>
+<text x="600" y="64" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#5F5E5A">New category: the cryptographic governance layer where ANKASecure© lives</text>
+<rect x="40" y="82" width="1120" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.5"/>
+<text x="600" y="107" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#3C3489">Enterprise Applications</text>
+<text x="600" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">ERP · CRM · Core banking · Payments · Microservices · AI workloads — all business domains</text>
+<text x="40" y="162" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#5F5E5A" letter-spacing="1">ENTERPRISE SHARED SERVICES</text>
+<rect x="40" y="172" width="178" height="90" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1"/>
+<text x="129" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">Identity (IAM)</text>
+<text x="129" y="216" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Entra ID · Okta</text>
+<text x="129" y="234" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Keycloak · Ping</text>
+<text x="129" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">LDAP · SCIM</text>
+<rect x="228" y="172" width="178" height="90" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1"/>
+<text x="317" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">Secrets mgmt</text>
+<text x="317" y="216" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">HashiCorp Vault</text>
+<text x="317" y="234" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">AWS Secrets Mgr</text>
+<text x="317" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Azure Key Vault</text>
+<rect x="416" y="172" width="178" height="90" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1"/>
+<text x="505" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">PKI</text>
+<text x="505" y="216" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Microsoft CA</text>
+<text x="505" y="234" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">EJBCA · Venafi</text>
+<text x="505" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">DigiCert</text>
+<rect x="604" y="172" width="178" height="90" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1"/>
+<text x="693" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">Observability</text>
+<text x="693" y="216" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Splunk · Elastic</text>
+<text x="693" y="234" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Grafana · Datadog</text>
+<text x="693" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">OpenTelemetry</text>
+<rect x="792" y="172" width="178" height="90" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1"/>
+<text x="881" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">Security ops</text>
+<text x="881" y="216" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">SIEM · SOAR</text>
+<text x="881" y="234" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">EDR · XDR</text>
+<text x="881" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">CSPM</text>
+<rect x="980" y="172" width="180" height="90" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1"/>
+<text x="1070" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2C2C2A">DevSecOps / Network</text>
+<text x="1070" y="216" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">GitHub · GitLab</text>
+<text x="1070" y="234" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">DNS · WAF · ZTNA</text>
+<text x="1070" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Firewall · LB</text>
+<text x="40" y="286" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#00C2D4" letter-spacing="1">NEW CATEGORY — CRYPTOGRAPHIC SERVICES</text>
+<rect x="40" y="296" width="1120" height="190" rx="12" fill="#E0F9FC" stroke="#00C2D4" stroke-width="2.5"/>
+<text x="600" y="326" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#00C2D4">Cryptographic Control Plane</text>
+<text x="600" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#005F6B">ANKASecure© — unified cryptographic governance for the entire enterprise</text>
+<rect x="64" y="368" width="154" height="54" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="141" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#005F6B">Crypto discovery</text>
+<text x="141" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">&amp; inventory</text>
+<rect x="230" y="368" width="154" height="54" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="307" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#005F6B">Crypto policies</text>
+<text x="307" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">&amp; governance</text>
+<rect x="396" y="368" width="154" height="54" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="473" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#005F6B">Crypto lifecycle</text>
+<text x="473" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">orchestration</text>
+<rect x="562" y="368" width="154" height="54" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="639" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#005F6B">Crypto agility</text>
+<text x="639" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">&amp; migration</text>
+<rect x="728" y="368" width="154" height="54" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="805" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#005F6B">Crypto compliance</text>
+<text x="805" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">&amp; audit</text>
+<rect x="894" y="368" width="230" height="54" rx="6" fill="rgba(0,194,212,0.25)" stroke="#00C2D4" stroke-width="1"/>
+<text x="1009" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#005F6B">Crypto telemetry</text>
+<text x="1009" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005F6B">&amp; observability</text>
+<text x="600" y="464" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#005F6B">Does not replace HSM, KMS, IAM, PKI or SIEM — integrates and orchestrates them as shared infrastructure</text>
+<line x1="600" y1="486" x2="600" y2="512" stroke="#00C2D4" stroke-width="2" marker-end="url(#arr)"/>
+<text x="40" y="530" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#3B6D11" letter-spacing="1">EXECUTION ENGINES (execute — do not govern)</text>
+<rect x="40" y="540" width="148" height="80" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1"/>
+<text x="114" y="564" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#27500A">HSM on-prem</text>
+<text x="114" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">Thales · Entrust</text>
+<text x="114" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">FIPS 140-2 L3</text>
+<rect x="200" y="540" width="148" height="80" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1"/>
+<text x="274" y="564" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#27500A">AWS KMS</text>
+<text x="274" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">CloudHSM · ACM</text>
+<text x="274" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">Nitro Enclave</text>
+<rect x="360" y="540" width="148" height="80" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1"/>
+<text x="434" y="564" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#27500A">Azure Key Vault</text>
+<text x="434" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">Managed HSM</text>
+<text x="434" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">Confidential VM</text>
+<rect x="520" y="540" width="148" height="80" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1"/>
+<text x="594" y="564" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#27500A">GCP Cloud KMS</text>
+<text x="594" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">Cloud HSM</text>
+<text x="594" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">Secret Manager</text>
+<rect x="680" y="540" width="148" height="80" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1"/>
+<text x="754" y="564" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#27500A">SoftHSM2</text>
+<text x="754" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">PKCS#11 · JCE</text>
+<text x="754" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">OpenSSL</text>
+<rect x="840" y="540" width="148" height="80" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1"/>
+<text x="914" y="564" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#27500A">TPM / TEE</text>
+<text x="914" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">Secure Enclave</text>
+<text x="914" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">Nitro · Graviton</text>
+<rect x="1000" y="540" width="160" height="80" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1"/>
+<text x="1080" y="564" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#27500A">Confidential computing</text>
+<text x="1080" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">Azure Confid. VM</text>
+<text x="1080" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B6D11">GCP Confid. VM</text>
+<text x="40" y="646" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#5F5E5A" letter-spacing="1">ALGORITHMS (125+ supported in ANKASecure©)</text>
+<rect x="40" y="656" width="1120" height="80" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="1"/>
+<text x="600" y="682" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#444441">Symmetric: AES-256-GCM · AES-CBC · ChaCha20-Poly1305 · ARIA · Twofish · Serpent</text>
+<text x="600" y="702" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#444441">Asymmetric: RSA-2048/4096 · ECC (P-256 / P-384 / Brainpool) · SM2 · GOST R 34.10</text>
+<text x="600" y="722" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#005F6B">Post-quantum (NIST FIPS 203/204/205): ML-KEM · ML-DSA · SLH-DSA · Falcon · Composite hybrid</text>
+<text x="40" y="762" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#534AB7" letter-spacing="1">ENTERPRISE DOMAINS — ALL CONSUMING THE SAME CONTROL PLANE</text>
+<rect x="40" y="772" width="1120" height="160" rx="8" fill="rgba(83,74,183,0.06)" stroke="#534AB7" stroke-width="1"/>
+<text x="140" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">TLS / mTLS</text>
+<text x="300" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">PKI &amp; certs</text>
+<text x="460" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Database encryption</text>
+<text x="640" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">API security</text>
+<text x="820" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Identity / IAM</text>
+<text x="1010" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Code signing</text>
+<text x="140" y="828" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Tokenization</text>
+<text x="300" y="828" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Backup encryption</text>
+<text x="460" y="828" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Container signing</text>
+<text x="640" y="828" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Secrets management</text>
+<text x="820" y="828" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Email security</text>
+<text x="1010" y="828" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Document signing</text>
+<text x="140" y="856" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Payments / PCI</text>
+<text x="300" y="856" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">AI model protection</text>
+<text x="460" y="856" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">IoT key mgmt</text>
+<text x="640" y="856" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Blockchain</text>
+<text x="820" y="856" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">Data sharing</text>
+<text x="1010" y="856" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#534AB7">File encryption</text>
+<text x="600" y="916" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#00C2D4">Shared infrastructure — not a niche product</text>
+<text x="600" y="938" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#0C7A8A">LDAP is to IAM what ANKASecure© is to enterprise cryptography</text>
+</svg>
