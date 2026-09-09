@@ -16,7 +16,7 @@ A reference architecture, published in the open for critique. It describes how c
 
 The word **standard** is reserved for what would earn it — the interoperability specification and conformance suite described in Open Questions 1 and 2.
 
-Authored by Javier Galindo at ANKATech Solutions INC. ANKASecure© is the first implementation, built by that same organization — which is why implementations from others are the contribution this most needs. The rest is in [GOVERNANCE.md](GOVERNANCE.md).
+Authored by Javier Galindo at ANKATech Solutions INC. ANKASecure© is the first implementation, built by that same organization. The rest is in [GOVERNANCE.md](GOVERNANCE.md).
 
 ## Overview
 
