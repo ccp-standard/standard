@@ -6,9 +6,9 @@ Read [GOVERNANCE.md](GOVERNANCE.md) first for how this is stewarded today — br
 
 ## The most valuable contribution
 
-**A second, independent implementation.**
+**An implementation.**
 
-This architecture cannot be evaluated on one implementation, and the one that exists was built by the organization that wrote the document. An implementation by people who did not write it is what turns this into something that can be assessed at all — and it is worth considerably more than agreement.
+An architecture becomes evaluable when people build against it. Implementations from any organization are welcome, and get listed.
 
 Build against [the required capabilities](https://cryptographiccontrolplane.org/control-plane/#capabilities-required). Where this document turns out to be ambiguous, unimplementable or simply wrong, that is a finding worth having. Open an issue and it gets corrected in public.
 
@@ -52,7 +52,7 @@ Should the community converge on a common wire protocol for CCP implementations?
 
 What constitutes a conformant implementation, and who certifies it? This document defines architectural principles and required capabilities, but there is no conformance suite, no test harness and no certification body. Should there be? A self-assessment framework, a test suite, an independent certifier — each implies a different governance model, and each affects adoption and trust differently.
 
-Until this is answered, listings are self-declared and the author of this document is explicitly not a neutral evaluator of the implementation he also builds.
+Until this is answered, listings are self-declared and read against the required capabilities.
 
 ### 3. Open-source reference implementation
 
@@ -78,7 +78,7 @@ Semantic versioning:
 - **Minor** (0.1 → 0.2): substantive additions, new sections, expanded definitions
 - **Major** (0.x → 1.0): structural changes, changes to the required capabilities, breaking changes to the framework
 
-The current version is **0.11** (Working Draft). A **1.0** release is not simply the next number: per [GOVERNANCE.md](GOVERNANCE.md) it requires participants that do not exist yet.
+The current version is **0.11** (Working Draft). A **1.0** release is not simply the next number: per [GOVERNANCE.md](GOVERNANCE.md) it requires participants.
 
 ## Acknowledgment
 
