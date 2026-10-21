@@ -4,7 +4,7 @@
 
 ![Version](https://img.shields.io/badge/version-0.11-blue) ![Status](https://img.shields.io/badge/status-Working%20Draft-orange) ![Type](https://img.shields.io/badge/type-Reference%20Architecture-lightgrey) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-green)
 
-Authored by **Javier Galindo** · ANKATech Solutions INC · javier@cryptographiccontrolplane.org
+Authored by **Javier Galindo** · ANKATech Solutions Inc. · javier@cryptographiccontrolplane.org
 
 **Live site:** [https://cryptographiccontrolplane.org](https://cryptographiccontrolplane.org)
 
@@ -16,7 +16,7 @@ A reference architecture, published in the open for critique. It describes how c
 
 The word **standard** is reserved for what would earn it — the interoperability specification and conformance suite described in Open Questions 1 and 2.
 
-Authored by Javier Galindo at ANKATech Solutions INC. ANKASecure© is the first implementation, built by that same organization. The rest is in [GOVERNANCE.md](GOVERNANCE.md).
+Authored by Javier Galindo at ANKATech Solutions Inc. ANKASecure© is the first implementation, built by that same organization. The rest is in [GOVERNANCE.md](GOVERNANCE.md).
 
 ## Overview
 
@@ -109,4 +109,4 @@ Licensed under [CC BY 4.0](LICENSE). Free to share and adapt for any purpose, wi
 
 ## Provenance
 
-The Cryptographic Control Plane concept and the CAPA framework were developed at **ANKATech Solutions INC** through research and product development in post-quantum cryptography. The foundational whitepaper — *The Cryptographic Control Plane: A New Architecture for Continuous Cryptographic Evolution* — is the source document; where the two differ in wording, the whitepaper governs.
+The Cryptographic Control Plane concept and the CAPA framework were developed at **ANKATech Solutions Inc.** through research and product development in post-quantum cryptography. The foundational whitepaper — *The Cryptographic Control Plane: A New Architecture for Continuous Cryptographic Evolution* — is the source document; where the two differ in wording, the whitepaper governs.
