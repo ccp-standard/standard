@@ -1,7 +1,7 @@
 # Stewardship
 
 The Cryptographic Control Plane reference architecture and the CAPA framework are
-authored and maintained by **Javier Galindo** at **ANKATech Solutions INC**.
+authored and maintained by **Javier Galindo** at **ANKATech Solutions Inc.**
 
 Governance follows participants. This document describes how the work is stewarded
 today, and the structure that activates as contributors arrive.
@@ -10,7 +10,7 @@ today, and the structure that activates as contributors arrive.
 
 | | |
 |---|---|
-| Author and maintainer | Javier Galindo · ANKATech Solutions INC |
+| Author and maintainer | Javier Galindo · ANKATech Solutions Inc. |
 | Implementations | [ANKASecure©](https://ankatech.co) |
 | Status | Reference architecture, v0.11 Working Draft |
 

@@ -68,7 +68,7 @@ Two changes in one release. The material is realigned with the second edition of
 - **All claims of evaluation and certification removed.** The required capabilities are kept, stated normatively so they are precise to build against, with an explicit statement that no conformance suite, test harness or certification body exists and that listings are self-declared.
 - **ANKASecure© relabelled** from *reference implementation* to *originating implementation*, with shared authorship stated as a limitation rather than a credential.
 - **Governance replaced by stewardship.** The previous document described maintainers, steering-committee seats, lazy consensus and 14-day review windows for a body with no members. It now declares the actual state — zero maintainers, no committee, one author — and keeps the structure as a forward commitment with named triggers.
-- **Authorship made explicit**: Javier Galindo, ANKATech Solutions INC.
+- **Authorship made explicit**: Javier Galindo, ANKATech Solutions Inc.
 - **Primary domain** is now `cryptographiccontrolplane.org`; `ccp-standard.org`, `ccpstandard.org` and `ccp-architecture.org` redirect to it.
 
 ### Added

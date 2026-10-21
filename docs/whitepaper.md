@@ -4,7 +4,7 @@
 
 **Title:** The Cryptographic Control Plane: A New Architecture for Continuous Cryptographic Evolution
 
-**Author:** ANKATech Solutions INC
+**Author:** ANKATech Solutions Inc.
 
 **Edition:** Second edition (V2)
 
