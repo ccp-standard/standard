@@ -32,7 +32,17 @@ This whitepaper is the source document for the [Cryptographic Control Plane refe
 
 **Where the two differ in wording, the whitepaper governs.** The published version is intentionally more conservative in two respects: it is written to be vendor-neutral, describing capabilities rather than any particular platform; and it states its own status explicitly — a reference architecture, not a standard, with one implementation, authored by the organization that built it.
 
-Published version **0.11** is aligned to whitepaper **V2**.
+Published version **0.12** is aligned to whitepaper **V2** and to its two companions below.
+
+## Companion whitepapers
+
+Each develops one CAPA pillar in depth. Both assume the vocabulary of the foundational whitepaper.
+
+**Crypto Agility Beyond the Quantum Clock — Why post-quantum migration is necessary, and why it is not enough.** ANKATech Solutions Inc., Version 1.1, 2026, in English and Spanish. Develops Pillar 1: cryptographic security as an evolving assessment, acceptability rather than breakage as the enterprise threshold, the Cryptographic Response Gap, why migration is not agility, and the controlled exit from old cryptography. Published here as [Crypto-Agility beyond the quantum clock](https://cryptographiccontrolplane.org/capa/crypto-agility/).
+
+**Cryptographic Sovereignty in Third-Party Information Exchange — Share information with third parties while keeping control of its cryptographic access.** ANKATech Solutions Inc., Version 3, 2026, in English and Spanish. Develops Pillar 2 at the organization's boundary: from sharing keys to sharing capabilities, the three properties of sovereign exchange, the transport and control planes, the accumulation effect of recurring exchange, and the five building blocks of a governed exchange. Published here as [Cryptographic Sovereignty in third-party exchange](https://cryptographiccontrolplane.org/capa/cryptographic-sovereignty/).
+
+As with the foundational whitepaper, the published pages are vendor-neutral: they describe capabilities and architectural concepts, never a particular platform.
 
 ## Download
 

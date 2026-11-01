@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cryptographic Sovereignty in depth — third-party exchange · CAPA Pillar 02</title>
+<meta name="description" content="Sharing information with third parties without sharing the key: the principle of cryptographic sovereignty, its three properties, the shift from sharing keys to sharing capabilities, the transport and control planes, and the five building blocks of sovereign exchange.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ccp.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">CCP // Architecture</a>
+  <ul class="nav-links">
+    <li><a href="/control-plane/">Control Plane</a></li>
+    <li><a href="/capa/" class="current">CAPA</a></li>
+    <li><a href="/maturity/">Maturity</a></li>
+    <li><a href="/migration/">Migration</a></li>
+    <li><a href="/implementations/">Implementations</a></li>
+    <li><a href="/about/">About</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-kicker">CAPA · Pillar 02 in depth</div>
+    <h1>Cryptographic Sovereignty<br><em>in third-party exchange.</em></h1>
+    <p class="section-lead">Sharing information with a third party should not mean sharing the key. This page develops <a href="/capa/#sovereignty" style="color:var(--accent);text-decoration:none;">Pillar 02</a> where its consequences are sharpest — at the organization's boundary, where protected information leaves for processors, providers, partners and regulators — and describes the architectural vocabulary through which a Control Plane governs that exchange.</p>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="section-eyebrow">The problem</div>
+    <h2>Control ends at the moment of sharing.</h2>
+
+    <p class="section-lead">When an organization shares protected information with a third party today, it usually hands over one of two things: the cleartext, over a protected channel, or the key that opens it. Either way, the third party now holds the authority to read the information, and the owner's control ends there.</p>
+
+    <div class="state-table">
+      <div class="state-row"><div class="state-k">Who can decrypt?</div><div class="state-v">The third party: it received the cleartext, or it holds the key.</div></div>
+      <div class="state-row"><div class="state-k">Can access be revoked?</div><div class="state-v">Only for future deliveries. What was delivered stays readable, and replacing a shared key needs coordination on both sides.</div></div>
+      <div class="state-row"><div class="state-k">Can use be limited?</div><div class="state-v">Not to a single use, a time window or one batch. Whoever holds the key can use it at any time.</div></div>
+      <div class="state-row"><div class="state-k">Is there evidence of use?</div><div class="state-v">Of the delivery, not of its use. Decryption happens in the third party's domain, where the owner sees nothing.</div></div>
+    </div>
+
+    <h3 style="margin-top:2.5rem;">The accumulation effect</h3>
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">
+      Most exchanges are recurring. Consider an organization that sends protected data to a provider twice a month under a key shared on day zero. After a year the provider holds 24 deliveries, and one key opens every one of them, at any time, as often as it wants — together with anything else ever encrypted under that key. A compromise of the provider in month twelve exposes a year of deliveries, not one.
+    </p>
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8;">
+      Exposure in the traditional model grows with the life of the relationship. Under per-delivery authorization it stays bounded to the delivery currently authorized.
+    </p>
+
+    <div class="note">
+      <span class="note-label">A problem of today, not of the quantum era</span>
+      A key handed to a provider is exposed whether it is classical or post-quantum, and cleartext delivered over a secure channel is exposed whatever protected it before it was decrypted. Solving this does not depend on a post-quantum migration, a complete cryptographic inventory, or first decoupling every application. It depends on changing who holds cryptographic authority at the boundary — and it can be done with the algorithms and key infrastructure an organization already operates. Post-quantum readiness across external relationships then follows as a consequence rather than standing as a precondition.
+    </div>
+  </div>
+</section>
+
+<!-- THE PRINCIPLE -->
+<section id="principle">
+  <div class="container">
+    <div class="section-eyebrow">The principle</div>
+    <h2>The key stays. The capability travels.</h2>
+
+    <div class="callout">
+      <span class="callout-label">The principle of cryptographic sovereignty in exchange</span>
+      <p>Cryptographic keys never leave the control domain of the data owner.</p>
+      <p>Third parties and internal systems do not own keys. They are authorized to invoke cryptographic capabilities — encrypt, decrypt, sign, verify — under governed, mediated and auditable conditions.</p>
+    </div>
+
+    <h3 style="margin-top:2.5rem;">Three properties</h3>
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">Remove any one of them and sovereignty collapses into something weaker.</p>
+    <div class="pillar-means">
+      <div class="means-label">Sovereign exchange requires all three</div>
+      <div class="mean"><h4>Sovereign control</h4><p>Where authority is anchored. Key material stays in the owner's domain, protected by an HSM, KMS or equivalent Root of Trust the owner administers. No copy is transferred.</p></div>
+      <div class="mean"><h4>Mediated use</h4><p>How authority is exercised. The third party never operates with the owner's material directly; it invokes a capability, and each invocation is evaluated against policy.</p></div>
+      <div class="mean"><h4>Full auditability</h4><p>How authority is demonstrated. Every invocation is recorded with its context — actor, capability, material, relationship and constraints — by the owner's infrastructure.</p></div>
+    </div>
+
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-top:1.5rem;">
+      Sovereignty is exercised at a precise moment: when protected information becomes cleartext. Every decryption is an authorized invocation, bound to a relationship, limited in time and volume, and recorded in the owner's domain. Withdrawing an authorization takes effect at the next invocation, unilaterally, and needs no re-encryption of the data the third party holds.
+    </p>
+
+    <div class="note">
+      <span class="note-label">Boundary</span>
+      Sovereign exchange governs <strong>whether and when</strong> a third party obtains cleartext. It does not reach into the third party's systems after an authorized decryption: information already decrypted remains subject to the contractual and data-protection obligations of the relationship. And sovereignty does not require centralization — keys and Roots of Trust may stay distributed across the trust domains the organization chooses, as the <a href="/control-plane/#distributed-trust" style="color:var(--accent);text-decoration:none;">Centralized Governance, Distributed Trust</a> principle states.
+    </div>
+  </div>
+</section>
+
+<!-- THE PARADIGM SHIFT -->
+<section id="paradigm">
+  <div class="container">
+    <div class="section-eyebrow">The paradigm shift</div>
+    <h2>From sharing keys to sharing capabilities.</h2>
+
+    <p class="section-lead">A third party receives the right to invoke a specific function, over specific material, within a specific relationship, under explicit constraints. That is an architectural change, not a procedural one: no amount of key-handling discipline turns a shared key into a revocable, bounded and evidenced authorization.</p>
+
+    <div class="state-table">
+      <div class="state-row"><div class="state-k">What the third party holds</div><div class="state-v"><strong>Sharing a key:</strong> cryptographic material. &nbsp;<strong>Sharing a capability:</strong> an authorization to invoke a function.</div></div>
+      <div class="state-row"><div class="state-k">Recurring deliveries</div><div class="state-v"><strong>Key:</strong> one key opens every delivery ever received. &nbsp;<strong>Capability:</strong> each delivery is authorized separately, for its own window.</div></div>
+      <div class="state-row"><div class="state-k">Rotation and algorithm change</div><div class="state-v"><strong>Key:</strong> a bilateral project with every counterparty. &nbsp;<strong>Capability:</strong> a policy change in the owner's domain, invisible to the third party.</div></div>
+      <div class="state-row"><div class="state-k">Revocation</div><div class="state-v"><strong>Key:</strong> bilateral coordination and key replacement. &nbsp;<strong>Capability:</strong> unilateral, at the next invocation, without re-encrypting data.</div></div>
+      <div class="state-row"><div class="state-k">Evidence</div><div class="state-v"><strong>Key:</strong> whatever the third party reports. &nbsp;<strong>Capability:</strong> produced by the owner's infrastructure for every execution.</div></div>
+      <div class="state-row"><div class="state-k">Blast radius of a compromise</div><div class="state-v"><strong>Key:</strong> every use of the key, past and future. &nbsp;<strong>Capability:</strong> the authorized scope, for the authorized window.</div></div>
+    </div>
+
+    <h3 style="margin-top:2.5rem;">Two planes: transport and cryptographic control</h3>
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">
+      Moving information and deciding who may open it are different responsibilities. The <strong style="color:var(--text-primary);font-weight:400;">transport plane</strong> — managed file transfer, SFTP, APIs, messaging, direct integrations — moves information reliably. The <strong style="color:var(--text-primary);font-weight:400;">cryptographic control plane</strong> decides who may open what travels, when and under which conditions. Sovereign exchange changes only the second. Existing channels stay in place, and the information can be files, records, payloads or messages.
+    </p>
+
+    <div class="note">
+      <span class="note-label">Not a replacement for the channel</span>
+      This is the same scope boundary the Control Plane draws for <a href="/control-plane/#boundary" style="color:var(--accent);text-decoration:none;">protocol and transport cryptography</a>: a protected channel secures the transfer; it does not govern what the recipient can do with the information once it arrives.
+    </div>
+  </div>
+</section>
+
+<!-- BUILDING BLOCKS -->
+<section id="building-blocks">
+  <div class="container">
+    <div class="section-eyebrow">The architectural vocabulary</div>
+    <h2>Five building blocks.</h2>
+
+    <p class="section-lead">Governing an exchange needs objects that the traditional model does not have. These are architectural concepts, not a product decomposition: an implementation may name and package them differently, but it needs a way to express each one.</p>
+
+    <div class="state-table">
+      <div class="state-row"><div class="state-k">Exchange Context</div><div class="state-v"><strong>The relationship.</strong> With whom, for what purpose, in which direction and at what sensitivity. It is a first-class object, so a relationship can be suspended or closed as a whole.</div></div>
+      <div class="state-row"><div class="state-k">Cryptographic Actor</div><div class="state-v"><strong>Who executes.</strong> The operational identity of the system or third party that actually invokes cryptographic operations — distinct from the people who administer the relationship.</div></div>
+      <div class="state-row"><div class="state-k">Capability</div><div class="state-v"><strong>What it can do.</strong> The abstract function — encrypt, decrypt, sign, verify — decoupled from the material and the mechanism behind it.</div></div>
+      <div class="state-row"><div class="state-k">Cryptographic Asset</div><div class="state-v"><strong>With what material.</strong> The key, protected in the owner's HSM or KMS. It is never handed over; only its use is mediated.</div></div>
+      <div class="state-row"><div class="state-k">Constraint Policy</div><div class="state-v"><strong>Under what conditions.</strong> The usage rules: time windows, maximum invocations, batch scope, rate limits, single use and automatic revocation.</div></div>
+    </div>
+
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-top:1.5rem;">
+      An authorization binds them: <em>this actor may perform this capability, on this asset, within this exchange context, under this constraint policy.</em> Policy is evaluated at every invocation, and the record of each one carries all five. In terms of the <a href="/control-plane/#definition" style="color:var(--accent);text-decoration:none;">Control Plane's six capability areas</a>, sovereign exchange draws on key and trust orchestration, policy evaluation, and audit and evidence together — another case of one outcome depending on several capabilities rather than mapping to one.
+    </p>
+
+    <div class="practical-test">
+      <span class="practical-test-label">A practical test</span>
+      <p>If a processor were compromised tonight, could the organization cut its access to every delivery it ever received — without re-encrypting anything and without the processor's cooperation — and show afterwards exactly what it opened?</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCE -->
+<section id="sources">
+  <div class="container">
+    <div class="section-eyebrow">Source</div>
+    <h2>Where this comes from.</h2>
+    <p class="section-lead">This page is developed from the companion whitepaper <em>Cryptographic Sovereignty in Third-Party Information Exchange</em> (ANKATech Solutions Inc., Version 3, 2026), published in English and Spanish. It is written here in vendor-neutral terms, as the rest of the reference architecture is.</p>
+
+    <div class="page-nav">
+      <a href="/capa/crypto-agility/">
+        <span class="dir">Previous</span>
+        <span class="label">← Pillar 01 in depth</span>
+      </a>
+      <a href="/capa/#sovereignty" class="next">
+        <span class="dir">Back to</span>
+        <span class="label">CAPA — Pillar 02 →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="container">
+  <footer>
+    <div class="footer-left">
+      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.12 Working Draft · 2026<br>
+      Authored by Javier Galindo · ANKATech Solutions Inc. · CC BY 4.0
+    </div>
+    <div class="footer-right">
+      <a href="/control-plane/">Control Plane</a> &nbsp;·&nbsp;
+      <a href="/capa/">CAPA</a> &nbsp;·&nbsp;
+      <a href="/maturity/">Maturity</a> &nbsp;·&nbsp;
+      <a href="/migration/">Migration</a> &nbsp;·&nbsp;
+      <a href="/implementations/">Implementations</a> &nbsp;·&nbsp;
+      <a href="/about/">About</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

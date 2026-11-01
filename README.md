@@ -2,7 +2,7 @@
 
 **A Reference Architecture for Continuous Cryptographic Evolution**
 
-![Version](https://img.shields.io/badge/version-0.11-blue) ![Status](https://img.shields.io/badge/status-Working%20Draft-orange) ![Type](https://img.shields.io/badge/type-Reference%20Architecture-lightgrey) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-green)
+![Version](https://img.shields.io/badge/version-0.12-blue) ![Status](https://img.shields.io/badge/status-Working%20Draft-orange) ![Type](https://img.shields.io/badge/type-Reference%20Architecture-lightgrey) ![License](https://img.shields.io/badge/license-CC%20BY%204.0-green)
 
 Authored by **Javier Galindo** · ANKATech Solutions Inc. · javier@cryptographiccontrolplane.org
 
@@ -67,13 +67,18 @@ Six levels of organizational cryptographic capability:
 | L5 | Optimized Cryptography | The relevant cryptographic landscape operates predominantly under the Control Plane |
 | L6 | Continuous Crypto Evolution | Cryptographic evolution embedded in normal operating practice |
 
-Two principles underpin it. Maturity is measured by **capability today**, not by how much legacy migration remains pending. And **post-quantum cryptography is not a level** — it is a dimension that improves at every level, adoptable from the moment a Control Plane is deployed.
+Two principles underpin it. Maturity is measured by **capability today**, not by how much legacy migration remains pending. And **post-quantum cryptography is not a level** — it is a dimension that improves at every level, adoptable from the moment a Control Plane is deployed. What each level changes is the **Cryptographic Response Gap**: how long the organization keeps relying on a mechanism after it stops being acceptable.
 
 ## Migration
 
 Three tracks run in parallel from day one: **greenfield** (all new applications), **brownfield critical** (the five to ten highest-risk applications, analysed immediately without waiting for the full inventory) and **brownfield general** (the remaining landscape, phased by risk).
 
-Two distinctions matter: discovery produces **visibility**, not control; and governance convergence is a separate decision from infrastructure consolidation.
+Three distinctions matter: discovery produces **visibility**, not control; governance convergence is a separate decision from infrastructure consolidation; and a completed migration is **not agility** when the new algorithm is still embedded in each application.
+
+## Two pillars in depth
+
+- **Crypto-Agility beyond the quantum clock** (`capa/crypto-agility/`) — acceptability as the enterprise threshold, the Cryptographic Response Gap, migration versus agility, governed rather than negotiated agility, and the controlled exit from old cryptography.
+- **Cryptographic Sovereignty in third-party exchange** (`capa/cryptographic-sovereignty/`) — sharing capabilities instead of keys, the three properties of sovereign exchange, the transport and control planes, and the five building blocks of a governed exchange.
 
 ## Contributing
 
@@ -94,6 +99,8 @@ The site is plain static HTML served directly by GitHub Pages — there is no bu
 index.html               The thesis
 control-plane/           Definition, domain boundary, six-layer stack, required capabilities
 capa/                    The five pillars and their practice scenarios
+capa/crypto-agility/     Pillar 01 in depth: beyond the quantum clock
+capa/cryptographic-sovereignty/  Pillar 02 in depth: third-party exchange
 maturity/                The six-level maturity model
 migration/               Three tracks, five activities
 implementations/         Implementations and how they are listed
