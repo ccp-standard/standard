@@ -146,6 +146,29 @@
   </div>
 </section>
 
+<!-- RESPONSE GAP -->
+<section id="response-gap">
+  <div class="container">
+    <div class="section-eyebrow">What maturity changes</div>
+    <h2>How long the organization stays exposed.</h2>
+    <p class="section-lead">When a mechanism stops being acceptable for a use — through cryptanalysis, a new standard or a change in policy — the organization does not control that moment. It controls how long it keeps relying on the mechanism afterwards: the <a href="/capa/crypto-agility/#response-gap" style="color:var(--accent);text-decoration:none;">Cryptographic Response Gap</a>. Each level changes how a change in acceptability is absorbed.</p>
+
+    <div class="state-table">
+      <div class="state-row"><div class="state-k">L1 · Embedded</div><div class="state-v">Every affected application is modified, tested and released. The gap is months to years, and grows with the number of applications.</div></div>
+      <div class="state-row"><div class="state-k">L2 · Managed</div><div class="state-v">Keys are managed centrally, but the mechanism is still chosen in each application. The response is still a multi-application programme.</div></div>
+      <div class="state-row"><div class="state-k">L3 · Control Plane</div><div class="state-v">Governed systems change through policy while the legacy backlog is migrated in parallel. Short for governed systems; long for the backlog.</div></div>
+      <div class="state-row"><div class="state-k">L4 · Agility</div><div class="state-v">Critical systems are governed and brownfield migration is advanced. Hours to days for governed systems; weeks for what remains queued.</div></div>
+      <div class="state-row"><div class="state-k">L5 · Optimized</div><div class="state-v">Changes across the relevant landscape are coordinated through policy and lifecycle mechanisms. The response is predictable and enterprise-wide.</div></div>
+      <div class="state-row"><div class="state-k">L6 · Continuous</div><div class="state-v">A change in acceptability is a routine operation, not a project.</div></div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">Consistent with principle one</span>
+      The gap describes what the organization can do today in response to a change, not how much legacy migration remains. A large backlog in active migration lengthens the gap for the systems still in it; it does not lower the level reached by the governed ones.
+    </div>
+  </div>
+</section>
+
 <!-- GREENFIELD / BROWNFIELD COEXISTENCE -->
 <section id="coexistence">
   <div class="container">
@@ -181,7 +204,7 @@
 <div class="container">
   <footer>
     <div class="footer-left">
-      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.11 Working Draft · 2026<br>
+      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.12 Working Draft · 2026<br>
       Authored by Javier Galindo · ANKATech Solutions Inc. · CC BY 4.0
     </div>
     <div class="footer-right">

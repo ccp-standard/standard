@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto-Agility in depth — beyond the quantum clock · CAPA Pillar 01</title>
+<meta name="description" content="Why post-quantum migration is necessary and not sufficient: acceptability as the enterprise threshold, the Cryptographic Response Gap, migration versus agility, governed rather than negotiated agility, and the controlled exit from old cryptography.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ccp.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">CCP // Architecture</a>
+  <ul class="nav-links">
+    <li><a href="/control-plane/">Control Plane</a></li>
+    <li><a href="/capa/" class="current">CAPA</a></li>
+    <li><a href="/maturity/">Maturity</a></li>
+    <li><a href="/migration/">Migration</a></li>
+    <li><a href="/implementations/">Implementations</a></li>
+    <li><a href="/about/">About</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-kicker">CAPA · Pillar 01 in depth</div>
+    <h1>Crypto-Agility<br><em>beyond the quantum clock.</em></h1>
+    <p class="section-lead">Post-quantum migration prepares an organization for the cryptographic transition it can see coming. Crypto-agility prepares it for the changes it cannot predict. This page develops <a href="/capa/#crypto-agility" style="color:var(--accent);text-decoration:none;">Pillar 01</a>: why the assessment of a cryptographic mechanism moves on its own schedule, what an organization can control when it does, and what an architecture must provide to exit old cryptography as deliberately as it adopts new cryptography.</p>
+  </div>
+</section>
+
+<!-- THE CLOCK -->
+<section id="the-clock">
+  <div class="container">
+    <div class="section-eyebrow">The comfortable assumption</div>
+    <h2>Quantum is not the only clock.</h2>
+
+    <p class="section-lead">The quantum threat to public-key cryptography is real, and governments have turned it into calendars. NIST's transition plan deprecates quantum-vulnerable public-key algorithms after 2030 and disallows them after 2035 <a href="#src-5" style="color:var(--accent);text-decoration:none;">[5]</a>. None of that is in question. What the comfortable version of the story leaves out is its last step: <em>the organization migrates, and the problem is solved.</em></p>
+
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">
+      That step treats cryptographic change as a single event with a known cause, a known destination and an end date. It assumes that the mechanisms chosen in the migration will stay acceptable for as long as they are needed, and that years of warning will precede the day they are not. The institutions that define cryptographic practice say otherwise. NIST's crypto agility work states that advances in computing, research and cryptanalysis periodically create the need to replace algorithms that no longer provide adequate security <a href="#src-1" style="color:var(--accent);text-decoration:none;">[1]</a><a href="#src-2" style="color:var(--accent);text-decoration:none;">[2]</a>. The IETF has held since 2015 that algorithms age as cryptanalysis and computing improve, that the timing cannot be known in advance, and that the transition away from an algorithm should happen before it weakens to the breaking point <a href="#src-3" style="color:var(--accent);text-decoration:none;">[3]</a>.
+    </p>
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8;">
+      The assessment of a mechanism can change through new classical cryptanalysis, cheaper computing, new ways of exploiting existing capabilities, AI applied to cryptanalytic research, and changes in standards and policy — and, eventually, through quantum computing.
+    </p>
+
+    <div class="callout">
+      <span class="callout-label">The working formulation</span>
+      <p>Algorithms do not suddenly change. Our knowledge about their security can.</p>
+      <p>Post-quantum migration is a known transition. Cryptographic change is a permanent condition.</p>
+    </div>
+
+    <div class="state-table">
+      <div class="state-row"><div class="state-k">Rainbow · 2022</div><div class="state-v">A third-round finalist of NIST's post-quantum signature process. A classical attack recovered the key for one parameter set in about a weekend on a laptop, and the scheme was not standardized <a href="#src-9">[9]</a>.</div></div>
+      <div class="state-row"><div class="state-k">SIKE · 2022</div><div class="state-v">Advanced to NIST's fourth round in July 2022. Under a month later, a classical key-recovery attack broke its level-1 parameters in minutes on one core <a href="#src-10">[10]</a>.</div></div>
+      <div class="state-row"><div class="state-k">HAWK · 2026</div><div class="state-v">Advanced to the third round of NIST's additional signatures in May 2026. An AI-assisted attack halved its effective key size, and the scheme was withdrawn about eleven weeks later. The attack remains exponential and specific to HAWK <a href="#src-11">[11]</a><a href="#src-12">[12]</a>.</div></div>
+      <div class="state-row"><div class="state-k">Classic McEliece · 2026</div><div class="state-v">A 1978 design, standardized by ISO/IEC in 2026 and recommended by Germany's BSI since 2020. After a wave of structural cryptanalysis, BSI advised against its use in new developments while stating that no practical attack on the recommended parameters exists <a href="#src-13">[13]</a><a href="#src-14">[14]</a>.</div></div>
+      <div class="state-row"><div class="state-k">RSA signing oracle · 2026</div><div class="state-v">A 2007 technique executed at scale against a real hardware security module: with temporary access to an unpadded signing oracle, signatures were later forged without factoring the modulus. RSA was not broken; one attack model became practical <a href="#src-17">[17]</a>.</div></div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">What these cases show, and what they do not</span>
+      Not one of them required a quantum computer. Three were candidates that never became standards, which is the selection process working as intended, and the finalized NIST standards are unaffected. The argument does not depend on standards failing. It depends on a narrower observation: the assessment of mechanisms changes, sometimes abruptly, for mature and standardized mechanisms as well as for new candidates. An architecture that assumes the mechanisms it selects today will remain acceptable for the life of its systems is making a bet the evidence does not support.
+    </div>
+  </div>
+</section>
+
+<!-- ACCEPTABILITY AND THE RESPONSE GAP -->
+<section id="response-gap">
+  <div class="container">
+    <div class="section-eyebrow">The enterprise variable</div>
+    <h2>Acceptability, and the Cryptographic Response Gap.</h2>
+
+    <p class="section-lead">Enterprises do not operate on whether a mechanism is broken. They operate on whether it is <strong style="color:var(--text-primary);font-weight:400;">acceptable</strong> — a status that standards bodies, regulators, auditors and internal policy assign to a mechanism, for a purpose, at a point in time. Acceptability can be withdrawn before any practical attack exists.</p>
+
+    <div class="callout">
+      <span class="callout-label">Obsolescence by policy</span>
+      <p>For an enterprise, cryptographic obsolescence can precede cryptographic failure.</p>
+      <p>The useful question is not "has the algorithm been broken?" It is "is this mechanism still acceptable, for this use, under the standards and policies that apply to us?"</p>
+    </div>
+
+    <h3 style="margin-top:2.5rem;">The Cryptographic Response Gap</h3>
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">
+      The interval between <strong style="color:var(--text-primary);font-weight:400;">T0</strong>, when the security assessment, applicable standard or acceptable-use status of a mechanism changes for a given use, and <strong style="color:var(--text-primary);font-weight:400;">T1</strong>, when the organization has stopped using it to apply new protection and has handled the information it protected according to policy. The idea extends the window of exposure that security practice has long applied to software vulnerabilities <a href="#src-18" style="color:var(--accent);text-decoration:none;">[18]</a>.
+    </p>
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8;">
+      An organization does not control T0. Its architecture determines the length of the gap: how many places the mechanism is embedded in, whether a change can be made through policy rather than through releases, whether new use can be stopped while existing protection is still being processed, and whether existing protected data can be modernized without the applications that produced it. The <a href="/maturity/#response-gap" style="color:var(--accent);text-decoration:none;">maturity model</a> describes how the gap shortens level by level.
+    </p>
+
+    <div class="note">
+      <span class="note-label">Why the gap is the variable</span>
+      Cryptographic risk is not only a function of whether a mechanism becomes unacceptable. It is also a function of how long the organization remains exposed after it does. The algorithm is outside the organization's control; the length of the gap is not.
+    </div>
+  </div>
+</section>
+
+<!-- MIGRATION IS NOT AGILITY -->
+<section id="migration-is-not-agility">
+  <div class="container">
+    <div class="section-eyebrow">The 200-application problem</div>
+    <h2>Migration is not agility.</h2>
+
+    <p class="section-lead">An organization migrates 200 applications to a new algorithm, and each one still embeds the algorithm it migrated to. When that algorithm stops being acceptable, the whole programme repeats: inventory, code changes, testing, certification and coordinated releases, 200 times again.</p>
+
+    <div class="callout">
+      <span class="callout-label">The distinction</span>
+      <p>Migration changes the algorithm. Agility changes the architecture of the problem.</p>
+      <p>If tomorrow the mechanism protecting your business became unacceptable, how many applications would you have to change?</p>
+    </div>
+
+    <div class="capabilities-grid">
+      <div class="capability-card">
+        <h3>Key rotation is not algorithm agility</h3>
+        <div class="capability-before">
+          <div class="capability-before-label">Key rotation</div>
+          <p>Replaces key material under the same mechanism. It limits how much data one key protects and how long a compromised key is useful, as key-management guidance requires <a href="#src-21" style="color:var(--accent);text-decoration:none;">[21]</a>. It changes nothing when the mechanism itself stops being acceptable.</p>
+        </div>
+        <div class="capability-after">
+          <div class="capability-after-label">Algorithm agility</div>
+          <p>Changes the mechanism that serves a use: a different algorithm, parameter set or construction, including hybrid ones. It is governed by different guidance — algorithm and key-length transitions <a href="#src-4" style="color:var(--accent);text-decoration:none;">[4]</a> — and needs an architecture in which the mechanism is not a permanent application decision.</p>
+        </div>
+      </div>
+      <div class="capability-card">
+        <h3>Governed, not negotiated</h3>
+        <div class="capability-before">
+          <div class="capability-before-label">The critics' point</div>
+          <p>Extensibility mechanisms add code, bugs and dangerous interactions, tend to fail when they are finally needed, and should be concentrated in one place and kept exercised <a href="#src-20" style="color:var(--accent);text-decoration:none;">[20]</a>. RFC 7696 itself warns that complex negotiation invites downgrade attacks and that too many supported algorithms leave weak options in place <a href="#src-3" style="color:var(--accent);text-decoration:none;">[3]</a>. The critics are right about negotiated agility.</p>
+        </div>
+        <div class="capability-after">
+          <div class="capability-after-label">The architectural answer</div>
+          <p>Mechanisms are decided by policy and enforced centrally, not negotiated at run time between peers. Each use has a small, curated set; the change happens at one well-exercised point; and exiting a mechanism is a first-class operation rather than an exception. Hybrid mechanisms serve as a hedge while confidence in newer ones builds.</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-top:1.5rem;">
+      Recent academic work on application-level agility makes the same point formally: in a system with minimal agility, the cost of migrating to a new algorithm grows with the number of places where cryptographic operations are coupled to it <a href="#src-19" style="color:var(--accent);text-decoration:none;">[19]</a>. This is the <a href="/control-plane/#definition" style="color:var(--accent);text-decoration:none;">separation of intent from execution</a> that defines the Control Plane, seen from the side of the change itself.
+    </p>
+  </div>
+</section>
+
+<!-- THE CONTROLLED EXIT -->
+<section id="controlled-exit">
+  <div class="container">
+    <div class="section-eyebrow">The other half</div>
+    <h2>The controlled exit.</h2>
+
+    <p class="section-lead">Adopting new cryptography is only half of crypto-agility. When a mechanism stops being acceptable, the information it protected does not disappear: files must stay readable, signatures must stay verifiable, until that information is re-encrypted, re-signed or retired. An organization therefore needs a controlled way to exit old cryptography.</p>
+
+    <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">
+      Exit is governed per operation, not per algorithm. A mechanism can stop applying new protection while it still decrypts and verifies what it protected. The states below build on the transition vocabulary of existing guidance <a href="#src-3" style="color:var(--accent);text-decoration:none;">[3]</a><a href="#src-4" style="color:var(--accent);text-decoration:none;">[4]</a><a href="#src-14" style="color:var(--accent);text-decoration:none;">[14]</a>; <em>migration only</em> is a proposed extension.
+    </p>
+
+    <div class="state-table">
+      <div class="state-row"><div class="state-k">Acceptable</div><div class="state-v">All operations, including applying new protection.</div></div>
+      <div class="state-row"><div class="state-k">Not for new deployments</div><div class="state-v">Existing deployments continue, possibly under conditions such as hybrid use only; no new systems adopt it.</div></div>
+      <div class="state-row"><div class="state-k">Deprecated</div><div class="state-v">Use is permitted with accepted risk, and a replacement is planned.</div></div>
+      <div class="state-row"><div class="state-k">Legacy use</div><div class="state-v">Only processing of already-protected information: decrypt and verify.</div></div>
+      <div class="state-row"><div class="state-k">Migration only</div><div class="state-v">Legacy processing is permitted only inside governed re-encryption or re-signing workflows, with an end date.</div></div>
+      <div class="state-row"><div class="state-k">Disallowed</div><div class="state-v">No use for applying protection; processing only where explicitly authorized.</div></div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">Where exit meets modernization</span>
+      Closing the gap at T1 includes handling what the old mechanism protected. That is <a href="/capa/#modernization" style="color:var(--accent);text-decoration:none;">Pillar 03, Frictionless Modernization</a>: existing protected data moves to an acceptable mechanism without the applications that produced it, and without persistent plaintext. A lifecycle of operation states without modernization only freezes the problem; modernization without the lifecycle cannot stop new use while it works.
+    </div>
+
+    <div class="practical-test">
+      <span class="practical-test-label">A practical test</span>
+      <p>If a mechanism became unacceptable today, could the organization stop its new use everywhere this week, while what it already protected stays readable until it is modernized?</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section id="sources">
+  <div class="container">
+    <div class="section-eyebrow">Sources</div>
+    <h2>References.</h2>
+    <p class="section-lead">This page is developed from the companion whitepaper <em>Crypto Agility Beyond the Quantum Clock</em> (ANKATech Solutions Inc., Version 1.1, 2026). Third-party facts are stated as their sources state them, as of November 2026.</p>
+    <div class="state-table">
+      <div class="state-row" id="src-1"><div class="state-k">[1]</div><div class="state-v">NIST. <em>Considerations for Achieving Crypto Agility: Strategies and Practices.</em> CSWP 39, December 2025, updated June 2026. <a href="https://doi.org/10.6028/NIST.CSWP.39-upd1">doi.org/10.6028/NIST.CSWP.39-upd1</a></div></div>
+      <div class="state-row" id="src-2"><div class="state-k">[2]</div><div class="state-v">NIST Computer Security Resource Center. <em>Crypto Agility</em> project. <a href="https://csrc.nist.gov/projects/crypto-agility">csrc.nist.gov/projects/crypto-agility</a></div></div>
+      <div class="state-row" id="src-3"><div class="state-k">[3]</div><div class="state-v">R. Housley. <em>Guidelines for Cryptographic Algorithm Agility and Selecting Mandatory-to-Implement Algorithms.</em> IETF RFC 7696 / BCP 201, November 2015. <a href="https://www.rfc-editor.org/rfc/rfc7696">rfc-editor.org/rfc/rfc7696</a></div></div>
+      <div class="state-row" id="src-4"><div class="state-k">[4]</div><div class="state-v">E. Barker, A. Roginsky. <em>Transitioning the Use of Cryptographic Algorithms and Key Lengths.</em> NIST SP 800-131A Rev. 2, March 2019. <a href="https://doi.org/10.6028/NIST.SP.800-131Ar2">doi.org/10.6028/NIST.SP.800-131Ar2</a></div></div>
+      <div class="state-row" id="src-5"><div class="state-k">[5]</div><div class="state-v">NIST. <em>Transition to Post-Quantum Cryptography Standards.</em> NIST IR 8547, October 2026. <a href="https://doi.org/10.6028/NIST.IR.8547">doi.org/10.6028/NIST.IR.8547</a></div></div>
+      <div class="state-row" id="src-9"><div class="state-k">[9]</div><div class="state-v">W. Beullens. <em>Breaking Rainbow Takes a Weekend on a Laptop.</em> CRYPTO 2022; IACR ePrint 2022/214. <a href="https://eprint.iacr.org/2022/214">eprint.iacr.org/2022/214</a></div></div>
+      <div class="state-row" id="src-10"><div class="state-k">[10]</div><div class="state-v">W. Castryck, T. Decru. <em>An efficient key recovery attack on SIDH.</em> EUROCRYPT 2023; IACR ePrint 2022/975. <a href="https://eprint.iacr.org/2022/975">eprint.iacr.org/2022/975</a></div></div>
+      <div class="state-row" id="src-11"><div class="state-k">[11]</div><div class="state-v">NIST. <em>Nine candidates advance to third round of additional digital signatures for PQC</em>, May 2026, updated July 2026. <a href="https://www.nist.gov/news-events/news/2026/05/nine-candidates-advance-third-round-additional-digital-signatures-pqc">nist.gov</a></div></div>
+      <div class="state-row" id="src-12"><div class="state-k">[12]</div><div class="state-v">Anthropic Frontier Red Team. <em>Discovering cryptographic weaknesses with Claude</em>, July 2026. <a href="https://www.anthropic.com/news/discovering-cryptographic-weaknesses">anthropic.com</a></div></div>
+      <div class="state-row" id="src-13"><div class="state-k">[13]</div><div class="state-v">A. Ghoshal, Y. Ishai, A. Jain, N. Sun. <em>Quasipolynomial Cryptanalysis of the McEliece Cryptosystem.</em> IACR ePrint 2026/1630. <a href="https://eprint.iacr.org/2026/1630">eprint.iacr.org/2026/1630</a></div></div>
+      <div class="state-row" id="src-14"><div class="state-k">[14]</div><div class="state-v">BSI. <em>Notes on recent developments concerning Classic McEliece</em>, September 2026. <a href="https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Crypto/Notes_Classic_McEliece.pdf">bsi.bund.de</a></div></div>
+      <div class="state-row" id="src-17"><div class="state-k">[17]</div><div class="state-v">L. Shea, M. Haller, A. Suhl, N. Heninger, E. Thomé. <em>Forging 1024-bit RSA signatures in nearly SNFS time.</em> IACR ePrint 2026/2131. <a href="https://eprint.iacr.org/2026/2131">eprint.iacr.org/2026/2131</a></div></div>
+      <div class="state-row" id="src-18"><div class="state-k">[18]</div><div class="state-v">B. Schneier. <em>Full Disclosure and the Window of Exposure.</em> Crypto-Gram, September 2000. <a href="https://www.schneier.com/crypto-gram/archives/2000/0915.html">schneier.com</a></div></div>
+      <div class="state-row" id="src-19"><div class="state-k">[19]</div><div class="state-v">N. Rameshan, G. Messmer. <em>An Assessment Framework for Application-Level Cryptographic Agility.</em> arXiv:2606.13425, 2026. <a href="https://arxiv.org/abs/2606.13425">arxiv.org/abs/2606.13425</a></div></div>
+      <div class="state-row" id="src-20"><div class="state-k">[20]</div><div class="state-v">A. Langley. <em>Cryptographic Agility.</em> ImperialViolet, May 2016. <a href="https://www.imperialviolet.org/2016/05/16/agility.html">imperialviolet.org</a></div></div>
+      <div class="state-row" id="src-21"><div class="state-k">[21]</div><div class="state-v">E. Barker. <em>Recommendation for Key Management: Part 1 — General.</em> NIST SP 800-57 Part 1 Rev. 5, May 2020. <a href="https://doi.org/10.6028/NIST.SP.800-57pt1r5">doi.org/10.6028/NIST.SP.800-57pt1r5</a></div></div>
+    </div>
+
+    <div class="page-nav">
+      <a href="/capa/#crypto-agility">
+        <span class="dir">Back to</span>
+        <span class="label">← CAPA — Pillar 01</span>
+      </a>
+      <a href="/capa/cryptographic-sovereignty/" class="next">
+        <span class="dir">Next</span>
+        <span class="label">Pillar 02 in depth →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="container">
+  <footer>
+    <div class="footer-left">
+      <span>Cryptographic Control Plane</span> — Reference Architecture · v0.12 Working Draft · 2026<br>
+      Authored by Javier Galindo · ANKATech Solutions Inc. · CC BY 4.0
+    </div>
+    <div class="footer-right">
+      <a href="/control-plane/">Control Plane</a> &nbsp;·&nbsp;
+      <a href="/capa/">CAPA</a> &nbsp;·&nbsp;
+      <a href="/maturity/">Maturity</a> &nbsp;·&nbsp;
+      <a href="/migration/">Migration</a> &nbsp;·&nbsp;
+      <a href="/implementations/">Implementations</a> &nbsp;·&nbsp;
+      <a href="/about/">About</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

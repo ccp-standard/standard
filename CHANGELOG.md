@@ -4,6 +4,33 @@ All notable changes to the Cryptographic Control Plane reference architecture wi
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.12.0] — 2026-11
+
+Two CAPA pillars developed in depth, from the two companion whitepapers of the foundational one.
+Written in the same vendor-neutral terms as the rest of the architecture; third-party facts are
+stated as their sources state them, and linked.
+
+### Added
+
+- **Crypto-Agility beyond the quantum clock** (`capa/crypto-agility/`), from *Crypto Agility Beyond
+  the Quantum Clock* (V1.1): cryptographic security as an evolving assessment, with five recent cases
+  none of which needed a quantum computer; **acceptability, not breakage**, as the enterprise
+  threshold; the **Cryptographic Response Gap** between a change in acceptability (T0) and the end of
+  reliance on the mechanism (T1); **migration is not agility**; key rotation is not algorithm agility;
+  agility that is **governed, not negotiated**, answering its critics; and the **controlled exit**
+  through per-operation lifecycle states, tied to Frictionless Modernization.
+- **Cryptographic Sovereignty in third-party exchange** (`capa/cryptographic-sovereignty/`), from
+  *Cryptographic Sovereignty in Third-Party Information Exchange* (V3): the accumulation effect of
+  recurring exchange; the principle that keys stay in the owner's domain while capabilities travel;
+  the **three properties** of sovereign exchange; **from sharing keys to sharing capabilities**; the
+  **transport and control planes**; and the **five building blocks** (Exchange Context, Cryptographic
+  Actor, Capability, Cryptographic Asset, Constraint Policy), stated as architectural concepts rather
+  than a product decomposition.
+- **The response gap per maturity level** on the maturity page.
+- **A third distinction** on the migration path: a completed migration is not agility.
+- The exchange-channel case of the scope boundary on the control-plane page, and links from CAPA
+  Pillars 01 and 02, the thesis and `docs/whitepaper.md` to the new pages.
+
 ## [0.11.0] — 2026-09
 
 Aligned to a later revision of the foundational whitepaper (767 paragraphs, up from 622).

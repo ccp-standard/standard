@@ -12,7 +12,7 @@ today, and the structure that activates as contributors arrive.
 |---|---|
 | Author and maintainer | Javier Galindo · ANKATech Solutions Inc. |
 | Implementations | [ANKASecure©](https://ankatech.co) |
-| Status | Reference architecture, v0.11 Working Draft |
+| Status | Reference architecture, v0.12 Working Draft |
 
 Decisions are made by the author and recorded publicly in this repository together
 with their rationale. Contributions are open: issues and pull requests are read and

@@ -78,7 +78,7 @@ Semantic versioning:
 - **Minor** (0.1 → 0.2): substantive additions, new sections, expanded definitions
 - **Major** (0.x → 1.0): structural changes, changes to the required capabilities, breaking changes to the framework
 
-The current version is **0.11** (Working Draft). A **1.0** release is not simply the next number: per [GOVERNANCE.md](GOVERNANCE.md) it requires participants.
+The current version is **0.12** (Working Draft). A **1.0** release is not simply the next number: per [GOVERNANCE.md](GOVERNANCE.md) it requires participants.
 
 ## Acknowledgment
 
